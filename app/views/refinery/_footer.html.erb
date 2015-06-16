@@ -1,0 +1,51 @@
+<div class="wrap">
+	<div class="wrap-stat">
+		<div class="footer-left">
+			<%= link_to image_tag('logo.png', {:title=>"Флот, яхты, баржи, корабли, танкеры, паромы, катера, плавбазы. продажа / покупка. Санкт-Петербург.", :alt=>"продажа флота", :width => "163"}), refinery.root_path %>
+			<div id="footer-contact">
+				<div id="cell-foot"><%= image_tag('phone-icon-light.png') %><span> +7 921 758 7777</span></div>
+				<div id="mail-foot"><%= image_tag('mail-icon-light.png') %><span> <%= mail_to('zaliv@bk.ru', 'zaliv@bk.ru') %></span></div>
+				<p><%= t('.copyright', :year => Time.now.year, :site_name => Refinery::Core.site_name) %></p>
+			</div>
+		</div>
+		<div class="footer-mid">
+			<div class="mid-wrap">
+				<%= image_tag('river_reg.png') %>
+				<div>
+					<%= t('.river').html_safe %>
+				</div>
+			</div>
+		</div>
+		<div class="footer-mid">
+			<div class="mid-wrap">
+				<%= image_tag('lloyds.png') %>
+				<div>
+					<%= t('.lloyds').html_safe %>
+				</div>
+			</div>
+		</div>
+		<div class="footer-mid">
+			<div class="mid-wrap">
+				<%= image_tag('vetus.png', :style => "padding:19px 0;") %>
+				<div>
+					<%= t('.vetus').html_safe %>
+				</div>
+			</div>
+		</div>
+		<div class="footer-mid">
+			<div class="mid-wrap">
+				<%= image_tag('sea_reg.png') %>
+				<div>
+					<%= t('.sea').html_safe %>
+				</div>
+			</div>
+		</div>
+		<div class="footer-right">
+			<%= link_to image_tag('twitter-icon.png', :title=>"Marinerus в твиттере"), refinery.root_path %>
+			<%= link_to image_tag('vk-icon.png', :title=>"Marinerus Вконтакте"), refinery.root_path %>
+			<%= link_to image_tag('fb-icon.png', :title=>"Marinerus на Фэйсбуке"), refinery.root_path %>
+			<%= link_to image_tag('insta-icon.png', :title=>"Marinerus в Инстаграмме"), refinery.root_path %>
+			<%= link_to image_tag('gplus-icon.png', :title=>"Marinerus в Google+"), refinery.root_path %>
+		</div>
+	</div>
+</div>

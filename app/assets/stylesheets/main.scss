@@ -1,0 +1,65 @@
+/*variebles*/
+$blue:			#2c87af;
+$deepblue:		#005784;
+$grey:			#a7a9ab;
+$greybg:		#f1f1f2;
+/*/////////*/
+*{margin:0; padding:0; font-size: 12px; font-family: arial, sans-serif, helvetica; list-style-type:none; text-decoration:none; color: black;}
+body{width:100%;/*height: 100%;*/}
+#slogan{ font-size: 37px; line-height: 38px; font-weight: bold; color: $blue;}
+h1{ font-size: 22px; line-height: 28px; font-weight: normal;}
+h2{ font-size: 22px; line-height: 28px; font-weight: normal;}
+
+#header{width: 100%;}
+#footer{width: 100%; height: 180px; padding: 30px 0; margin-top:30px; border-top:2px $blue solid; background: $greybg;}
+#top{width: 100%; height: 30px; background: $greybg; border-bottom: $grey 2px dotted;}
+#login-line{float: left;}
+#locale-line{float: right;}
+#head{width: 100%; clear: both; height: 118px;}
+#main-logo{width: 214px; float: left;padding-top: 33px;}
+#main-head{width: 696px; padding-top:33px; padding-left:30px; float: left;}
+#main-head-slogan{width: 696px;/* clear: both;*/}
+#main-head-contact{width: 696px;/* clear: both;*/ text-align: right; padding-top: 8px;}
+#main-head-contact span, #main-head-contact a{font-size: 16px; font-weight: bold; color: $deepblue; float: right; line-height: 25px; margin-left: 3px; /*display: block;*/}
+#cell{float: right; height: 25px;}
+#mail{float: right;  height: 25px; margin-left: 15px;}
+#top-menu{width: 100%;height: 48px; margin-bottom: 30px; background: $greybg; border-top: $grey 2px dotted; border-bottom: $blue 2px solid;}
+#menu{ padding-top: 16px;}
+#menu li{float:left; font-size: 14px; font-weight: bold; line-height:16px; margin: 0 24px 0 0; a{color:$blue;}}
+.selected a, a:hover{color:$grey !important;}
+.wrap{width: 940px;/*1280px;*/ margin: 0 auto;}
+.right-column{width: 300px; float: right; padding-left: 40px;				display:none;}
+/**/
+.tmp{width:298px; height:96px; margin: 10px 0; border:1px $blue solid; background: $greybg;}
+/**/
+.wrap-stat{width: 940px;}
+.footer-left{float: left; width: 213px;  height:180px; border-right: 1px $grey solid; }
+.footer-mid{float: left; width: 169px; .mid-wrap{padding: 0 0 0 15px; div{margin-top: 10px; line-height: 14px;}}}
+.footer-right{float: right; width: 49px; height:180px; border-left: 1px $grey solid; a{margin-left: 10px; line-height: 20px;}}
+#footer-contact span, #footer-contact a{font-size: 16px; font-weight: bold; color: $blue; line-height: 25px; margin-left:5px;  }
+#cell-foot{height: 25px; clear: both; margin-top: 5px; img{float:left;}}
+#mail-foot{height: 25px; clear: both; margin: 5px 0 40px 0; img{float:left;}}
+
+#page{width: 100%;}
+#body{width: 620px; float:left;}
+#side_body{float: right; width: 320px; padding: 29px 0 0;} 
+
+/*home-page wide width. all others two columns*/
+#home-page #body{width: 100%;}
+#products-page #body{width: 100%;}
+#news-page #body{width: 100%;}
+
+
+
+
+
+
+
+
+
+
+
+.clear{clear: both;}
+/*/////////////////////////hide Refinery LOGO*/
+#site_bar_refinery_cms_logo{display: none;}
+#hide_items_wysiwyg{display: none;}

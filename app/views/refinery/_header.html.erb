@@ -1,0 +1,18 @@
+<div id="top"><div class="wrap">
+	<div id="login-line"></div>
+	<div id="locale-line"></div>
+</div></div>
+<div id="head"><div class="wrap">
+	<div id="main-logo"><%= image_tag('logo.png', :title => 'Marinerus. Продажа и покупка флота.') %></div>
+	<div id="main-head">
+		<div id="main-head-slogan"><span id="slogan">Продажа и покупка флота. От А до Я.</span></div>
+		<div id="main-head-contact">
+			<div id="mail"><%= image_tag('mail-icon.png') %><span> <%= mail_to('zaliv@bk.ru', 'zaliv@bk.ru') %></span></div>
+			<div id="cell"><%= image_tag('phone-icon.png') %><span> +7 921 758 7777</span></div>
+		</div>
+	</div>
+	<div class="right-column"><div class="tmp"></div></div>
+</div></div>
+<div id="top-menu">
+	<div class="wrap"><%= Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self).to_html %></div>
+</div>
