@@ -1,3 +1,28 @@
+Refinery::Core::Engine.routes.prepend do
+  devise_for :clients,  :class_name => "Refinery::Clients::Client",
+                                :controllers => {:sessions => 'refinery/clients/sessions', :passwords => 'refinery/clients/passwords', :registrations => 'refinery/clients/registrations'}
+
+
+  # devise_scope :client do
+  #     get "/clients/office", :to => "clients/office#index", :as => :office
+  # end
+
+  get "/clients/office", :to => "clients/office#index", :as => :office
+
+  namespace :clients do
+    resources :ships, controller: 'ships'
+  end
+
+end
+
+Refinery::Ships::Engine.routes.prepend do
+  devise_for :clients,  :class_name => "Refinery::Clients::Client",
+                                :controllers => {:office => 'refinery/clients/office', :sessions => 'refinery/clients/sessions', :passwords => 'refinery/clients/passwords', :registrations => 'refinery/clients/registrations'}
+  devise_scope :client do
+      get "/clients/office", :to => "clients/office#index", :as => :office
+  end
+end
+
 Marinerus::Application.routes.draw do
 
   # This line mounts Refinery's routes at the root of your application.
@@ -6,6 +31,8 @@ Marinerus::Application.routes.draw do
   #
   # We ask that you don't use the :as option here, as Refinery relies on it being the default of "refinery"
   mount Refinery::Core::Engine, :at => '/'
+
+#devise_for :clients,  :class_name => "Refinery::Clients::Client"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

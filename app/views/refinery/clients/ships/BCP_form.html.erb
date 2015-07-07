@@ -1,0 +1,417 @@
+<%= form_for [refinery, :ships_admin, @ship] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @ship,
+              :include_object_name => true %>
+
+  <%= render '/refinery/admin/locale_picker',
+              :current_locale => Globalize.locale %>
+  <div class='field'>
+    <%= f.label :title -%>
+    <%= f.text_field :title -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :meta -%>
+    <%= f.text_field :meta -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :client_id -%>
+    <%= f.number_field :client_id -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :category_id -%>
+    <%= f.number_field :category_id -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :page_status -%>
+    <%= f.text_field :page_status -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :owner -%>
+    <%= f.text_field :owner -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :operator -%>
+    <%= f.text_field :operator -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :register_number -%>
+    <%= f.text_field :register_number -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :tbn -%>
+    <%= f.text_field :tbn -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :status -%>
+    <%= f.text_field :status -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :condition -%>
+    <%= f.text_field :condition -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :area -%>
+    <%= f.text_field :area -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :subtype -%>
+    <%= f.text_field :subtype -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :appointment -%>
+    <%= f.text_field :appointment -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :project -%>
+    <%= f.text_field :project -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :flag -%>
+    <%= f.text_field :flag -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :registration -%>
+    <%= f.text_field :registration -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :construction_date -%>
+    <%= f.date_select :construction_date -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :construction_place -%>
+    <%= f.text_field :construction_place -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :renovation_date -%>
+    <%= f.date_select :renovation_date -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :registr -%>
+    <%= f.text_field :registr -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :registr_symbol -%>
+    <%= f.text_field :registr_symbol -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :period_class -%>
+    <%= f.date_select :period_class -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :last_dock -%>
+    <%= f.date_select :last_dock -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :next_dock -%>
+    <%= f.date_select :next_dock -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :length -%>
+    <%= f.text_field :length -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :width -%>
+    <%= f.text_field :width -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :height -%>
+    <%= f.text_field :height -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :free_board -%>
+    <%= f.text_field :free_board -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :max_draught -%>
+    <%= f.text_field :max_draught -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :min_draught -%>
+    <%= f.text_field :min_draught -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :air_draught -%>
+    <%= f.text_field :air_draught -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :gross_tonnage -%>
+    <%= f.text_field :gross_tonnage -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :net_tonnage -%>
+    <%= f.text_field :net_tonnage -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :deadweight -%>
+    <%= f.text_field :deadweight -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :loading -%>
+    <%= f.text_field :loading -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :displacement -%>
+    <%= f.text_field :displacement -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :dockweight -%>
+    <%= f.text_field :dockweight -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :tanks -%>
+    <%= f.number_field :tanks -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :tanksvolume -%>
+    <%= f.text_field :tanksvolume -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :passengers -%>
+    <%= f.number_field :passengers -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :enginetype -%>
+    <%= f.text_field :enginetype -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :enginemodel -%>
+    <%= f.text_field :enginemodel -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :enginequantity -%>
+    <%= f.number_field :enginequantity -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :enginepower -%>
+    <%= f.text_field :enginepower -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :enginepowername -%>
+    <%= f.text_field :enginepowername -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :propulsion -%>
+    <%= f.text_field :propulsion -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :propulsionquantity -%>
+    <%= f.number_field :propulsionquantity -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :fuelfuelcapacity -%>
+    <%= f.text_field :fuelfuelcapacity -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :fuel_way -%>
+    <%= f.text_field :fuel_way -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :fuel_port -%>
+    <%= f.text_field :fuel_port -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :autonomy -%>
+    <%= f.text_field :autonomy -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :speed -%>
+    <%= f.text_field :speed -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :speedname -%>
+    <%= f.text_field :speedname -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :gmdss -%>
+    <%= f.text_field :gmdss -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :crewprice -%>
+    <%= f.text_field :crewprice -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :crewpricename -%>
+    <%= f.text_field :crewpricename -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :crewpricetax -%>
+    <%= f.text_field :crewpricetax -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :hulltype -%>
+    <%= f.text_field :hulltype -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :hullmaterial -%>
+    <%= f.text_field :hullmaterial -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :supermaterial -%>
+    <%= f.text_field :supermaterial -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :tanksheating -%>
+    <%= f.text_field :tanksheating -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :tankscooling -%>
+    <%= f.text_field :tankscooling -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :double_board -%>
+    <%= f.text_field :double_board -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :double_bottom -%>
+    <%= f.text_field :double_bottom -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :double_hull -%>
+    <%= f.text_field :double_hull -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :diesel -%>
+    <%= f.text_field :diesel -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :sternthrusters -%>
+    <%= f.text_field :sternthrusters -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :stabilizers -%>
+    <%= f.text_field :stabilizers -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :winch -%>
+    <%= f.text_field :winch -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :hook -%>
+    <%= f.text_field :hook -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :cablelength -%>
+    <%= f.text_field :cablelength -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :cranes -%>
+    <%= f.number_field :cranes -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :craneloading -%>
+    <%= f.text_field :craneloading -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :sails -%>
+    <%= f.number_field :sails -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :sailsarea -%>
+    <%= f.text_field :sailsarea -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :location -%>
+    <%= f.text_field :location -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :price -%>
+    <%= f.text_field :price -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :pricename -%>
+    <%= f.text_field :pricename -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :pricetax -%>
+    <%= f.text_field :pricetax -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :info -%>
+    <%= f.text_field :info -%>
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.ships.admin.ships.ship'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @ship.title) -%>
+<% end -%>

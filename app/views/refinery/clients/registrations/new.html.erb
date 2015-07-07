@@ -1,0 +1,62 @@
+<div class="wrap-stat-login">
+  <div id="welcome">
+  <div id="error_explanation_wrap"><%= devise_error_messages! %></div>
+    <div id="transparent_login">
+      <div id="form_login">
+        <div id="login_hat" class="registration"></div>
+        <div id="login_body">
+          <!-- <p class="notice"><%#= notice %></p> <p class="alert"><%#= alert %></p> -->
+          <%= form_for resource, :as => resource_name, :url => refinery.client_registration_path do |f| %>
+            <div class="login_field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, :class=>'text_field', :autofocus => true %>
+            </div>
+
+            <!--  -->
+            <div class="login_field">
+              <%= f.label :name, "ФИО" %><br />
+              <%= f.text_field :name, :class=>'text_field' %>
+            </div>
+            <div class="login_field">
+              <%= f.label :company, "Компания:" %><br />
+              <%= f.text_field :company, :class=>'text_field' %>
+            </div>
+            <div class="login_field">
+              <%= f.label :job, "Должность:" %><br />
+              <%= f.text_field :job, :class=>'text_field' %>
+            </div>
+            <div class="login_field">
+              <%= f.label :phone, "Телефон:" %><br />
+              <%= f.text_field :phone, :class=>'text_field' %>
+            </div>
+            <!--  -->
+
+            <div class="login_field">
+              <%= f.label :password, "Пароль:" %><br />
+              <%= f.password_field :password, :class=>'text_field' %>
+            </div>
+            <div class="login_field">
+              <%= f.label :password_confirmation, "Подтвердите пароль:" %><br />
+              <%= f.password_field :password_confirmation, :class=>'text_field' %>
+            </div>
+            <div class="login_field">
+              <%= f.check_box :mail_me %><%= f.label :mail_me, "Подписаться на новости" %><br />
+              Пользовательское соглашение
+              <%#= f.label :usage, "Пользовательское соглашение" %><%#= f.check_box :usage %>
+            </div>
+            <div class="login_field">
+              <div class="btn">
+                <%= f.submit "Sign up", :type=>'image', :src=>'/assets/signup_btn.png' %>
+              </div>
+            </div>
+          <% end %>
+          <div class="login_field">
+              <div class="btn">
+                <%= link_to 'Уже зарегистрированы?', refinery.new_client_session_path %>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

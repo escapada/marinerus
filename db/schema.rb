@@ -11,7 +11,98 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150615155010) do
+ActiveRecord::Schema.define(:version => 20150624174729) do
+
+  create_table "areas", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
+
+  create_table "choices", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
+
+  create_table "conditions", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
+
+  create_table "currencies", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
+
+  create_table "engines", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
+
+  create_table "fuels", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
+
+  create_table "gmdsss", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
+
+  create_table "hullmaterials", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
+
+  create_table "hulltypes", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
+
+  create_table "page_statuss", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
+
+  create_table "powers", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
+
+  create_table "propulsions", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
+
+  create_table "refinery_categories", :force => true do |t|
+    t.string   "rutitle"
+    t.string   "entitle"
+    t.integer  "position"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "refinery_clients", :force => true do |t|
+    t.string   "email",                  :default => "",   :null => false
+    t.string   "name"
+    t.string   "company"
+    t.string   "job"
+    t.string   "phone"
+    t.boolean  "mail_me",                :default => true
+    t.string   "encrypted_password",     :default => "",   :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+  end
+
+  add_index "refinery_clients", ["email"], :name => "index_refinery_clients_on_email", :unique => true
+  add_index "refinery_clients", ["reset_password_token"], :name => "index_refinery_clients_on_reset_password_token", :unique => true
 
   create_table "refinery_images", :force => true do |t|
     t.string   "image_mime_type"
@@ -108,6 +199,125 @@ ActiveRecord::Schema.define(:version => 20150615155010) do
   add_index "refinery_roles_users", ["role_id", "user_id"], :name => "index_refinery_roles_users_on_role_id_and_user_id"
   add_index "refinery_roles_users", ["user_id", "role_id"], :name => "index_refinery_roles_users_on_user_id_and_role_id"
 
+  create_table "refinery_ship_translations", :force => true do |t|
+    t.integer  "refinery_ship_id"
+    t.string   "locale",             :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "title"
+    t.string   "meta"
+    t.string   "owner"
+    t.string   "operator"
+    t.string   "register_number"
+    t.string   "tbn"
+    t.string   "subtype"
+    t.string   "appointment"
+    t.string   "project"
+    t.string   "flag"
+    t.string   "construction_place"
+    t.string   "registr_symbol"
+    t.string   "enginemodel"
+    t.string   "autonomy"
+    t.string   "diesel"
+    t.string   "sternthrusters"
+    t.string   "stabilizers"
+    t.string   "winch"
+    t.string   "hook"
+    t.string   "location"
+    t.string   "info"
+  end
+
+  add_index "refinery_ship_translations", ["locale"], :name => "index_refinery_ship_translations_on_locale"
+  add_index "refinery_ship_translations", ["refinery_ship_id"], :name => "index_refinery_ship_translations_on_refinery_ship_id"
+
+  create_table "refinery_ships", :force => true do |t|
+    t.string   "title"
+    t.string   "meta"
+    t.integer  "client_id"
+    t.integer  "category_id"
+    t.integer  "page_status_id",                                       :default => 1
+    t.integer  "status_id"
+    t.integer  "condition_id"
+    t.integer  "area_id"
+    t.integer  "registration_id"
+    t.integer  "registr_id"
+    t.integer  "engine_id"
+    t.integer  "power_id"
+    t.integer  "propulsion_id"
+    t.integer  "fuel_id"
+    t.integer  "speed_id"
+    t.integer  "gmdss_id"
+    t.integer  "crewcurrency_id"
+    t.integer  "crewvat_id"
+    t.integer  "hulltype_id"
+    t.integer  "hullmaterial_id"
+    t.integer  "supermaterial_id"
+    t.integer  "tanksheatingchoice_id"
+    t.integer  "tankscoolingchoice_id"
+    t.integer  "doubleboardchoice_id"
+    t.integer  "doublebottomchoice_id"
+    t.integer  "doublehullchoice_id"
+    t.integer  "currency_id"
+    t.integer  "vat_id"
+    t.string   "owner"
+    t.string   "operator"
+    t.string   "register_number"
+    t.string   "tbn"
+    t.string   "subtype"
+    t.string   "appointment"
+    t.string   "project"
+    t.string   "flag"
+    t.date     "construction_date"
+    t.string   "construction_place"
+    t.date     "renovation_date"
+    t.string   "registr_symbol"
+    t.date     "period_class"
+    t.date     "last_dock"
+    t.date     "next_dock"
+    t.float    "length"
+    t.float    "width"
+    t.float    "height"
+    t.float    "free_board"
+    t.float    "max_draught"
+    t.float    "min_draught"
+    t.float    "air_draught"
+    t.float    "gross_tonnage"
+    t.float    "net_tonnage"
+    t.float    "deadweight"
+    t.float    "loading"
+    t.float    "displacement"
+    t.float    "dockweight"
+    t.integer  "tanks"
+    t.float    "tanksvolume"
+    t.integer  "passengers"
+    t.string   "enginemodel"
+    t.integer  "enginequantity"
+    t.float    "enginepower"
+    t.integer  "propulsionquantity"
+    t.float    "fuelcapacity"
+    t.float    "fuel_way"
+    t.float    "fuel_port"
+    t.string   "autonomy"
+    t.float    "speed"
+    t.decimal  "crewprice",             :precision => 10, :scale => 2
+    t.string   "diesel"
+    t.string   "sternthrusters"
+    t.string   "stabilizers"
+    t.string   "winch"
+    t.string   "hook"
+    t.float    "cablelength"
+    t.integer  "cranes"
+    t.float    "craneloading"
+    t.integer  "sails"
+    t.float    "sailsarea"
+    t.string   "location"
+    t.decimal  "price",                 :precision => 10, :scale => 2
+    t.string   "info"
+    t.integer  "position"
+    t.datetime "created_at",                                                          :null => false
+    t.datetime "updated_at",                                                          :null => false
+  end
+
   create_table "refinery_user_plugins", :force => true do |t|
     t.integer "user_id"
     t.string  "name"
@@ -137,6 +347,16 @@ ActiveRecord::Schema.define(:version => 20150615155010) do
   add_index "refinery_users", ["id"], :name => "index_refinery_users_on_id"
   add_index "refinery_users", ["slug"], :name => "index_refinery_users_on_slug"
 
+  create_table "registrations", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
+
+  create_table "registrs", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
+
   create_table "seo_meta", :force => true do |t|
     t.integer  "seo_meta_id"
     t.string   "seo_meta_type"
@@ -148,5 +368,20 @@ ActiveRecord::Schema.define(:version => 20150615155010) do
 
   add_index "seo_meta", ["id"], :name => "index_seo_meta_on_id"
   add_index "seo_meta", ["seo_meta_id", "seo_meta_type"], :name => "id_type_index_on_seo_meta"
+
+  create_table "speeds", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
+
+  create_table "statuss", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
+
+  create_table "vats", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
 
 end

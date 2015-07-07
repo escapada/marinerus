@@ -1,3 +1,28 @@
+/*//////////////CATEGORIES*/
+.new_category, .new_ship, .edit_category, .edit_ship{
+	.field{margin: 0 0 3px 0; line-height: 19px; clear: both;}
+	label{height:18px; margin: 0 5px 0 0; padding:0 0 0 0; font-size: 10px;}
+	input, select{line-height: 14px; padding: 0px; }
+	.form-actions{ margin-top: 50px!important;
+		input{padding:0 10px;}
+	}
+	.line{margin: 0 0 3px 0; padding: 8px 0; clear: both; width: 100%;
+	.linefield{float: left;}
+	}
+}
+/**/
+
+/*///////////////////////////table_form*/
+/**/
+
+/*///////////////ALL ADMINS LAYOUTS changes*/
+#sortable_list{
+	a{margin: 0!important; height: 28px!important;}
+	li{line-height: 28px!important;
+		img{padding-bottom:5px!important; }
+	}
+}
+
 
 
 

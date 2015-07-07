@@ -1,5 +1,9 @@
 ru:
   refinery:
+    # clients:
+    #   sessions:
+    #     new:
+    #       forgot_password: Забыли пароль?
     plugins:
       refinery_core:
         title: Refinery
@@ -79,3 +83,4 @@ ru:
   will_paginate:
     previous_label: "&laquo;"
     next_label: "&raquo;"
+  

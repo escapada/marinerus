@@ -1,9 +1,13 @@
 // show right column if possible
 $(function(){
-	var w = document.body.clientWidth; console.log('clientWidth: '+w);
-	if (w>1280) {
-		$('.wrap').css({width:1280});
-		$('.right-column').show();
+	$('#login-page').length ? trigger = true : trigger = false;
+
+	if (trigger==false) {
+		var w = document.body.clientWidth; console.log('clientWidth: '+w);
+		if (w>1280) {
+			$('.wrap').css({width:1280});
+			$('.right-column').show();
+		};
 	};
 });
 

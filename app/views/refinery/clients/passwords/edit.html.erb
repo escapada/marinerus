@@ -1,0 +1,44 @@
+<div class="wrap-stat-login">
+	<div id="welcome">
+	<div id="error_explanation_wrap"><%= devise_error_messages! %></div>
+		<div id="transparent_login">
+			<div id="form_login">
+				<div id="login_hat" class="passrecover"></div>
+				<div id="login_body">
+					<!-- <p class="notice"><%#= notice %></p> <p class="alert"><%#= alert %></p> -->
+					<%= form_for resource, :as => resource_name, :url => refinery.client_password_path, :html => { :method => :put } do |f| %>
+					<%= f.hidden_field :reset_password_token %>
+
+						<div class="login_field">
+							<%= f.label :password, "Новый пароль:" %><br />
+	  						<%= f.password_field :password, :autofocus => true %>
+	  					</div>
+
+	  					<div class="login_field">
+							<%= f.label :password_confirmation, "Подтвердите пароль:" %><br />
+	  						<%= f.password_field :password_confirmation, :autofocus => true %>
+	  					</div>
+
+				    		<div class="login_field">
+				    			<div class="btn">
+				    				<%= f.submit "Change the password", :type=>'image', :src=>'/assets/change_btn.png' %>
+				    			</div>
+				    		</div>
+					<% end %>
+			    		
+			    		<div class="login_field">
+			    			<div class="registration">
+			    				<%= link_to 'Регистрация', refinery.new_client_registration_path %>
+			    				<span><%= image_tag('user-icon.png')%></span>
+			    			</div>
+			    		</div>
+			    		<div class="login_field">
+			    			<div class="registration">
+			    				<%= link_to 'Войти', refinery.new_client_session_path %>	
+			    			</div>
+			    		</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,12 @@
+<div class="wrap">
+	<div id="office">
+		<h1>Личный кабинет.</h1>
+		<%= link_to "настройки", edit_client_registration_path%>
+		<strong><span class"vertical_separator">|</span></strong> 
+		<%= link_to "сменить пароль", edit_client_password_path%>
+		<br /><%= @ships.present? ? "TRUE" : "FALSE" %>
+		<ul>
+			<%= render :partial => 'ship', :collection => @ships %>
+		</ul>
+	</div>
+</div>

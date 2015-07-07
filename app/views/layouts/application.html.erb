@@ -7,7 +7,7 @@
   <body id="<%= canonical_id @page %>">
     <%= site_bar -%>
     <header id="header">
-      <%= render "/refinery/header" -%>
+      <%= render "/refinery/header", classname: "wrap" -%>
     </header>
     <section id="page">
       <%= yield %>

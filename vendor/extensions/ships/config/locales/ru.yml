@@ -1,0 +1,108 @@
+ru:
+  refinery:
+    plugins:
+      ships:
+        title: Суда/Объекты
+    ships:
+      admin:
+        ships:
+          actions:
+            create_new: Добавить
+            reorder: Именить порядок
+            reorder_done: Сохранить порядок
+          records:
+            title: Суда
+            sorry_no_results: Ничего не найдено.
+            no_items_yet: Пока нет объектов.
+          ship:
+            view_live_html: Предпросмотр (в новом окне).</em>
+            edit: Редактировать объект.
+            delete: Удалить.
+      ships:
+        show:
+          other: Ещё суда
+  activerecord:
+    attributes:
+      'refinery/ships/ship':
+        title: Название
+        meta: Meta
+        client_id: Клиент
+        category_id: Тип
+        page_status_id: Страница
+        owner: Хозяин
+        operator: Оператор
+        register_number: № ИМО / Позывной / Регистровый №
+        tbn: TBN
+        status_id: Статус
+        condition_id: Состояние
+        area_id: Район плавания
+        subtype: Подтип
+        appointment: Назначение
+        project: Проект
+        flag: Флаг
+        registration_id: Реестр
+        construction_date: Дата постройки
+        construction_place: Место постройки
+        renovation_date: Реновация
+        registr_id: Регистр
+        registr_symbol: Класс региста
+        period_class: Срок действия класса
+        last_dock: Последний док
+        next_dock: Следующий док
+        length: Длина (м)
+        width: Ширина (м)
+        height: Высота борта (м)
+        free_board: Надводный борт (м)
+        max_draught: Осадка макс. (м)
+        min_draught: Осадка мин. (м)
+        air_draught: Надводный габарит (м)
+        gross_tonnage: Валовая вместимость (р.т.)
+        net_tonnage: Чистая вместимость (р.т.)
+        deadweight: Дедвейт (т)
+        loading: Грузоподъёмность (т)
+        displacement: Водоизмещение (т)
+        dockweight: Доковый вес (т)
+        tanks: Кол-во груз.помещений
+        tanksvolume: Объём груз.помещений (м.куб.)
+        passengers: Пассажировместимость (ч)
+        engine_id: Двигатель
+        enginemodel: Модель двигателя
+        enginequantity: Кол-во двигателей
+        enginepower: Мощность
+        enginepowername: Enginepowername
+        propulsion_id: Движитель
+        propulsionquantity: Кол-во движителей
+        fuel_id: Топливо
+        fuelcapacity: Запас топлива (т/м.куб.)
+        fuel_way: Расход на ходу (т/м.куб.)
+        fuel_port: Расход на стоянке (т/м.куб.)
+        autonomy: Автономность
+        speed: Скорость
+        speed_id: Speedname
+        gmdss_id: ГМССБ
+        crewprice: Экипаж
+        crewpricename: Crewpricename
+        crewpricetax: Crewpricetax
+        hulltype_id: Тип корпуса
+        hullmaterial_id: Материал корпуса
+        supermaterial_id: Материал надстройки
+        tanksheatingchoice_id: Подогрев груз.помещений
+        tankscoolingchoice_id: Охлождение груз.помещений
+        doubleboardchoice_id: Двойные борта
+        doublebottomchoice_id: Двойное дно
+        doublehullchoice_id: Двойной корпус
+        diesel: Дизель генераторы
+        sternthrusters: Подруливающее устр.
+        stabilizers: Стабилизаторы качки
+        winch: Лебёдка
+        hook: Тяга на гаке 
+        cablelength: Длина троса (м)
+        cranes: Кол-во кранов
+        craneloading: Грузоподъёмность (т)
+        sails: Кол-во парусов
+        sailsarea: Площадь парусов (м.кв.)
+        location: Местонахождение
+        price: Цена
+        pricename: Pricename
+        pricetax: Pricetax
+        info: Дополнительная информация

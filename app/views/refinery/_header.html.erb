@@ -1,8 +1,20 @@
 <div id="top"><div class="wrap">
-	<div id="login-line"></div>
+	<div id="login-line">
+		<%if client_signed_in? %>
+			Добро пожаловать на борт, <stong><%= current_client.name.present? ? current_client.name : current_client.email %></stong>
+			<span class="vertical_separator">|</span>
+			<%= link_to 'Личный кабинет', office_path %>
+			<span class="vertical_separator">|</span>
+			<%= link_to 'Выйти', destroy_client_session_path, :method => 'delete' %><%#%>
+		<% else %>
+			<%= link_to 'Зарегистрироваться', new_client_registration_path %>
+			<span class="vertical_separator">|</span>
+			<%= link_to 'Войти', new_client_session_path %>
+		<% end %>
+	</div>
 	<div id="locale-line"></div>
 </div></div>
-<div id="head"><div class="wrap">
+<div id="head"><div class="<%= classname %>">
 	<div id="main-logo"><%= image_tag('logo.png', :title => 'Marinerus. Продажа и покупка флота.') %></div>
 	<div id="main-head">
 		<div id="main-head-slogan"><span id="slogan">Продажа и покупка флота. От А до Я.</span></div>
@@ -14,5 +26,5 @@
 	<div class="right-column"><div class="tmp"></div></div>
 </div></div>
 <div id="top-menu">
-	<div class="wrap"><%= Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self).to_html %></div>
+	<div class="<%= classname %>"><%= Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self).to_html %></div>
 </div>

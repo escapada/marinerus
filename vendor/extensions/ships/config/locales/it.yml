@@ -1,0 +1,107 @@
+it:
+  refinery:
+    plugins:
+      ships:
+        title: Ships
+    ships:
+      admin:
+        ships:
+          actions:
+            create_new: Aggiungi Nuovo Ship
+            reorder: Riordina Ships
+            reorder_done: Termina il Riordino di Ships
+          records:
+            title: Ships
+            sorry_no_results: "Spiacenti! Nessun risultato trovato"
+            no_items_yet: Non ci sono ancora Ships. Clicca "Aggiungi Nuovo Ship" per aggiungere il tuo primo ship.
+          ship:
+            view_live_html: Guarda live questo ship <br/><em>(apre una nuova finestra)</em>
+            edit: Modifica questo ship
+            delete: Rimuovi per sempre questo ship
+      ships:
+        show:
+          other: Altri Ships
+  activerecord:
+    attributes:
+      'refinery/ships/ship':
+        title: Title
+        meta: Meta
+        client_id: Client
+        category_id: Category
+        page_status: Page Status
+        owner: Owner
+        operator: Operator
+        register_number: Register Number
+        tbn: Tbn
+        status: Status
+        condition: Condition
+        area: Area
+        subtype: Subtype
+        appointment: Appointment
+        project: Project
+        flag: Flag
+        registration: Registration
+        construction_date: Construction Date
+        construction_place: Construction Place
+        renovation_date: Renovation Date
+        registr: Registr
+        registr_symbol: Registr Symbol
+        period_class: Period Class
+        last_dock: Last Dock
+        next_dock: Next Dock
+        length: Length
+        width: Width
+        height: Height
+        free_board: Free Board
+        max_draught: Max Draught
+        min_draught: Min Draught
+        air_draught: Air Draught
+        gross_tonnage: Gross Tonnage
+        net_tonnage: Net Tonnage
+        deadweight: Deadweight
+        loading: Loading
+        displacement: Displacement
+        dockweight: Dockweight
+        tanks: Tanks
+        tanksvolume: Tanksvolume
+        passengers: Passengers
+        enginetype: Enginetype
+        enginemodel: Enginemodel
+        enginequantity: Enginequantity
+        enginepower: Enginepower
+        enginepowername: Enginepowername
+        propulsion: Propulsion
+        propulsionquantity: Propulsionquantity
+        fuelfuelcapacity: Fuelfuelcapacity
+        fuel_way: Fuel Way
+        fuel_port: Fuel Port
+        autonomy: Autonomy
+        speed: Speed
+        speedname: Speedname
+        gmdss: Gmdss
+        crewprice: Crewprice
+        crewpricename: Crewpricename
+        crewpricetax: Crewpricetax
+        hulltype: Hulltype
+        hullmaterial: Hullmaterial
+        supermaterial: Supermaterial
+        tanksheating: Tanksheating
+        tankscooling: Tankscooling
+        double_board: Double Board
+        double_bottom: Double Bottom
+        double_hull: Double Hull
+        diesel: Diesel
+        sternthrusters: Sternthrusters
+        stabilizers: Stabilizers
+        winch: Winch
+        hook: Hook
+        cablelength: Cablelength
+        cranes: Cranes
+        craneloading: Craneloading
+        sails: Sails
+        sailsarea: Sailsarea
+        location: Location
+        price: Price
+        pricename: Pricename
+        pricetax: Pricetax
+        info: Info

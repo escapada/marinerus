@@ -1,0 +1,11 @@
+<% content_for :body do %>
+  <ul id="ships">
+    <% @ships.each do |ship| %>
+      <li>
+        <%= link_to ship.title, refinery.ships_ship_path(ship) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render '/refinery/content_page' %>

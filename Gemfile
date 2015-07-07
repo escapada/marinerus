@@ -58,3 +58,6 @@ gem 'refinerycms-acts-as-indexed', '~> 1.0.0'
 gem "paperclip", "~> 4.2"
 gem "therubyracer"
 gem "execjs"
+
+gem 'refinerycms-categories', :path => 'vendor/extensions'
+gem 'refinerycms-ships', :path => 'vendor/extensions'
