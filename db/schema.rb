@@ -11,11 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150624174729) do
+ActiveRecord::Schema.define(:version => 20150721120542) do
 
   create_table "areas", :force => true do |t|
     t.string "rutitle"
     t.string "entitle"
+  end
+
+  create_table "attachments", :force => true do |t|
+    t.integer  "ship_id"
+    t.integer  "client_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "choices", :force => true do |t|
@@ -247,8 +254,6 @@ ActiveRecord::Schema.define(:version => 20150624174729) do
     t.integer  "fuel_id"
     t.integer  "speed_id"
     t.integer  "gmdss_id"
-    t.integer  "crewcurrency_id"
-    t.integer  "crewvat_id"
     t.integer  "hulltype_id"
     t.integer  "hullmaterial_id"
     t.integer  "supermaterial_id"
@@ -299,7 +304,7 @@ ActiveRecord::Schema.define(:version => 20150624174729) do
     t.float    "fuel_port"
     t.string   "autonomy"
     t.float    "speed"
-    t.decimal  "crewprice",             :precision => 10, :scale => 2
+    t.integer  "crew"
     t.string   "diesel"
     t.string   "sternthrusters"
     t.string   "stabilizers"
@@ -368,6 +373,26 @@ ActiveRecord::Schema.define(:version => 20150624174729) do
 
   add_index "seo_meta", ["id"], :name => "index_seo_meta_on_id"
   add_index "seo_meta", ["seo_meta_id", "seo_meta_type"], :name => "id_type_index_on_seo_meta"
+
+  create_table "ship_files", :force => true do |t|
+    t.integer  "attachment_id"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "ship_photos", :force => true do |t|
+    t.integer  "attachment_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "speeds", :force => true do |t|
     t.string "rutitle"

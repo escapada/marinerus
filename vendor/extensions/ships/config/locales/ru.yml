@@ -80,9 +80,7 @@ ru:
         speed: Скорость
         speed_id: Speedname
         gmdss_id: ГМССБ
-        crewprice: Экипаж
-        crewpricename: Crewpricename
-        crewpricetax: Crewpricetax
+        crew: Экипаж
         hulltype_id: Тип корпуса
         hullmaterial_id: Материал корпуса
         supermaterial_id: Материал надстройки

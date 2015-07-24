@@ -5,7 +5,7 @@
 
   <%= render '/refinery/admin/locale_picker',
               :current_locale => Globalize.locale %>
-  
+  <%=Globalize.locale.to_s%>
   <div class='line'>
     <div class='linefield' style="width:131px;">
       <%= f.label :page_status_id -%>
@@ -240,10 +240,8 @@
       <%= f.text_field :location, {:style=>"width:265px;"} %>
     </div>
     <div class='linefield' style="width:248px;">
-      <%= f.label :crewprice -%>
-      <%= f.text_field :crewprice, {:style=>"width:100px;"} %>
-      <%= f.collection_select(:crewcurrency_id, @currencies, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:55px;"})%>
-      <%= f.collection_select(:crewvat_id, @vats, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:79px;"})%>
+      <%= f.label :crew -%>
+      <%= f.text_field :crew, {:style=>"width:100px;"} %>
     </div>
   </div>
   <!--  -->

@@ -7,6 +7,7 @@ module Refinery
       self.table_name = 'refinery_clients'
 
       has_many :ships, :class_name => 'Refinery::Ships::Ship'
+      has_many :attachments, :class_name => 'Refinery::Ships::Attachment'
 
       acts_as_indexed :fields => [:name]
 

@@ -19,8 +19,6 @@ class CreateShipsShips < ActiveRecord::Migration
       t.integer :fuel_id
       t.integer :speed_id
       t.integer :gmdss_id
-      t.integer :crewcurrency_id
-      t.integer :crewvat_id
       t.integer :hulltype_id
       t.integer :hullmaterial_id
       t.integer :supermaterial_id
@@ -73,7 +71,7 @@ class CreateShipsShips < ActiveRecord::Migration
       t.float :fuel_port
       t.string :autonomy
       t.float :speed
-      t.decimal :crewprice, precision: 10, scale: 2
+      t.integer :crew
       t.string :diesel
       t.string :sternthrusters
       t.string :stabilizers
