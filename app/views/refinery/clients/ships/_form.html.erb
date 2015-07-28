@@ -1,4 +1,6 @@
 <%= form_for [:clients, @ship] do |f| -%>
+<%#= form_for [refinery, :clients, @ship] do |f| -%>
+<%#= form_for [refinery, :ships_admin, @ship] do |f| -%>
   <%= render '/refinery/admin/error_messages',
               :object => @ship,
               :include_object_name => true %>
@@ -19,8 +21,8 @@
   <!--  -->
   <div class="line">
     <div class='linefield' style="width:320px;">
-      <%= f.label :client_id -%>
-      <%= f.number_field :client_id, {:style=>"width:314px;"}%>
+      <%#= f.label :client_id -%>
+      <%#= f.number_field :client_id, {:style=>"width:314px;"}%>
     </div>
     <div class='linefield' style="width:320px;">
       <%= f.label :owner -%>
