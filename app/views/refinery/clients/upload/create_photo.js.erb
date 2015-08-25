@@ -1,0 +1,4 @@
+var photosnumber = $("#photosnumber").text();
+$("#photoprws").append("<%= j render 'photoprw' %>");
+photosnumber = parseInt(photosnumber);
+$("#photosnumber").text(photosnumber+1);

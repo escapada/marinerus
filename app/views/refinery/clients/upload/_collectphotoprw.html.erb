@@ -1,0 +1,6 @@
+<% attach.photos.each do |photoholder| %>
+	<div class="photoprw" id="photoprw_<%= photoholder.id %>"><%= image_tag(photoholder.photo.url(:thumb)) %>
+		<br />
+		<span class="deleteimg" deleteimg="<%= photoholder.id %>">Удалить</span>
+	</div>
+<% end %>

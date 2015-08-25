@@ -1,0 +1,14 @@
+<%= render '/refinery/draft_page_message' unless @page.try(:live?) -%>
+<%#= render '/refinery/content_page' %>
+<div class="wrap">
+	<div id="container">
+		<div class="positions">
+			<div id="positions"></div>
+			<ul class="list_positions">
+				<li class="odd first<% if !params[:category_id] %> current<% end %>"><%= link_to "Показать всё", office_path %>[<%= @all.size %>]</li>
+				<%= render partial: "/refinery/category", collection: @categories %>
+			</ul>
+		</div>
+		
+	</div>
+</div>

@@ -26,3 +26,246 @@ $(function(){
 		$('#page').css({"min-height": pageHSise+delta});
 	};	
 });
+
+$(function(){
+	$("#filemanage").click(function (){showManager('filemanager')});
+	$("#photomanage").click(function (){showManager('photomanager')});
+	$("#hidden_helper").click(function (){hideHelper()});
+	$(".closemanager").click(function (){hideHelper()});
+	$("#additiontoggle").click(function (){$("#addition").toggle(); $(this).find("span").toggle();});
+	$(".deleteimg").click(function(){deleteimg($(this).attr('deleteimg'))});
+	$(".deletefile").click(function(){deletefile($(this).attr('deletefile'))});
+	//show advanced search toggle button
+	$(".show_search").click(function () {
+		$("#advanced_search").toggle();
+	});
+	//clear_form_btn
+	$(".clear_form_btn").click(function () {
+		// $("#advanced_search").toggle();
+		$("#search_title, #search_status_id, #search_area_id, #search_category_id, #search_flag, #search_project, #search_first_length, #search_last_length, #search_first_max_draught, #search_last_max_draught, #search_first_deadweight, #search_last_deadweight, #search_first_price, #search_last_price, #search_first_power, #search_last_power, #search_first_passengers, #search_last_passengers, #search_first_date_1i, #search_last_date_1i").val('');
+	});
+	// Initialize jQuery carousel plugin
+	$(".carousel_gallery").flickity({
+		// options
+		cellAlign: 'left',
+		// wrapAround: true,
+		contain: true,
+		pageDots: false
+	});
+	$(".gallery_prw").click(function() {
+		$("#main_photo>img").attr("src", $(this).find("img").attr("src"));
+	});
+
+      // Initialize the jQuery File Upload widget:
+      $('#new_photo').fileupload({
+		dataType: 'script'
+	});
+      // 
+      // Load existing files:
+      // $.getJSON($('#new_photo').prop('action'), function (files) {
+      //   var fu = $('#new_photo').data('blueimpFileupload'), 
+      //     template;
+      //   fu._adjustMaxNumberOfFiles(-files.length);
+      //   console.log(files);
+      //   template = fu._renderDownload(files)
+      //     .appendTo($('#new_photo .files'));
+      //   // Force reflow:
+      //   fu._reflow = fu._transition && template.length &&
+      //     template[0].offsetWidth;
+      //   template.addClass('in');
+      //   $('#loading').remove();
+      // });
+	$('#new_file').fileupload({
+		dataType: 'script'
+	});
+
+      // Initialize the jQuery DataTable plugin:
+	$(".ship_table").dataTable(
+		{
+			"columns": [{ "width": "40px" }, { "width": "80px" }, { "width": "300px" }, null, null, {"orderable": false}],
+			"language": {
+				"processing": "Подождите...",
+				"search": "Поиск:",
+				"lengthMenu": "Показать _MENU_ записей",
+				"info": "Записи с _START_ до _END_ из _TOTAL_ записей",
+				"infoEmpty": "Записи с 0 до 0 из 0 записей",
+				"infoFiltered": "(отфильтровано из _MAX_ записей)",
+				"infoPostFix": "",
+				"loadingRecords": "Загрузка записей...",
+				"zeroRecords": "Записи отсутствуют.",
+				"emptyTable": "В таблице отсутствуют данные",
+				"paginate": {
+					"first": "Первая",
+					"previous": "Предыдущая",
+					"next": "Следующая",
+					"last": "Последняя"
+				},
+				"aria": {
+					"sortAscending": ": активировать для сортировки столбца по возрастанию",
+					"sortDescending": ": активировать для сортировки столбца по убыванию"
+				}
+			}
+		} 
+	);
+	$(".ship_table_common").dataTable(
+		{
+			"columns": [{ "width": "40px" }, null, { "width": "150px" }, { "width": "250px" }, null, null, {"orderable": false}],
+			// "ordering": false,
+			"order": [[1, "desc"]],
+			"language": {
+				"processing": "Подождите...",
+				"search": "Поиск:",
+				"lengthMenu": "Показать _MENU_ записей",
+				"info": "Записи с _START_ до _END_ из _TOTAL_ записей",
+				"infoEmpty": "Записи с 0 до 0 из 0 записей",
+				"infoFiltered": "(отфильтровано из _MAX_ записей)",
+				"infoPostFix": "",
+				"loadingRecords": "Загрузка записей...",
+				"zeroRecords": "Записи отсутствуют.",
+				"emptyTable": "В таблице отсутствуют данные",
+				"paginate": {
+					"first": "Первая",
+					"previous": "Предыдущая",
+					"next": "Следующая",
+					"last": "Последняя"
+				},
+				"aria": {
+					"sortAscending": ": активировать для сортировки столбца по возрастанию",
+					"sortDescending": ": активировать для сортировки столбца по убыванию"
+				}
+			}
+		} 
+	);
+	$(".ship_table_last_adds").dataTable(
+		{
+			"columns": [{ "width": "40px" }, null, { "width": "150px" }, { "width": "250px" }, null, null, {"orderable": false}],
+			// "ordering": false,
+			"info": false,
+			"searching": false,
+			"paging": false,
+			"order": [[1, "desc"]],
+			"language": {
+				"processing": "Подождите...",
+				"search": "Поиск:",
+				"lengthMenu": "Показать _MENU_ записей",
+				"info": "Записи с _START_ до _END_ из _TOTAL_ записей",
+				"infoEmpty": "Записи с 0 до 0 из 0 записей",
+				"infoFiltered": "(отфильтровано из _MAX_ записей)",
+				"infoPostFix": "",
+				"loadingRecords": "Загрузка записей...",
+				"zeroRecords": "Записи отсутствуют.",
+				"emptyTable": "В таблице отсутствуют данные",
+				"paginate": {
+					"first": "Первая",
+					"previous": "Предыдущая",
+					"next": "Следующая",
+					"last": "Последняя"
+				},
+				"aria": {
+					"sortAscending": ": активировать для сортировки столбца по возрастанию",
+					"sortDescending": ": активировать для сортировки столбца по убыванию"
+				}
+			}
+		} 
+	);
+	$(".ship_table_last_demands").dataTable(
+		{
+			"columns": [{ "width": "40px" }, null, { "width": "150px" }, { "width": "250px" }, null, null, {"orderable": false}],
+			// "ordering": false,
+			"info": false,
+			"searching": false,
+			"paging": false,
+			"order": [[1, "desc"]],
+			"language": {
+				"processing": "Подождите...",
+				"search": "Поиск:",
+				"lengthMenu": "Показать _MENU_ записей",
+				"info": "Записи с _START_ до _END_ из _TOTAL_ записей",
+				"infoEmpty": "Записи с 0 до 0 из 0 записей",
+				"infoFiltered": "(отфильтровано из _MAX_ записей)",
+				"infoPostFix": "",
+				"loadingRecords": "Загрузка записей...",
+				"zeroRecords": "Записи отсутствуют.",
+				"emptyTable": "В таблице отсутствуют данные",
+				"paginate": {
+					"first": "Первая",
+					"previous": "Предыдущая",
+					"next": "Следующая",
+					"last": "Последняя"
+				},
+				"aria": {
+					"sortAscending": ": активировать для сортировки столбца по возрастанию",
+					"sortDescending": ": активировать для сортировки столбца по убыванию"
+				}
+			}
+		} 
+	);
+
+});
+
+
+function showManager (manager) {
+		$("#hidden_helper").css({"height": document.body.clientHeight });
+		$("#hidden_helper").show();
+		$("#"+manager).show();
+	};
+
+function hideHelper () {
+	$("#hidden_helper").hide();
+	$("#filemanager").hide();
+	$("#photomanager").hide();
+};
+
+function toggleAddition (){
+	$("#addition").toggle();
+};
+
+function deleteimg (id) {
+	$.ajax({
+		url: '/clients/deletephoto',
+		type: 'POST',
+		beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));},
+		data: 'id='+id,
+		//dataType: "json",
+		success: function(){
+			console.log("Success!");
+			var thisname = "#photoprw_"+id
+			console.log($(thisname));
+			$(thisname).remove();
+			var photosnumber = $("#photosnumber").text();
+			photosnumber = parseInt(photosnumber);
+			$("#photosnumber").text(photosnumber-1);
+		}
+		//error: function(){alert("Возникла ошибка!");}
+	});
+}
+
+function deletefile (id) {
+	$.ajax({
+		url: '/clients/deletefile',
+		type: 'POST',
+		beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));},
+		data: 'id='+id,
+		//dataType: "json",
+		success: function(){
+			console.log("Success!");
+			var thisname = "#file_"+id
+			//console.log($(thisname));
+			$(thisname).remove();
+			var filesnumber = $("#filesnumber").text();
+			filesnumber = parseInt(filesnumber);
+			$("#filesnumber").text(filesnumber-1);
+		}
+		//error: function(){alert("Возникла ошибка!");}
+	});
+}
+
+function show_popup (e, url) {
+	image = "<image src='"+url+"' width='200px' />"
+	$(".popup_container")
+		.html(image)
+		.css({"top": e.pageY, "left": e.pageX-$(".popup_container").outerWidth()})
+		.show();
+}
+
+function hide_popup () {$(".popup_container").hide();}

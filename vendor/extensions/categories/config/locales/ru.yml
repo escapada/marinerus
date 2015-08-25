@@ -1,0 +1,28 @@
+ru:
+  refinery:
+    plugins:
+      categories:
+        title: Типы судов
+    categories:
+      admin:
+        categories:
+          actions:
+            create_new: Добавить тип
+            reorder: Сменить порядок
+            reorder_done: Сохранить порядок
+          records:
+            title: Типы судов
+            sorry_no_results: Ничего.
+            no_items_yet: Нет пока ни одного типа.
+          category:
+            view_live_html: Открыть в новом окне.
+            edit: Изменить.
+            delete: Удалить.
+      categories:
+        show:
+          other: Другие
+  activerecord:
+    attributes:
+      'refinery/categories/category':
+        rutitle: по-русски
+        entitle: по-английски

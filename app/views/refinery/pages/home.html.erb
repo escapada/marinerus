@@ -1,1 +1,119 @@
-<%= render '/refinery/content_page' %>
+<%= render '/refinery/draft_page_message' unless @page.try(:live?) -%>
+<%#= render '/refinery/content_page' %>
+<div class="wrap">
+	<div id="container">
+		<div class="positions">
+			<div id="positions"></div>
+			<ul class="list_positions">
+				<li class="odd first"><%= link_to Globalize.locale.to_s=="ru" ? "Показать всё" : "All", refinery.ships_ships_path %> [<%= @all.size %>]</li>
+				<%= render partial: "/refinery/category", collection: @categories %>
+			</ul>
+			<div id="cur_lable">Курс валют</div>
+			<div id="currency">
+				<div id="cur_head"><%= session[:usd].last["Date"] %></div>
+				<ul>
+					<li>USD&nbsp;&nbsp;<%= session[:usd].last["Value"].gsub(",", ".").to_f.round(2) %>&nbsp;<%= (session[:usd][-1]["Value"].gsub(",", ".").to_f-session[:usd][-2]["Value"].gsub(",", ".").to_f)>0 ? image_tag("up-arrow.png") : image_tag("down-arrow.png") %></li>
+					<li>EUR&nbsp;&nbsp;<%= session[:euro].last["Value"].gsub(",", ".").to_f.round(2) %>&nbsp;<%= (session[:euro][-1]["Value"].gsub(",", ".").to_f-session[:euro][-2]["Value"].gsub(",", ".").to_f)>0 ? image_tag("up-arrow.png") : image_tag("down-arrow.png") %></li>
+					<li>GBP&nbsp;&nbsp;<%= session[:gbp].last["Value"].gsub(",", ".").to_f.round(2) %>&nbsp;<%= (session[:gbp][-1]["Value"].gsub(",", ".").to_f-session[:gbp][-2]["Value"].gsub(",", ".").to_f)>0 ? image_tag("up-arrow.png") : image_tag("down-arrow.png") %></li>
+				</ul>
+			</div>
+		</div>
+		<div class="content_container_sm">
+			<%= form_for(@search, url: refinery.ships_ships_path, method: 'get') do |f| %>
+			<div id="short_search">
+				<div class="left">
+					<div>
+						<%= Globalize.locale.to_s=="ru" ? "Название:" : "Name:" %><br />
+						<%= f.text_field(:title) %>
+					</div>
+				</div>
+				<div class="center">
+					<%= f.submit("", type: 'image', src: asset_path('search_btn.png')) %><br />
+					<%= link_to Globalize.locale.to_s=="ru" ? "Расширенный поиск" : "Advanced search", refinery.ships_ships_path, style: "color:#2c87af;" %>
+				</div>
+				<div class="right">
+					<div class="right_top"><span><%= link_to Globalize.locale.to_s=="ru" ? "Отправить запрос" : "Demand", new_clients_ship_path %></span></div>
+					<div><span><%= link_to Globalize.locale.to_s=="ru" ? "Отправить предложение" : "Add new", new_clients_ship_path %></span></div>
+				</div>
+			</div>
+			<% end %>
+			<% if @recomended.any? %>
+			<span class="h2"><%= Globalize.locale.to_s=="ru" ? "Рекомендуем обратить внимание" : "Recomended" %></span>
+			<div id="recomended">
+			<% @recomended.each do |e| %>
+				<%= link_to(refinery.ships_ship_path(e), title: e.title) do %>
+				<div class="recomended">
+					<div class="pic_container">
+						<div class="pic">
+							<% if e.attachment.photos.any? %>
+								<%= image_tag(asset_path(e.attachment.photos.first.photo.url(:main)), width: "130px") %>
+							<% else %>
+								<%= image_tag(asset_path("no_foto.png"), width: "130px") %>
+							<% end %>
+						</div>
+						<span class="lot_label"><%= Globalize.locale.to_s=="ru" ? "Лот №" : "ID №" %>	<%= e.id %></span>
+					</div>
+					<div class="pic_label">
+						<%= Globalize.locale.to_s=="ru" ? e.category.rutitle : e.category.entitle %>
+					</div>
+				</div>
+				<% end %>
+			<% end %>
+			</div>
+			<% end %>
+
+			<span class="h2"><%= Globalize.locale.to_s=="ru" ? "Последние предложения" : "Last orders" %></span>
+			<table class="ship_table_last_adds compact row-border hover" cellspacing="0" width="100%">
+			  <thead>
+			    <tr>
+			      <th>Лот №</th>
+			      <th>Обновлён</th>
+			      <th>Тип</th>
+			      <th>Название</th>
+			      <th>Дедвейт</th>
+			      <th>Год</th>
+			      <th></th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <%= render partial: "refinery/ships/ships/ship", collection: @last_ships %>
+			  </tbody>
+			</table>
+
+			<% if @last_demands_ships.any? %>
+			<span class="h2"><%= Globalize.locale.to_s=="ru" ? "Последние запросы" : "Last demands" %></span>
+			<table class="ship_table_last_demands compact row-border hover" cellspacing="0" width="100%">
+			  <thead>
+			    <tr>
+			      <th>Лот №</th>
+			      <th>Обновлён</th>
+			      <th>Тип</th>
+			      <th>Название</th>
+			      <th>Дедвейт</th>
+			      <th>Год</th>
+			      <th></th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <%= render partial: "refinery/ships/ships/ship", collection: @last_demands_ships %>
+			  </tbody>
+			</table>
+			<% end %>
+
+
+		</div>
+		
+		<div class="clear">&nbsp;</div>
+		
+	</div>
+</div>
+
+<div class="popup_container"></div>	<!-- invisible popup -->
+
+
+
+
+    
+

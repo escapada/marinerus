@@ -1,0 +1,1 @@
+<li class="filename" id="file_<%= @fileholder.id %>"><%= link_to @fileholder.file_file_name, @fileholder.file.url, {:target=>"_blank", :download=>"#{@fileholder.file_file_name}"} %><span class="deletefile" deletefile="<%= @fileholder.id %>" onclick="deletefile(<%= @fileholder.id %>)">удалить</span></li>

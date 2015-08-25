@@ -21,9 +21,87 @@ en:
       ships:
         show:
           other: Other Ships
+        description:
+          title: Name
+          meta: Meta
+          category: Type
+          page_status: Page status
+          owner: Shipowner
+          operator: Operator
+          register_number: No. IMO / Register No. / Call sign
+          tbn: TBN
+          status: Status
+          condition: Condition
+          area: Navigation area
+          subtype: Subtype
+          appointment: Appointment
+          project: Project
+          flag: Flag
+          registration: Registration
+          construction_date: Construction date
+          construction_place: Construction place
+          renovation_date: Renovation date
+          registr: Registr
+          registr_symbol: Symbol of the Register Class
+          period_class: Period of the Class validity
+          last_dock: Date of the last dock
+          next_dock: Date of the next dock
+          length: Length over all
+          width: Width
+          height: Board height
+          free_board: Free board
+          max_draught: Draught max.
+          min_draught: Draught min.
+          air_draught: Air draught
+          gross_tonnage: Gross tonnage
+          net_tonnage: Net tonnage
+          deadweight: Deadweight
+          loading: Loading capacity
+          displacement: Displacement
+          dockweight: Dock / Light weight
+          tanks: Cargo holds / tanks quantity
+          tanksvolume: Cargo holds / tanks volume
+          passengers: Passenger capacity
+          enginetype: Engine type
+          enginemodel: Engine model
+          enginequantity: Main engines quantoty
+          enginepower: Main engines power
+          propulsion: Propulsion type
+          propulsionquantity: Propulsion quantity
+          fuel: Fuel type
+          fuelcapacity: Fuel capacity
+          fuel_way: Fuel consumption under way
+          fuel_port: Fuel consumption in port
+          autonomy: Autonomy
+          speed: Speed
+          gmdss: Gmdss
+          crew: Crew
+          hulltype: Hull type
+          hullmaterial: Hull material
+          supermaterial: Superstructure material
+          tanksheating: Holds Tanks Heating
+          tankscooling: Holds Tanks Cooling
+          double_board: Double board
+          double_bottom: Double bottom
+          double_hull: Double hull
+          diesel: Diesel generators
+          sternthrusters: Bow- / Stern thrusters
+          stabilizers: Rolling stabilizers
+          winch: Towing winch
+          hook: Pull on a hook
+          cablelength: Length of a towing cable
+          cranes: Number of cranes
+          craneloading: Crane loading capacity
+          sails: Sails quantity
+          sailsarea: Total sails area
+          location: Location
+          price: Cost
+          vat: VAT
+          info: Additional info
   activerecord:
     attributes:
       'refinery/ships/ship':
+        on_the_main_flag: Show in "Recomended" block
         title: Title
         meta: Meta
         client_id: Client

@@ -21,15 +21,92 @@ ru:
       ships:
         show:
           other: Ещё суда
+        description:
+            title: Название
+            meta: Meta
+            category: Тип
+            owner: Судовладелец
+            operator: Оператор
+            register_number: № ИМО / Позывной / Регистровый №
+            tbn: TBN
+            status: Статус
+            condition: Состояние
+            area: Район плавания
+            subtype: Подтип
+            appointment: Назначение
+            project: Проект
+            flag: Флаг
+            registration: Реестр
+            construction_date: Дата постройки
+            construction_place: Место постройки
+            renovation_date: Реновация
+            registr: Регистр
+            registr_symbol: Класс регистра
+            period_class: Срок действия класса
+            last_dock: Последний док
+            next_dock: Следующий док
+            length: Длина
+            width: Ширина
+            height: Высота борта
+            free_board: Надводный борт
+            max_draught: Осадка макс.
+            min_draught: Осадка мин.
+            air_draught: Надводный габарит
+            gross_tonnage: Валовая вместимость
+            net_tonnage: Чистая вместимость
+            deadweight: Дедвейт
+            loading: Грузоподъёмность
+            displacement: Водоизмещение
+            dockweight: Доковый вес
+            tanks: Кол-во груз.помещений
+            tanksvolume: Объём груз.помещений
+            passengers: Пассажировместимость
+            enginetype: Двигатель
+            enginemodel: Модель двигателя
+            enginequantity: Кол-во двигателей
+            enginepower: Мощность
+            propulsion: Движитель
+            propulsionquantity: Кол-во движителей
+            fuel: Топливо
+            fuelcapacity: Запас топлива
+            fuel_way: Расход на ходу
+            fuel_port: Расход на стоянке
+            autonomy: Автономность
+            speed: Скорость
+            gmdss: ГМССБ
+            crew: Экипаж
+            hulltype: Тип корпуса
+            hullmaterial: Материал корпуса
+            supermaterial: Материал надстройки
+            tanksheatingchoice: Подогрев груз.помещений
+            tankscoolingchoice: Охлождение груз.помещений
+            doubleboardchoice: Двойные борта
+            doublebottomchoice: Двойное дно
+            doublehullchoice: Двойной корпус
+            diesel: Дизель генераторы
+            sternthrusters: Подруливающее устройство
+            stabilizers: Стабилизаторы качки
+            winch: Лебёдка
+            hook: Тяга на гаке 
+            cablelength: Длина троса
+            cranes: Кол-во кранов
+            craneloading: Грузоподъёмность
+            sails: Кол-во парусов
+            sailsarea: Площадь парусов
+            location: Местонахождение
+            price: Цена
+            vat: НДС
+            info: Дополнительная информация
   activerecord:
     attributes:
       'refinery/ships/ship':
+        on_the_main_flag: Показывать в рекомендованных
         title: Название
         meta: Meta
         client_id: Клиент
         category_id: Тип
         page_status_id: Страница
-        owner: Хозяин
+        owner: Судовладелец
         operator: Оператор
         register_number: № ИМО / Позывной / Регистровый №
         tbn: TBN
@@ -45,7 +122,7 @@ ru:
         construction_place: Место постройки
         renovation_date: Реновация
         registr_id: Регистр
-        registr_symbol: Класс региста
+        registr_symbol: Класс регистра
         period_class: Срок действия класса
         last_dock: Последний док
         next_dock: Следующий док

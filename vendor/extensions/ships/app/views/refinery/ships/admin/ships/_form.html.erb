@@ -1,11 +1,22 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'jquery-fileupload/basic' %>
+  <!-- next comment if basic manifest dosen't work in production -->
+  <%#= javascript_include_tag 'jquery.ui.widget%>
+  <%#= javascript_include_tag 'jquery.iframe-transport' %>
+  <%#= javascript_include_tag 'jquery.fileupload' %>
+  <%= javascript_include_tag 'admin_uploadfiles' %>
+<% end %>
+
 <%= form_for [refinery, :ships_admin, @ship] do |f| -%>
   <%= render '/refinery/admin/error_messages',
               :object => @ship,
               :include_object_name => true %>
 
-  <%= render '/refinery/admin/locale_picker',
-              :current_locale => Globalize.locale %>
-  <%=Globalize.locale.to_s%>
+  <%= render '/refinery/admin/locale_picker', :current_locale => Globalize.locale %>
+  <div class='on_the_main_flag'>
+    <%= f.label :on_the_main_flag -%>
+    <%= f.check_box :on_the_main_flag -%>
+  </div>
   <div class='line'>
     <div class='linefield' style="width:131px;">
       <%= f.label :page_status_id -%>
@@ -20,7 +31,7 @@
   <div class="line">
     <div class='linefield' style="width:320px;">
       <%= f.label :client_id -%>
-      <%= f.number_field :client_id, {:style=>"width:314px;"}%>
+      <%= f.collection_select(:client_id, @clients, :id, :email, {:include_blank => "неизвестно"}, {:style=>"width:314px;"})%>
     </div>
     <div class='linefield' style="width:320px;">
       <%= f.label :owner -%>
@@ -62,11 +73,11 @@
   <div class="line">
     <div class='linefield' style="width:125px;">
       <%= f.label :condition_id -%>
-      <%= f.collection_select(:condition_id, @conditions, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:121px;"})%>
+      <%= f.collection_select(:condition_id, @conditions, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => "неизвестно"}, {:style=>"width:121px;"})%>
     </div>
     <div class='linefield' style="width:153px;">
       <%= f.label :area_id -%>
-      <%= f.collection_select(:area_id, @areas, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:149px;"})%>
+      <%= f.collection_select(:area_id, @areas, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => "неизвестно"}, {:style=>"width:149px;"})%>
     </div>
     <div class='linefield' style="width:237px;">
       <%= f.label :appointment -%>
@@ -78,22 +89,42 @@
     </div>
     <div class='linefield' style="width:204px;">
       <%= f.label :registration_id -%>
-      <%= f.collection_select(:registration_id, @registrations, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:203px;"})%>
+      <%= f.collection_select(:registration_id, @registrations, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => "неизвестно"}, {:style=>"width:203px;"})%>
     </div>
   </div>
   <!--  -->
   <div class="line">
-    <div class='linefield' style="width:155px;">
+    <div class='linefield' style="width:102px;">
+      <%= f.label :construction_date -%>
+      <%= f.date_select :construction_date, {:discard_day=>true, :use_month_numbers => true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year, :include_blank=>true} %>
+    </div>
+    <div class='linefield' style="width:130px;">
+      <%= f.label :construction_place -%>
+      <%= f.text_field :construction_place, {style: "width:124px;"} %>
+    </div>
+    <div class='linefield' style="width:102px;">
+      <%= f.label :renovation_date -%>
+      <%= f.date_select :renovation_date, {:discard_day=>true, :use_month_numbers => true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year, :include_blank=>true} %>
+    </div>
+    <div class='linefield' style="width:130px;">
+      <%= f.label :registr_id -%>
+      <%= f.collection_select(:registr_id, @registrs, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {include_blank: "неизвестно"}, {:style=>"width:129px;"})%>
+    </div>
+    <div class='linefield' style="width:130px;">
+      <%= f.label :registr_symbol -%>
+      <%= f.text_field :registr_symbol, {style: "width:124px;"} %>
+    </div>
+    <div class='linefield' style="width:122px;">
       <%= f.label :period_class -%>
-      <%= f.date_select :period_class, {:discard_day=>true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year + 15, :include_blank=>true} %>
+      <%= f.date_select :period_class, {:discard_day=>true, :use_month_numbers => true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year + 15, :include_blank=>true} %>
     </div>
-    <div class='linefield' style="width:155px;">
+    <div class='linefield' style="width:122px;">
       <%= f.label :last_dock -%>
-      <%= f.date_select :last_dock, {:discard_day=>true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year + 15, :include_blank=>true} %>
+      <%= f.date_select :last_dock, {:discard_day=>true, :use_month_numbers => true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year + 15, :include_blank=>true} %>
     </div>
-    <div class='linefield' style="width:155px;">
+    <div class='linefield' style="width:102px;">
       <%= f.label :next_dock -%>
-      <%= f.date_select :next_dock, {:discard_day=>true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year + 15, :include_blank=>true} %>
+      <%= f.date_select :next_dock, {:discard_day=>true, :use_month_numbers => true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year + 15, :include_blank=>true} %>
     </div>
   </div>
   <!--  -->
@@ -169,7 +200,7 @@
   <div class="line">
     <div class='linefield' style="width:97px;">
       <%= f.label :engine_id -%>
-      <%= f.collection_select(:engine_id, @enginetypes, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:93px;"})%>
+      <%= f.collection_select(:engine_id, @enginetypes, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => "неизвестно"}, {:style=>"width:93px;"})%>
     </div>
     <div class='linefield' style="width:186px;">
       <%= f.label :enginemodel -%>
@@ -186,7 +217,7 @@
     </div>
     <div class='linefield' style="width:187px;">
       <%= f.label :propulsion_id -%>
-      <%= f.collection_select(:propulsion_id, @propulsions, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:183px;"})%>
+      <%= f.collection_select(:propulsion_id, @propulsions, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => "неизвестно"}, {:style=>"width:183px;"})%>
     </div>
     <div class='linefield' style="width:125px;">
       <%= f.label :propulsionquantity -%>
@@ -195,45 +226,45 @@
     <div class='linefield' style="width:115px;">
       <%= f.label :speed -%>
       <%= f.text_field :speed, {:style=>"width:54px;"}%>
-      <%= f.collection_select(:speed_id, @speeds, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:51px;"})%>
+      <%= f.collection_select(:speedname_id, @speeds, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:51px;"})%>
     </div>
   </div>
   <!--  -->
   <div class="line">
     <div class='linefield' style="width:144px;">
       <%= f.label :tanksheatingchoice_id -%>
-      <%= f.collection_select(:tanksheatingchoice_id, @choices, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:140px;"})%>
+      <%= f.collection_select(:tanksheatingchoice_id, @choices, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => "неизвестно"}, {:style=>"width:140px;"})%>
     </div>
     <div class='linefield' style="width:154px;">
       <%= f.label :tankscoolingchoice_id -%>
-      <%= f.collection_select(:tankscoolingchoice_id, @choices, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:150px;"})%>
+      <%= f.collection_select(:tankscoolingchoice_id, @choices, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => "неизвестно"}, {:style=>"width:150px;"})%>
     </div>
     <div class='linefield' style="width:144px;">
       <%= f.label :doubleboardchoice_id -%>
-      <%= f.collection_select(:doubleboardchoice_id, @choices, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:140px;"})%>
+      <%= f.collection_select(:doubleboardchoice_id, @choices, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => "неизвестно"}, {:style=>"width:140px;"})%>
     </div>
     <div class='linefield' style="width:144px;">
       <%= f.label :doublebottomchoice_id -%>
-      <%= f.collection_select(:doublebottomchoice_id, @choices, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:140px;"})%>
+      <%= f.collection_select(:doublebottomchoice_id, @choices, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => "неизвестно"}, {:style=>"width:140px;"})%>
     </div>
     <div class='linefield' style="width:144px;">
       <%= f.label :doublehullchoice_id -%>
-      <%= f.collection_select(:doublehullchoice_id, @choices, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:140px;"})%>
+      <%= f.collection_select(:doublehullchoice_id, @choices, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => "неизвестно"}, {:style=>"width:140px;"})%>
     </div>
   </div>
   <!--  -->
   <div class="line">
     <div class='linefield' style="width:173px;">
       <%= f.label :hulltype_id -%>
-      <%= f.collection_select(:hulltype_id, @hulltypes, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:169px;"})%>
+      <%= f.collection_select(:hulltype_id, @hulltypes, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => "неизвестно"}, {:style=>"width:169px;"})%>
     </div>
     <div class='linefield' style="width:134px;">
       <%= f.label :hullmaterial_id -%>
-      <%= f.collection_select(:hullmaterial_id, @hullmaterials, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:130px;"})%>
+      <%= f.collection_select(:hullmaterial_id, @hullmaterials, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => "неизвестно"}, {:style=>"width:130px;"})%>
     </div>
     <div class='linefield' style="width:134px;">
       <%= f.label :supermaterial_id -%>
-      <%= f.collection_select(:supermaterial_id, @hullmaterials, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:130px;"})%>
+      <%= f.collection_select(:supermaterial_id, @hullmaterials, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => "неизвестно"}, {:style=>"width:130px;"})%>
     </div>
     <div class='linefield' style="width:271px;">
       <%= f.label :location -%>
@@ -298,11 +329,15 @@
   </div>
   <!--  -->
   <div class="line">
-    <div class='linefield' style="width:960px;">
+    <div class='linefield' style="width:260px;">
       <%= f.label :price -%>
       <%= f.text_field :price, {:style=>"width:100px;"} %>
       <%= f.collection_select(:currency_id, @currencies, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:55px;"})%>
-      <%= f.collection_select(:vat_id, @vats, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:79px;"})%>
+      <%= f.collection_select(:vat_id, @vats, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => true}, {:style=>"width:79px;"})%>
+    </div>
+    <div class="linefild" style="width:700px; display:inline:;">
+      <span id="filemanage" class="linkmanager">Добавить/удалить файлы [<span id="filesnumber"><%= @attach.files.blank? ? 0 : @attach.files.size %></span>]</span>
+      <span id="photomanage" class="linkmanager">Добавить/удалить фото [<span id="photosnumber"><%= @attach.photos.blank? ? 0 : @attach.photos.size %></span>]</span>
     </div>
   </div>
 
@@ -316,3 +351,4 @@
              :delete_title => t('delete', :scope => 'refinery.ships.admin.ships.ship'),
              :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @ship.title) -%>
 <% end -%>
+<div id="hidden_helper"></div>

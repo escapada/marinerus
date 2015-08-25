@@ -5,61 +5,59 @@ module Refinery
       #helper ApplicationHelper
       #helper Refinery::Core::Engine.helpers
       #include Refinery::Admin::BaseController
+      layout 'refinery/clients/layouts/login'
 
 
-    	before_filter :client?
+    	before_filter :client?, except: :new
+    	before_filter :add_new_client?, only: :new
 
       crudify	:'refinery/ships/ship',
-      				:xhr_paging => true
+      			:xhr_paging => true
 
-      before_filter	:all_collections, :only=>[:new, :edit]
-      #before_filter	:attach_init, :only=>[:new]
-      #after_filter	:attach_update, :only=>[:create]
+      before_filter	:all_collections, :only=>[:new, :edit, :create, :update]
+      before_filter	:new_attach_init, :only=>[:new]
+      before_filter	:edit_attach_init, :only=>[:edit, :update]
+      before_filter	:create_attach_init, :only=>[:create]
+      # before_filter	:attach_update, :only=>[:create, :update]
 
       def new
         @ship = Refinery::Ships::Ship.new(:client_id=>current_client.id)
       end
 
       def create
-        if (@ship = Refinery::Ships::Ship.create(params[:ship]){|s| s.client_id = current_client.id}).valid? #do |s| s.client_id = current_client.id end).valid?
-          flash.notice = t(
-            'refinery.crudify.created',
-            :what => "'\#{@ship.title}'"
-          )
+      	@attach = Refinery::Ships::Attachment.where({client_id: current_client.id, ship_id: nil}).first
+		if (@ship = Refinery::Ships::Ship.create(params[:ship]){|s| s.client_id = current_client.id}).valid?  #do |s| s.client_id = current_client.id end).valid?
+			flash.notice = t(
+			'refinery.crudify.created',
+			:what => "#{@ship.title}'"
+			)
 
-          redirect_to office_path
-        else
-          create_or_update_unsuccessful 'new'
-        end
+			attach_update
+			redirect_to office_path
+		else
+			create_or_update_unsuccessful 'new'
+		end
       end
 
       # def edit
       #   # object gets found by find_#{singular_name} function
-      #   @attach = Refinery::Ships::Attachment.where(ship_id: @ship.id).take
+      #   @attach = Refinery::Ships::Attachment.where(ship_id: @ship.id).first
       # end
 
       def update
-        if @ship.update_attributes(params[:ship])
-          # flash.notice = t(
-          #   'refinery.crudify.updated',
-          #   :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
-          # )
-
-          redirect_to office_path
-        else
-          create_or_update_unsuccessful 'edit'
-        end
+	      if @ship.update_attributes(params[:ship])
+			#attach_update
+			redirect_to office_path
+		else
+			create_or_update_unsuccessful 'edit'
+	      end
       end
 
-      # def destroy
-      #   # # object gets found by find_#{singular_name} function
-      #   # title = @#{singular_name}.#{options[:title_attribute]}
-      #   # if @#{singular_name}.destroy
-      #   #   flash.notice = t('destroyed', :scope => 'refinery.crudify', :what => "'\#{title}'")
-      #   # end
-
-      #   # redirect_to redirect_url
-      # end
+      def destroy
+		if @ship.destroy
+			redirect_to office_path
+		end
+      end
 #####################################----Set locale----#############################################################################
       def find_or_set_locale
         if (params[:set_locale] and ::Refinery::I18n.locales.keys.map(&:to_sym).include?(params[:set_locale].to_sym))
@@ -87,7 +85,10 @@ module Refinery
 ###################################################################################################################################
       protected
       def client?
-      	redirect_to root_path if !client_signed_in?
+      		redirect_to root_path if !client_signed_in?
+      end
+      def add_new_client?
+      		redirect_to new_client_registration_path if !client_signed_in?
       end
       def all_collections
       	@categories = Refinery::Categories::Category.all
@@ -108,20 +109,37 @@ module Refinery
       	@propulsions = Refinery::Ships::Propulsion.all
       	@registrations = Refinery::Ships::Registration.all
       	@registrs = Refinery::Ships::Registr.all
-      	@speeds = Refinery::Ships::Speed.all
+      	@speeds = Refinery::Ships::Speedname.all
       	@vats = Refinery::Ships::Vat.all
       end
-      def attach_init
-      	if @attach = Refinery::Ships::Attachment.where({client_id: current_client.id, ship_id: nil}).first
-      		# @attach = Refinery::Ships::Attachment.where({client_id: current_client.id, ship_id: nil}).take
-      		@attach.photos.destroy
-      		@attach.files.destroy
-      	else
-      		@attach = Refinery::Ships::Attachment.create(client_id: current_client.id)
-      	end      	
+
+      def new_attach_init
+	      	if @attach = Refinery::Ships::Attachment.where({client_id: current_client.id, ship_id: nil}).first
+	      		@attach.photos.each {|e| e.destroy} if @attach.photos.any? 
+	      		@attach.files.each {|e| e.destroy} if @attach.files.any?
+	      		@attach.reload
+	      	else
+	      		@attach = Refinery::Ships::Attachment.create(client_id: current_client.id)
+	      	end
+	      	@fileholder = Refinery::Ships::File.new
+      		@photoholder = Refinery::Ships::Photo.new
       end
+      
+      def edit_attach_init
+    		@attach = Refinery::Ships::Attachment.where(ship_id: @ship.id).first
+    		#@attach = Refinery::Ships::Attachment.where({client_id: current_client.id, ship_id: params[:id]}).first
+    		@fileholder = Refinery::Ships::File.new
+    		@photoholder = Refinery::Ships::Photo.new
+    	end
+
+    	def create_attach_init
+    		@attach = Refinery::Ships::Attachment.where({client_id: current_client.id, ship_id: nil}).first
+    		@fileholder = Refinery::Ships::File.new
+    		@photoholder = Refinery::Ships::Photo.new
+    	end
+
       def attach_update
-      	@attach.update_attributes(ship_id: @ship.id)
+    		@attach.update_attributes(ship_id: @ship.id)
       end
     end
   end

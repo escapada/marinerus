@@ -26,6 +26,8 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+
+  gem "jquery-fileupload-rails"
 end
 
 gem 'jquery-rails'
@@ -58,6 +60,8 @@ gem 'refinerycms-acts-as-indexed', '~> 1.0.0'
 gem "paperclip", "~> 4.2"
 gem "therubyracer"
 gem "execjs"
+
+#gem "remotipart", "~> 1.0"
 
 gem 'refinerycms-categories', :path => 'vendor/extensions'
 gem 'refinerycms-ships', :path => 'vendor/extensions'

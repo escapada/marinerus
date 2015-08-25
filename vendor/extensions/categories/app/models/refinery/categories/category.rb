@@ -7,7 +7,7 @@ module Refinery
 
       validates :rutitle, :presence => true, :uniqueness => true
 
-      has_many :ships
+      has_many :ships, :class_name=>'Refinery::Ships::Ship'
     end
   end
 end

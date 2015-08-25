@@ -1,0 +1,13 @@
+<div id="photomanager">
+  <div class="filemanager">
+  	<div class="closemanager">Закрыть</div>
+  	<%= form_for @photoholder, url: clients_uploadphoto_path, :html => { :multipart => true }, :remote => true do |form| %>
+  	  <%= form.hidden_field :attachment_id, :value => @attach.id %>
+  	  <%= form.label :photo, "Загрузить фото", :class => "ajaxuploadlabel" %>
+  	  <%= form.file_field :photo, :multiple => true, :name => "photo[photo]" , :style=>"display:none" %>
+  	<% end %>
+  	<div id="photoprws">
+  		<%= render "refinery/clients/upload/collectphotoprw", attach: @attach if @attach.photos.any? %>
+  	</div>
+  </div>
+</div>

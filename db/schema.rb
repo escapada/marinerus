@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150721120542) do
+ActiveRecord::Schema.define(:version => 20150825093103) do
 
   create_table "areas", :force => true do |t|
     t.string "rutitle"
@@ -252,7 +252,7 @@ ActiveRecord::Schema.define(:version => 20150721120542) do
     t.integer  "power_id"
     t.integer  "propulsion_id"
     t.integer  "fuel_id"
-    t.integer  "speed_id"
+    t.integer  "speedname_id"
     t.integer  "gmdss_id"
     t.integer  "hulltype_id"
     t.integer  "hullmaterial_id"
@@ -319,8 +319,9 @@ ActiveRecord::Schema.define(:version => 20150721120542) do
     t.decimal  "price",                 :precision => 10, :scale => 2
     t.string   "info"
     t.integer  "position"
-    t.datetime "created_at",                                                          :null => false
-    t.datetime "updated_at",                                                          :null => false
+    t.datetime "created_at",                                                              :null => false
+    t.datetime "updated_at",                                                              :null => false
+    t.boolean  "on_the_main_flag",                                     :default => false
   end
 
   create_table "refinery_user_plugins", :force => true do |t|
@@ -362,6 +363,33 @@ ActiveRecord::Schema.define(:version => 20150721120542) do
     t.string "entitle"
   end
 
+  create_table "searches", :force => true do |t|
+    t.integer  "status_id"
+    t.integer  "category_id"
+    t.integer  "area_id"
+    t.integer  "currency_id"
+    t.integer  "power_id"
+    t.string   "title"
+    t.string   "flag"
+    t.string   "project"
+    t.date     "first_date"
+    t.date     "last_date"
+    t.string   "first_length"
+    t.string   "last_length"
+    t.string   "first_max_draught"
+    t.string   "last_max_draught"
+    t.string   "first_deadweight"
+    t.string   "last_deadweight"
+    t.string   "first_price"
+    t.string   "last_price"
+    t.string   "first_power"
+    t.string   "last_power"
+    t.string   "first_passengers"
+    t.string   "last_passengers"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
   create_table "seo_meta", :force => true do |t|
     t.integer  "seo_meta_id"
     t.string   "seo_meta_type"
@@ -394,7 +422,7 @@ ActiveRecord::Schema.define(:version => 20150721120542) do
     t.datetime "updated_at",         :null => false
   end
 
-  create_table "speeds", :force => true do |t|
+  create_table "speednames", :force => true do |t|
     t.string "rutitle"
     t.string "entitle"
   end

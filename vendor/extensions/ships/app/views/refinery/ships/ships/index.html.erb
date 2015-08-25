@@ -1,11 +1,41 @@
-<% content_for :body do %>
-  <ul id="ships">
-    <% @ships.each do |ship| %>
-      <li>
-        <%= link_to ship.title, refinery.ships_ship_path(ship) %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="wrap">
+	<div id="container">
+		<div class="positions">
+			<div id="positions"></div>
+			<ul class="list_positions">
+				<li class="odd first"><%= link_to Globalize.locale.to_s=="ru" ? "Показать всё" : "All", refinery.ships_ships_path %> [<%= @all.size %>]</li>
+				<%= render partial: "/refinery/category", collection: @categories %>
+			</ul>
+		</div>
+		<div class="content_container_sm">
+			<%= render partial: "advanced_search" %>
+			
+			<div class="table_container_sm">
+				<table class="ship_table_common compact row-border hover" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th>Лот №</th>
+							<th>Обновлён</th>
+							<th>Тип</th>
+							<th>Название</th>
+							<th>Дедвейт</th>
+							<th>Год</th>
+							<th></th>
+						</tr>
+					</thead>
 
-<%= render '/refinery/content_page' %>
+					<tbody>
+						<%= render partial: "ship", collection: @ships %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<div class="clear">&nbsp;</div>
+		
+	</div>
+</div>
+
+<div class="popup_container"></div>	<!-- invisible popup -->
+
+<%#= render '/refinery/content_page' %>

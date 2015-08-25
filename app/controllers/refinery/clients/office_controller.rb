@@ -6,36 +6,45 @@ module Refinery
         # crudify   :'refinery/ships/ship', 
             # :xhr_paging => true
 
-        before_filter :all_collections, :only=>[:new, :edit]
+        #before_filter :all_collections, :only=>[:new, :edit]
 
         def index
-            client_signed_in? ? @ships = Refinery::Ships::Ship.where(:client_id=>current_client.id) : redirect_to(root_path)
-            #logger.debug("#{client.ships.any?}, #{current_client.class}")
+            if client_signed_in?
+                @ships = Refinery::Ships::Ship.includes(:translations, :page_status).where(:client_id=>current_client.id)
+                @all = @ships
+                @moderate = @ships.select{|ship| ship.page_status.id == 1}
+                @published = @ships.select{|ship| ship.page_status.id == 2}
+                if (params[:status]=='1' or params[:status]=='2')
+                    params[:status]=='1' ? @ships = @moderate : @ships = @published
+                end
+            else
+                 redirect_to(root_path)
+            end
         end
         
 
         protected
         def all_collections
-        @categories = Refinery::Categories::Category.all
-        #@clients
+            @categories = Refinery::Categories::Category.all
+            #@clients
 
-        @page_statuss = PageStatus.all
-        @statuss = Status.all
-        @areas = Area.all
-        @choices = Choice.all
-        @conditions = Condition.all
-        @currencies = Currency.all
-        @enginetypes = Enginetype.all
-        @fuels = Fuel.all
-        @gmdsss = Gmdss.all
-        @hullmaterials = Hullmaterial.all
-        @hulltypes = Hulltype.all
-        @powers = Power.all
-        @propulsions = Propulsion.all
-        @registrations = Registration.all
-        @registrs = Registr.all
-        @speeds = Speed.all
-        @vats = Vat.all
+            @page_statuss = PageStatus.all
+            @statuss = Status.all
+            @areas = Area.all
+            @choices = Choice.all
+            @conditions = Condition.all
+            @currencies = Currency.all
+            @enginetypes = Enginetype.all
+            @fuels = Fuel.all
+            @gmdsss = Gmdss.all
+            @hullmaterials = Hullmaterial.all
+            @hulltypes = Hulltype.all
+            @powers = Power.all
+            @propulsions = Propulsion.all
+            @registrations = Registration.all
+            @registrs = Registr.all
+            @speeds = Speedname.all
+            @vats = Vat.all
         end
 
     end

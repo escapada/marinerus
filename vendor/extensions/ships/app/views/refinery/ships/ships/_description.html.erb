@@ -1,0 +1,371 @@
+<li class="odd first"><span class="descr_name"><%= t('.title') %>:&nbsp;</span><%= @ship.title %></li>
+<% if @ship.owner.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.owner') %></span>:&nbsp;<%= @ship.owner %>
+	</li>
+<% end %>
+<% if @ship.operator.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.operator') %></span>:&nbsp;<%= @ship.operator %>
+	</li>
+<% end %>
+<% if @ship.register_number.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.registr_number') %></span>:&nbsp;<%= @ship.registr_number %>
+	</li>
+<% end %>
+<% if @ship.tbn.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.tbn') %></span>:&nbsp;<%= @ship.tbn %>
+	</li>
+<% end %>
+<% if @ship.status.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.status') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.status.rutitle : @ship.status.entitle %>
+	</li>
+<% end %>
+<% if @ship.condition.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.condition') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.condition.rutitle : @ship.condition.entitle %>
+	</li>
+<% end %>
+<% if @ship.area.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.area') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.area.rutitle : @ship.area.entitle %>
+	</li>
+<% end %>
+<% if @ship.category.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.category') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.category.rutitle : @ship.category.entitle %>
+	</li>
+<% end %>
+<% if @ship.subtype.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.subtype') %></span>:&nbsp;<%= @ship.subtype %>
+	</li>
+<% end %>
+<% if @ship.appointment.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.appointment') %></span>:&nbsp;<%= @ship.appointment %>
+	</li>
+<% end %>
+<% if @ship.project.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.project') %></span>:&nbsp;<%= @ship.project %>
+	</li>
+<% end %>
+<% if @ship.flag.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.flag') %></span>:&nbsp;<%= @ship.flag %>
+	</li>
+<% end %>
+<% if @ship.registration.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.registration') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.registration.rutitle : @ship.registration.entitle %>
+	</li>
+<% end %>
+<% if @ship.construction_date.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.construction_date') %></span>:&nbsp;<%= @ship.construction_date.strftime("%m.%Y") %>
+	</li>
+<% end %>
+<% if @ship.construction_place.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.construction_place') %></span>:&nbsp;<%= @ship.construction_place %>
+	</li>
+<% end %>
+<% if @ship.renovation_date.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.renovation_date') %></span>:&nbsp;<%= @ship.renovation_date.strftime("%m.%Y") %>
+	</li>
+<% end %>
+<% if @ship.registr.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.registr') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.registr.rutitle : @ship.registr.entitle %>
+	</li>
+<% end %>
+<% if @ship.registr_symbol.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.registr_symbol') %></span>:&nbsp;<%= @ship.registr_symbol %>
+	</li>
+<% end %>
+<% if @ship.period_class.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.period_class') %></span>:&nbsp;<%= @ship.period_class.strftime("%m.%Y") %>
+	</li>
+<% end %>
+<% if @ship.last_dock.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.last_dock') %></span>:&nbsp;<%= @ship.last_dock.strftime("%m.%Y") %>
+	</li>
+<% end %>
+<% if @ship.next_dock.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.next_dock') %></span>:&nbsp;<%= @ship.next_dock.strftime("%m.%Y") %>
+	</li>
+<% end %>
+<% if @ship.length.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.length') %></span>:&nbsp;<%= @ship.length %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "м" : "m" %>
+	</li>
+<% end %>
+<% if @ship.width.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.width') %></span>:&nbsp;<%= @ship.width %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "м" : "m" %>
+	</li>
+<% end %>
+<% if @ship.height.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.height') %></span>:&nbsp;<%= @ship.height %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "м" : "m" %>
+	</li>
+<% end %>
+<% if @ship.free_board.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.free_board') %></span>:&nbsp;<%= @ship.free_board %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "м" : "m" %>
+	</li>
+<% end %>
+<% if @ship.max_draught.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.max_draught') %></span>:&nbsp;<%= @ship.max_draught %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "м" : "m" %>
+	</li>
+<% end %>
+<% if @ship.min_draught.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.min_draught') %></span>:&nbsp;<%= @ship.min_draught %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "м" : "m" %>
+	</li>
+<% end %>
+<% if @ship.air_draught.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.air_draught') %></span>:&nbsp;<%= @ship.air_draught %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "м" : "m" %>
+	</li>
+<% end %>
+<% if @ship.gross_tonnage.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.gross_tonnage') %></span>:&nbsp;<%= @ship.gross_tonnage %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "т" : "t" %>
+	</li>
+<% end %>
+<% if @ship.net_tonnage.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.net_tonnage') %></span>:&nbsp;<%= @ship.net_tonnage %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "т" : "t" %>
+	</li>
+<% end %>
+<% if @ship.deadweight.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.deadweight') %></span>:&nbsp;<%= @ship.deadweight %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "т" : "t" %>
+	</li>
+<% end %>
+<% if @ship.loading.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.loading') %></span>:&nbsp;<%= @ship.loading %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "т" : "t" %>
+	</li>
+<% end %>
+<% if @ship.displacement.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.displacement') %></span>:&nbsp;<%= @ship.displacement %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "т" : "t" %>
+	</li>
+<% end %>
+<% if @ship.dockweight.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.dockweight') %></span>:&nbsp;<%= @ship.dockweight %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "т" : "t" %>
+	</li>
+<% end %>
+<% if @ship.tanks.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.tanks') %></span>:&nbsp;<%= @ship.tanks %>
+	</li>
+<% end %>
+<% if @ship.tanksvolume.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.tanksvolume') %></span>:&nbsp;<%= @ship.tanksvolume %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "м" : "m" %><sup style="font-size:9px;">3</sup> 
+	</li>
+<% end %>
+<% if @ship.passengers.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.passengers') %></span>:&nbsp;<%= @ship.passengers %>
+	</li>
+<% end %>
+<% if @ship.enginetype.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.enginetype') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.enginetype.rutitle : @ship.enginetype.entitle %>
+	</li>
+<% end %>
+<% if @ship.enginemodel.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.enginemodel') %></span>:&nbsp;<%= @ship.enginemodel %>
+	</li>
+<% end %>
+<% if @ship.enginequantity.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.enginequantity') %></span>:&nbsp;<%= @ship.enginequantity %>
+	</li>
+<% end %>
+<% if @ship.enginepower.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.enginepower') %></span>:&nbsp;<%= @ship.enginepower %>&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.power.rutitle : @ship.power.entitle %>
+	</li>
+<% end %>
+<% if @ship.propulsion.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.propulsion') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.propulsion.rutitle : @ship.propulsion.entitle %>
+	</li>
+<% end %>
+<% if @ship.propulsionquantity.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.propulsionquantity') %></span>:&nbsp;<%= @ship.propulsionquantity %>
+	</li>
+<% end %>
+<% if @ship.fuel.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.fuel') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.fuel.rutitle : @ship.fuel.entitle %>
+	</li>
+<% end %>
+<% if @ship.fuelcapacity.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.fuelcapacity') %></span>:&nbsp;<%= @ship.fuelcapacity %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "т/м" : "t/m" %><sup style="font-size:9px;">3</sup> 
+	</li>
+<% end %>
+<% if @ship.fuel_way.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.fuel_way') %></span>:&nbsp;<%= @ship.fuel_way %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "т/м" : "t/m" %><sup style="font-size:9px;">3</sup> 
+	</li>
+<% end %>
+<% if @ship.fuel_port.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.fuel_port') %></span>:&nbsp;<%= @ship.fuel_port %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "т/м" : "t/m" %><sup style="font-size:9px;">3</sup> 
+	</li>
+<% end %>
+<% if @ship.autonomy.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.autonomy') %></span>:&nbsp;<%= @ship.autonomy %>
+	</li>
+<% end %>
+<% if @ship.autonomy.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.autonomy') %></span>:&nbsp;<%= @ship.autonomy %>
+	</li>
+<% end %>
+<% if @ship.speed.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.speed') %></span>:&nbsp;<%= @ship.speed %>&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.speedname.rutitle : @ship.speedname.entitle %>
+	</li>
+<% end %>
+<% if @ship.gmdss.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.gmdss') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.gmdss.rutitle : @ship.gmdss.entitle %>
+	</li>
+<% end %>
+<% if @ship.crew.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.crew') %></span>:&nbsp;<%= @ship.crew %>
+	</li>
+<% end %>
+<% if @ship.hulltype.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.hulltype') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.hulltype.rutitle : @ship.hulltype.entitle %>
+	</li>
+<% end %>
+<% if @ship.hullmaterial.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.hullmaterial') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.hullmaterial.rutitle : @ship.hullmaterial.entitle %>
+	</li>
+<% end %>
+<% if @ship.supermaterial.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.supermaterial') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.supermaterial.rutitle : @ship.supermaterial.entitle %>
+	</li>
+<% end %>
+<% if @ship.tanksheating.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.tanksheating') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.tanksheating.rutitle : @ship.tanksheating.entitle %>
+	</li>
+<% end %>
+<% if @ship.tankscooling.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.tankscooling') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.tankscooling.rutitle : @ship.tankscooling.entitle %>
+	</li>
+<% end %>
+<% if @ship.double_board.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.double_board') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.double_board.rutitle : @ship.double_board.entitle %>
+	</li>
+<% end %>
+<% if @ship.double_bottom.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.double_bottom') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.double_bottom.rutitle : @ship.double_bottom.entitle %>
+	</li>
+<% end %>
+<% if @ship.double_hull.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.double_hull') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.double_hull.rutitle : @ship.double_hull.entitle %>
+	</li>
+<% end %>
+<% if @ship.diesel.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.diesel') %></span>:&nbsp;<%= @ship.diesel %>
+	</li>
+<% end %>
+<% if @ship.sternthrusters.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.sternthrusters') %></span>:&nbsp;<%= @ship.sternthrusters %>
+	</li>
+<% end %>
+<% if @ship.stabilizers.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.stabilizers') %></span>:&nbsp;<%= @ship.stabilizers %>
+	</li>
+<% end %>
+<% if @ship.winch.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.winch') %></span>:&nbsp;<%= @ship.winch %>
+	</li>
+<% end %>
+<% if @ship.hook.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.hook') %></span>:&nbsp;<%= @ship.hook %>
+	</li>
+<% end %>
+<% if @ship.cablelength.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.cablelength') %></span>:&nbsp;<%= @ship.cablelength %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "м" : "m" %>
+	</li>
+<% end %>
+<% if @ship.cranes.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.cranes') %></span>:&nbsp;<%= @ship.cranes %>
+	</li>
+<% end %>
+<% if @ship.craneloading.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.craneloading') %></span>:&nbsp;<%= @ship.craneloading %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "т" : "t" %>
+	</li>
+<% end %>
+<% if @ship.sails.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.sails') %></span>:&nbsp;<%= @ship.sails %>
+	</li>
+<% end %>
+<% if @ship.sailsarea.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.sailsarea') %></span>:&nbsp;<%= @ship.sailsarea %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "м" : "m" %><sup style="font-size:9px;">2</sup> 
+	</li>
+<% end %>
+<% if @ship.location.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.location') %></span>:&nbsp;<%= @ship.location %>
+	</li>
+<% end %>
+<% if @ship.price.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.price') %></span>:&nbsp;<%= @ship.price %>&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.currency.rutitle : @ship.currency.entitle %>
+	</li>
+<% end %>
+<% if @ship.vat.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.vat') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.vat.rutitle : @ship.vat.entitle %>
+	</li>
+<% end %>
+<% if @ship.info.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.info') %></span>:&nbsp;<%= @ship.info %>
+	</li>
+<% end %>

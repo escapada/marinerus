@@ -1,4 +1,11 @@
-/*//////////////CATEGORIES*/
+/*variebles*/
+$blue:			#2c87af;
+$deepblue:		#005784;
+$grey:			#a7a9ab;
+$greybg:		#f1f1f2;
+/*/////////*/
+
+/*//////////////CATEGORIES VS SHIPS*/
 .new_category, .new_ship, .edit_category, .edit_ship{
 	.field{margin: 0 0 3px 0; line-height: 19px; clear: both;}
 	label{height:18px; margin: 0 5px 0 0; padding:0 0 0 0; font-size: 10px;}
@@ -8,6 +15,9 @@
 	}
 	.line{margin: 0 0 3px 0; padding: 8px 0; clear: both; width: 100%;
 	.linefield{float: left;}
+	}
+	.on_the_main_flag{ padding-top:5px; 
+		label{ float: left;}
 	}
 }
 /**/
@@ -25,6 +35,32 @@
 
 
 
+/*//////////////////////////////////////////////COMMON BLOCK FOR UPLOADING */
+.linkmanager{ cursor: pointer; border-bottom: 1px dotted; margin-top: 5px; display: inline-block; margin: 15px 10px 0 0; font-weight: bold; font-size: 14px;}
+#filemanager{ padding-bottom:20px; position: fixed; top:50%; left:50%; margin:-225px 0 0 -419px; z-index: 10; width: 838px; height: 450px; background: #fff; border: 1px solid; display: none;}
+#photomanager{ padding-bottom:20px; overflow-y: scroll; position: fixed; top:50%; left:50%; margin:-225px 0 0 -419px; z-index: 10; width: 838px; height: 450px; background: #fff; border: 1px solid; display: none;}
+#hidden_helper{ position: absolute; top: 0; left: 0; background: #ccc; z-index: 1; width: 100%; height: 100%; display: none;
+					filter:alpha(opacity=50); opacity:.50; -khtml-opacity: 0.50; -moz-opacity: 0.50; -ms-filter:"alpha(opacity=50)";
+}
+#filesnumber, #photosnumber{}
+#addition{display: none; background: $greybg; padding-bottom: 30px;}
+
+.filemanager{	position: absolute; width: 100%; height: 100%;}
+.closemanager{font-size: 16px; position: absolute; top:20px; right: 20px; z-index: 10; border-bottom: 1px dotted; cursor: pointer;}
+.ajaxuploadlabel{font-size: 16px; border-bottom: 1px dotted; cursor: pointer; display: inline!important;}
+#new_file, #new_photo{margin:20px 0 10px 20px;}
+
+#photoprws{}
+#fileprws{margin-left: 20px!important; list-style:none; padding: 0px!important;
+	li{line-height: 20px;
+		img{padding: 5px;}
+	}
+}
+.photoprw{float: left; margin:0 0 20px 20px; display: table;}
+.deleteimg{font-size: 14px; border-bottom: 1px dotted; cursor: pointer; color:red;}
+.deletefile{border-bottom: 1px dotted; cursor: pointer; margin-left:10px;color:red;}
+
+/*//////////////////////////////////////////////END OF COMMON BLOCK FOR UPLOADING */
 
 /*/////////////////////////hide Refinery LOGO*/
 #site_bar_refinery_cms_logo{display: none;}

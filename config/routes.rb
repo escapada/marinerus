@@ -11,6 +11,11 @@ Refinery::Core::Engine.routes.prepend do
 
   namespace :clients do
     resources :ships, controller: 'ships'
+    match 'uploadfile', to: 'upload#create_file', :as => :uploadfile, via: [:post]
+    match 'uploadphoto', to: 'upload#create_photo', :as => :uploadphoto, via: [:post]
+    # some AJAX links
+    match 'deletefile', to: 'upload#delete_file', :as => :deletefile, via: [:post]
+    match 'deletephoto', to: 'upload#delete_photo', :as => :deletephoto, via: [:post]
   end
 
 end
@@ -21,6 +26,20 @@ Refinery::Ships::Engine.routes.prepend do
   devise_scope :client do
       get "/clients/office", :to => "clients/office#index", :as => :office
   end
+
+  ##
+  namespace :clients do
+    resources :ships, controller: 'ships'
+    match 'uploadfile', to: 'upload#create_file', :as => :uploadfile, via: [:post]
+    match 'uploadphoto', to: 'upload#create_photo', :as => :uploadphoto, via: [:post]
+    # some AJAX links
+    match 'deletefile', to: 'upload#delete_file', :as => :deletefile, via: [:post]
+    match 'deletephoto', to: 'upload#delete_photo', :as => :deletephoto, via: [:post]
+  end
+
+  ##
+
+
 end
 
 Marinerus::Application.routes.draw do

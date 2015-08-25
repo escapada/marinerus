@@ -1,0 +1,4 @@
+var filesnumber = $("#filesnumber").text();
+$("#fileprws").append("<%= j render 'fileprw' %>");
+filesnumber = parseInt(filesnumber);
+$("#filesnumber").text(filesnumber+1);
