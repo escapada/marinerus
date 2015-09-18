@@ -8,6 +8,7 @@ Marinerus::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
 
@@ -30,10 +31,13 @@ Marinerus::Application.configure do
   config.assets.precompile += %w( jquery.iframe-transport.js )
   config.assets.precompile += %w( jquery.fileupload.js )
 
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :sendmail
   # Disable delivery errors, bad email addresses will be ignored
-  if config.respond_to?(:action_mailer)
-    # config.action_mailer.raise_delivery_errors = false
-  end
+  # if config.respond_to?(:action_mailer)
+  #   # config.action_mailer.raise_delivery_errors = false
+  # end
 
   # Enable threaded mode
   # config.threadsafe!
@@ -53,3 +57,5 @@ Marinerus::Application.configure do
   Paperclip.options[:command_path] = "/usr/bin/"
   
 end
+
+ActionMailer::Base.default :from => 'no-reply@marinerus.ru'
