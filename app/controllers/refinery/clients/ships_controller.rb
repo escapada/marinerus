@@ -116,25 +116,25 @@ module Refinery
       def new_attach_init
 	      	if @attach = Refinery::Ships::Attachment.where({client_id: current_client.id, ship_id: nil}).first
 	      		@attach.photos.each {|e| e.destroy} if @attach.photos.any? 
-	      		@attach.files.each {|e| e.destroy} if @attach.files.any?
+	      		@attach.docs.each {|e| e.destroy} if @attach.docs.any?
 	      		@attach.reload
 	      	else
 	      		@attach = Refinery::Ships::Attachment.create(client_id: current_client.id)
 	      	end
-	      	@fileholder = Refinery::Ships::File.new
+	      	@fileholder = Refinery::Ships::Doc.new
       		@photoholder = Refinery::Ships::Photo.new
       end
       
       def edit_attach_init
     		@attach = Refinery::Ships::Attachment.where(ship_id: @ship.id).first
     		#@attach = Refinery::Ships::Attachment.where({client_id: current_client.id, ship_id: params[:id]}).first
-    		@fileholder = Refinery::Ships::File.new
+    		@fileholder = Refinery::Ships::Doc.new
     		@photoholder = Refinery::Ships::Photo.new
     	end
 
     	def create_attach_init
     		@attach = Refinery::Ships::Attachment.where({client_id: current_client.id, ship_id: nil}).first
-    		@fileholder = Refinery::Ships::File.new
+    		@fileholder = Refinery::Ships::Doc.new
     		@photoholder = Refinery::Ships::Photo.new
     	end
 

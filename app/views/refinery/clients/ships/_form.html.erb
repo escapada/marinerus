@@ -14,6 +14,13 @@
   </div>
   <!--  -->
   <div class="line">
+      <div class='linefield' style="width:940px;">
+        <%= f.label :info, "#{Globalize.locale.to_s=="ru" ? "Описание (будет показано на сайте)" : "Description (will be published as description)"}" -%>
+        <%= f.text_field :info, {:style=>"width:936px;"} %>
+      </div>
+    </div>
+  <!--  -->
+  <div class="line">
     <div class='linefield' style="width:300px;">
       <%= f.label :category_id -%>
       <%= f.collection_select(:category_id, @categories, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:296px;"})%>
@@ -58,7 +65,7 @@
       <%= f.collection_select(:vat_id, @vats, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:79px;"})%>
     </div>
   </div>
-  <span id="filemanage" class="linkmanager">Добавить/удалить файлы [<span id="filesnumber"><%= @attach.files.blank? ? 0 : @attach.files.size %></span>]</span>
+  <span id="filemanage" class="linkmanager">Добавить/удалить файлы [<span id="filesnumber"><%= @attach.docs.blank? ? 0 : @attach.docs.size %></span>]</span>
   <span id="photomanage" class="linkmanager">Добавить/удалить фото [<span id="photosnumber"><%= @attach.photos.blank? ? 0 : @attach.photos.size %></span>]</span><br />
   <span id="additiontoggle" class="linkmanager"><span>Дополнительная информация</span><span style="display: none;">Скрыть дополнительную информацию</span></span>
 <!-- ///////////////////////////////////////////////////////// -->
@@ -313,13 +320,6 @@
       <div class='linefield' style="width:188px;">
         <%= f.label :sailsarea -%>
         <%= f.text_field :sailsarea, {:style=>"width:182px;"} %>
-      </div>
-    </div>
-    <!--  -->
-    <div class="line">
-      <div class='linefield' style="width:940px;">
-        <%= f.label :info -%>
-        <%= f.text_field :info, {:style=>"width:936px;"} %>
       </div>
     </div>
   </div><!-- end of addition -->

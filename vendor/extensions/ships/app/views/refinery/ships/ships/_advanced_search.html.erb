@@ -1,4 +1,6 @@
-<span class="h3 show_search">Расширенный поиск</span>
+<% Globalize.locale.to_s=="ru" ? is_ru=true : is_ru=false %>
+
+<span class="h3 show_search"><%= is_ru ? "Расширенный поиск" : "Advanced search" %></span>
 <%= form_for(@search, url: refinery.ships_ships_path, method: 'get') do |f| %>
 <div id="advanced_search">
 	<table id="advanced_search_table" cellspacing="0" cellpadding="0" width="90%">
@@ -16,68 +18,77 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td colspan="2">Статус:</td>
-				<td colspan="3" class="value"><%= f.collection_select(:status_id, @statuss, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => true}, {}) %></td>
-				<td colspan="2">Название:</td>
-				<td colspan="3" class="value"><%= f.text_field(:title) %></td>
+				<td colspan="2"><%= is_ru ? "Статус:" : "Status:" %></td>
+				<td colspan="3" class="value">
+					<select id="search_status_id" name="search[status_id]">
+						<option value=""></option>
+						<option value="1"><%= is_ru ? "продажа" : "sale" %></option>
+						<option value="2"><%= is_ru ? "аренда" : "rent" %></option>
+						<option value="3"><%= is_ru ? "продажа или аренда" : "sale or rent" %></option>
+						<option value="7"><%= is_ru ? "снят с продажи/аренды" : "remove" %></option>
+						<option value="8"><%= is_ru ? "продан" : "sold:" %></option>
+					</select>
+					<%#= f.collection_select(:status_id, @statuss, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => true}, {}) %></td>
+				<td colspan="2"><%= is_ru ? "Описание:" : "Description:" %></td>
+				<td colspan="3" class="value"><%= f.text_field(:info) %></td>
 			</tr>
 			<tr>
-				<td colspan="2">Тип судна:</td>
+				<td colspan="2"><%= is_ru ? "Тип судна:" : "Category:" %></td>
 				<td colspan="3" class="value"><%= f.collection_select(:category_id, @categories, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => true}, {}) %></td>
-				<td colspan="2">Проект:</td>
+				<td colspan="2"><%= is_ru ? "Проект:" : "Project:" %></td>
 				<td colspan="3" class="value"><%= f.text_field(:project) %></td>
 			</tr>
 			<tr>
-				<td colspan="2">Разряд плавания:</td>
+				<td colspan="2"><%= is_ru ? "Разряд плавания:" : "Area:" %></td>
 				<td colspan="3" class="value"><%= f.collection_select(:area_id, @areas, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => true}, {}) %></td>
-				<td colspan="2">Флаг:</td>
+				<td colspan="2"><%= is_ru ? "Флаг:" : "Flag:" %></td>
 				<td colspan="3" class="value"><%= f.text_field(:flag) %></td>
 			</tr>
 			<tr>
-				<td colspan="2">Период постройки:</td>
-				<td colspan="3" class="value">от <%= f.date_select :first_date, {:discard_day=>true, :discard_month=>true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year, :include_blank=>true} %></td>
-				<td colspan="3" class="value">до <%= f.date_select :last_date, {:discard_day=>true, :discard_month=>true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year, :include_blank=>true} %></td>
+				<td colspan="2"><%= is_ru ? "Период постройки:" : "Construction" %></td>
+				<td colspan="3" class="value"><%= is_ru ? "от " : "" %><%= f.date_select :first_date, {:discard_day=>true, :discard_month=>true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year, :include_blank=>true} %></td>
+				<td colspan="3" class="value"><%= is_ru ? "до " : "to " %><%= f.date_select :last_date, {:discard_day=>true, :discard_month=>true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year, :include_blank=>true} %></td>
 				<td colspan="2"></td>
 			</tr>
 			<tr>
-				<td colspan="2">Длина:</td>
-				<td colspan="3" class="value">от <%= f.text_field(:first_length) %></td>
-				<td colspan="3" class="value">до <%= f.text_field(:last_length) %></td>
+				<td colspan="2"><%= is_ru ? "Длина:" : "Length:" %></td>
+				<td colspan="3" class="value"><%= is_ru ? "от " : "" %><%= f.text_field(:first_length) %></td>
+				<td colspan="3" class="value"><%= is_ru ? "до " : "to " %><%= f.text_field(:last_length) %></td>
 				<td colspan="2" class="value">м.</td>
 			</tr>
 			<tr>
-				<td colspan="2">Осадка в грузу:</td>
-				<td colspan="3" class="value">от <%= f.text_field(:first_max_draught) %></td>
-				<td colspan="3" class="value">до <%= f.text_field(:last_max_draught) %></td>
+				<td colspan="2"><%= is_ru ? "Осадка в грузу:" : "Max draught:" %></td>
+				<td colspan="3" class="value"><%= is_ru ? "от " : "" %><%= f.text_field(:first_max_draught) %></td>
+				<td colspan="3" class="value"><%= is_ru ? "до " : "to " %><%= f.text_field(:last_max_draught) %></td>
 				<td colspan="2" class="value">м.</td>
 			</tr>
 			<tr>
-				<td colspan="2">Дедвейт:</td>
-				<td colspan="3" class="value">от <%= f.text_field(:first_deadweight) %></td>
-				<td colspan="3" class="value">до <%= f.text_field(:last_deadweight) %></td>
+				<td colspan="2"><%= is_ru ? "Дедвейт:" : "Deadweight:" %></td>
+				<td colspan="3" class="value"><%= is_ru ? "от " : "" %><%= f.text_field(:first_deadweight) %></td>
+				<td colspan="3" class="value"><%= is_ru ? "до " : "to " %><%= f.text_field(:last_deadweight) %></td>
 				<td colspan="2" class="value">т.</td>
 			</tr>
 			<tr>
-				<td colspan="2">Цена:</td>
-				<td colspan="3" class="value">от <%= f.text_field(:first_price) %></td>
-				<td colspan="3" class="value">до <%= f.text_field(:last_price) %></td>
+				<td colspan="2"><%= is_ru ? "Цена:" : "Price:" %></td>
+				<td colspan="3" class="value"><%= is_ru ? "от " : "" %><%= f.text_field(:first_price) %></td>
+				<td colspan="3" class="value"><%= is_ru ? "до " : "to " %><%= f.text_field(:last_price) %></td>
 				<td colspan="2" class="value"><%= f.select(:currency_id, options_from_collection_for_select(@currencies, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle)) %></td>
 			</tr>
 			<tr>
-				<td colspan="2">Общая мощность:</td>
-				<td colspan="3" class="value">от <%= f.text_field(:first_power) %></td>
-				<td colspan="3" class="value">до <%= f.text_field(:last_power) %></td>
+				<td colspan="2"><%= is_ru ? "Общая мощность:" : "Power:" %></td>
+				<td colspan="3" class="value"><%= is_ru ? "от " : "" %><%= f.text_field(:first_power) %></td>
+				<td colspan="3" class="value"><%= is_ru ? "до " : "to " %><%= f.text_field(:last_power) %></td>
 				<td colspan="2" class="value"><%= f.select(:power_id, options_from_collection_for_select(@powers, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle)) %></td>
 			</tr>
 			<tr>
-				<td colspan="2">Количество пассажиров</td>
-				<td colspan="3" class="value">от <%= f.text_field(:first_passengers) %></td>
-				<td colspan="3" class="value">до <%= f.text_field(:last_passengers) %></td>
-				<td colspan="2" class="value">чел.</td>
+				<td colspan="2"><%= is_ru ? "Количество пассажиров:" : "Passengers:" %></td>
+				<td colspan="3" class="value"><%= is_ru ? "от " : "" %><%= f.text_field(:first_passengers) %></td>
+				<td colspan="3" class="value"><%= is_ru ? "до " : "to " %><%= f.text_field(:last_passengers) %></td>
+				<td colspan="2" class="value"><%= is_ru ? "чел." : "peop." %></td>
 			</tr>
 			<tr>
-				<td colspan="5"><%= f.submit("", type: 'image', src: asset_path('search_form_btn.png'), style: "width:218px; heght:39px;") %></td>
-				<td colspan="5" class="value"><%= image_tag('clear_form_btn.png', class: "clear_form_btn") %></td>
+				<td colspan="5"><%= f.submit("", type: 'image', src: asset_path(is_ru ? 'search_form_btn.png' : 'search_form_btn_e.png'), style: "width:218px; heght:39px;") %></td>
+				<td colspan="5" class="value"><%= image_tag(is_ru ? 'clear_form_btn.png' : 'clear_form_btn_e.png', class: "clear_form_btn") %></td>
 			</tr>
 		</tbody>
 	</table>

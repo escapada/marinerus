@@ -35,7 +35,7 @@ module Refinery
       belongs_to :currency, :class_name=>'Refinery::Ships::Currency'
       belongs_to :enginetype, :class_name=>'Refinery::Ships::Enginetype'
       belongs_to :fuel, :class_name=>'Refinery::Ships::Fuel'
-      belongs_to :gmdss, :class_name=>'Refinery::Ships::Gmdsss'
+      belongs_to :gmdss, :class_name=>'Refinery::Ships::Gmdss'
       belongs_to :hulltype, :class_name=>'Refinery::Ships::Hulltype'
       belongs_to :power, :class_name=>'Refinery::Ships::Power'
       belongs_to :propulsion, :class_name=>'Refinery::Ships::Propulsion'
@@ -51,10 +51,10 @@ module Refinery
         if params[:search]
           search = params[:search]
 
-          sh = Ship.includes(:translations).where("page_status_id = 2")
+          sh = Ship.includes(:translations).where("page_status_id = 2 AND (status_id IN (1,2,3,7,8))")
 
-          sh = sh.where(["refinery_ship_translations.title LIKE ?", "%#{search[:title]}%"]) if (search[:title].present? and params[:locale].to_s=="en")
-          sh = sh.where(["title LIKE ?", "%#{search[:title]}%"]) if (search[:title].present? and params[:locale].to_s=="ru")
+          sh = sh.where(["refinery_ship_translations.info LIKE ?", "%#{search[:info]}%"]) if (search[:info].present? and params[:locale].to_s=="en")
+          sh = sh.where(["info LIKE ?", "%#{search[:info]}%"]) if (search[:info].present? and params[:locale].to_s=="ru")
           # advanced search next
           sh = sh.where(["refinery_ship_translations.project LIKE ?", "%#{search[:project]}%"]) if (search[:project].present? and params[:locale].to_s=="en")
           sh = sh.where(["project LIKE ?", "%#{search[:project]}%"]) if (search[:project].present? and params[:locale].to_s=="ru")
@@ -90,7 +90,7 @@ module Refinery
           return sh
 
         else
-          all
+          includes(:translations).where("page_status_id = 2 AND (status_id IN (1,2,3,7,8))")
         end
       end
 

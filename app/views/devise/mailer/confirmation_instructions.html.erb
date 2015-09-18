@@ -1,0 +1,15 @@
+<% Globalize.locale.to_s=="ru" ? is_ru = true : is_ru = false %>
+
+<% if is_ru %>
+	<p>Приветствуем, Вас <%= @email %> на сайте компании Маринерус!</p>
+
+	<p>Чтобы подтвердить регистрацию на нашем сайте и войти в личный кабинет, пройдите по ссылке:</p>
+
+	<p><%= link_to 'Подтвердить регистрацию', refinery.client_confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<% else %>
+	<p>Welcome <%= @email %>!</p>
+
+	<p>You can confirm your account email through the link below:</p>
+
+	<p><%= link_to 'Confirm my account', refinery.client_confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<% end %>

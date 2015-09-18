@@ -1,23 +1,33 @@
-<div id="top"><div class="wrap">
-	<div id="login-line">
-		<%if client_signed_in? %>
-			Добро пожаловать на борт, <stong><%= current_client.name.present? ? current_client.name : current_client.email %></stong>
-			<span class="vertical_separator">|</span>
-			<%= link_to 'Личный кабинет', office_path %>
-			<span class="vertical_separator">|</span>
-			<%= link_to 'Выйти', destroy_client_session_path, :method => 'delete' %><%#%>
-		<% else %>
-			<%= link_to 'Зарегистрироваться', new_client_registration_path %>
-			<span class="vertical_separator">|</span>
-			<%= link_to 'Войти', new_client_session_path %>
-		<% end %>
+<% Globalize.locale.to_s=="ru" ? is_ru = true : is_ru = false %>
+
+
+<% if is_ru %>
+<div id="top">
+	<div class="wrap">
+		<div id="login-line">
+			<%if client_signed_in? %>
+				Добро пожаловать на борт, <stong><%= current_client.name.present? ? current_client.name : current_client.email %></stong>
+				<span class="vertical_separator">|</span>
+				<%= link_to 'Личный кабинет', office_path %>
+				<span class="vertical_separator">|</span>
+				<%= link_to 'Выйти', destroy_client_session_path, :method => 'delete' %><%#%>
+			<% else %>
+				<%= link_to 'Зарегистрироваться', new_client_registration_path %>
+				<span class="vertical_separator">|</span>
+				<%= link_to 'Войти', new_client_session_path %>
+			<% end %>
+		</div>
+		<div id="locale-line">
+			<span class="locale-line"><%= link_to image_tag(asset_path("rus.png")), "/" %></span><span class="locale-line"> РУС</span>
+			<span class="locale-line"><%= link_to image_tag(asset_path("eng.png")), "/en" %></span><span class="locale-line"> ENG</span>
+		</div>
 	</div>
-	<div id="locale-line"></div>
-</div></div>
+</div>
 <div id="head"><div class="<%= classname %>">
 	<div id="main-logo"><%= image_tag('logo.png', :title => 'Marinerus. Продажа и покупка флота.') %></div>
 	<div id="main-head">
-		<div id="main-head-slogan"><span id="slogan">Продажа и покупка флота. От А до Я.</span></div>
+		<div id="main-head-slogan"><span id="slogan">Продажа судов  морского и речного флота, сюрвей, консалтинг.</span></div>
+		<!-- <div id="main-head-slogan"><span id="slogan">Продажа и покупка флота. От А до Я.</span></div> -->
 		<div id="main-head-contact">
 			<div id="mail"><%= image_tag('mail-icon.png') %><span> <%= mail_to('zaliv@bk.ru', 'zaliv@bk.ru') %></span></div>
 			<div id="cell"><%= image_tag('phone-icon.png') %><span> +7 921 758 7777</span></div>
@@ -28,3 +38,48 @@
 <div id="top-menu">
 	<div class="<%= classname %>"><%= Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self).to_html %></div>
 </div>
+
+
+<% else %>
+<div id="top">
+	<div class="wrap">
+		<div id="login-line">
+			<%if client_signed_in? %>
+				Welcome aboard, <stong><%= current_client.name.present? ? current_client.name : current_client.email %></stong>
+				<span class="vertical_separator">|</span>
+				<%= link_to 'My account', office_path %>
+				<span class="vertical_separator">|</span>
+				<%= link_to 'Log out', destroy_client_session_path, :method => 'delete' %><%#%>
+			<% else %>
+				<%= link_to 'Sign up', new_client_registration_path %>
+				<span class="vertical_separator">|</span>
+				<%= link_to 'Sign in', new_client_session_path %>
+			<% end %>
+		</div>
+		<div id="locale-line">
+			<span class="locale-line"><%= link_to image_tag(asset_path("rus.png")), "/" %></span><span class="locale-line"> РУС</span>
+			<span class="locale-line"><%= link_to image_tag(asset_path("eng.png")), "/en" %></span><span class="locale-line"> ENG</span>
+		</div>
+	</div>
+</div>
+<div id="head"><div class="<%= classname %>">
+	<div id="main-logo"><%= image_tag('logo.png', :title => 'Marinerus. Fleet sale and purchase.') %></div>
+	<div id="main-head">
+		<div id="main-head-slogan"><span id="slogan_e">Ship sale and purchase, survey, consulting.</span></div>
+		<div id="main-head-contact">
+			<div id="mail"><%= image_tag('mail-icon.png') %><span> <%= mail_to('zaliv@bk.ru', 'zaliv@bk.ru') %></span></div>
+			<div id="cell"><%= image_tag('phone-icon.png') %><span> +7 921 758 7777</span></div>
+		</div>
+	</div>
+	<div class="right-column"><div class="tmp"></div></div>
+</div></div>
+<div id="top-menu">
+	<div class="<%= classname %>"><%= Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self).to_html %></div>
+</div>
+
+<% end %>
+
+
+
+
+

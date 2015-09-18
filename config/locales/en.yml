@@ -70,10 +70,10 @@ en:
       not_live: This page is NOT live for public viewing.
     footer:
       copyright: "Copyright © %{year} %{site_name}"
-      river: Деятельность <br />предприятия <br />сертифицированна <br />Российским <br />Речным Регистром
-      lloyds: Деятельность <br />по продаже <br />флота <br />сертифицирована <br />Lloyds Maritime Academy
-      vetus: Официальный <br />Сервисный Центр <br />судового оборудования <br />VETUS
-      sea: Деятельность <br />предприятия <br />сертифицированна <br />Российским <br />Морским Регистром <br />Судоходства
+      river: Activity of the <br />MARINERUS company <br />is certified by the <br />Russian River Register
+      lloyds: Ship Sale & Purchase <br />MARINERUS activity <br />is certified by LLOYD'S<br />MARITIME ACADEMY
+      vetus: MARINERUS — <br />Official Service Center <br />VETUS
+      sea: MARINERUS is providing <br />services according to the <br />rules of Russian Maritime <br />Register of Shipping
     no_script:
       enable_javascript_html: For full functionality of this page it is necessary to enable JavaScript.
       here_are: Here are the

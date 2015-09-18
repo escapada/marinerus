@@ -1,17 +1,7 @@
-<li class="odd first"><span class="descr_name"><%= t('.title') %>:&nbsp;</span><%= @ship.title %></li>
-<% if @ship.owner.present? %>
-	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.owner') %></span>:&nbsp;<%= @ship.owner %>
-	</li>
-<% end %>
-<% if @ship.operator.present? %>
-	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.operator') %></span>:&nbsp;<%= @ship.operator %>
-	</li>
-<% end %>
+<li class="odd first"><span class="descr_name"><%= t('.info') %>:&nbsp;</span><%= @ship.info %></li>
 <% if @ship.register_number.present? %>
 	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.registr_number') %></span>:&nbsp;<%= @ship.registr_number %>
+		<span class="descr_name"><%= t('.registr_number') %></span>:&nbsp;<%= @ship.register_number %>
 	</li>
 <% end %>
 <% if @ship.tbn.present? %>
@@ -362,10 +352,5 @@
 <% if @ship.vat.present? %>
 	<li class="<%= cycle('even', 'odd') %>">
 		<span class="descr_name"><%= t('.vat') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.vat.rutitle : @ship.vat.entitle %>
-	</li>
-<% end %>
-<% if @ship.info.present? %>
-	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.info') %></span>:&nbsp;<%= @ship.info %>
 	</li>
 <% end %>

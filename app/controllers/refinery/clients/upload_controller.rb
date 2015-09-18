@@ -3,7 +3,7 @@ module Refinery
 		class UploadController < ::ApplicationController#::ActionController::Base 
 
 			def create_file
-				@fileholder = Refinery::Ships::File.create(params[:file])
+				@fileholder = Refinery::Ships::Doc.create(params[:doc])
 			end
 
 			def create_photo
@@ -21,8 +21,8 @@ module Refinery
 
 			def delete_file
 				@id = params[:id]
-				@fileholder = Refinery::Ships::File.find(params[:id])
-				@fileholder.file = nil
+				@fileholder = Refinery::Ships::Doc.find(params[:id])
+				@fileholder.doc = nil
 				@fileholder.destroy
 
 				render :text => "Deleted #{params[:id]}"

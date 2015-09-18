@@ -1,6 +1,7 @@
 module Refinery
   module Ships
     class ShipsController < ::ApplicationController
+      # include Refinery::MetaHelper
 
       before_filter :find_all_ships
       before_filter :find_page
@@ -23,14 +24,15 @@ module Refinery
         @ship = Ship.includes(:status).find(params[:id])
 
         # you can use meta fields from your model instead (e.g. browser_title)
-        # by swapping @page for @ship in the line below:
-        present(@page)
+        # by swapping @page for @ship in the line below
+        # (it means that method will use something "like title_field" from your model):
+        # present(@ship)
       end
 
     protected
 
       def find_all_ships
-        @all = Ship.where("page_status_id= 2").includes(:translations).order(:updated_at)
+        @all = Ship.where("page_status_id= 2 AND (status_id IN (1,2,3))").includes(:translations).order(:updated_at)
         @ships = Ship.search(params)
 
         logger.debug("////////////////////////////////////////////////#{@ships.size}!!!!!!!!!!!!!!!!!!!")

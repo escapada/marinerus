@@ -1,9 +1,11 @@
+<% Globalize.locale.to_s=="ru" ? is_ru=true : is_ru=false %>
+
 <div class="wrap">
 	<div id="container">
 		<div class="positions">
-			<div id="positions"></div>
+			<div id="positions<%= "_e" if !is_ru %>"></div>
 			<ul class="list_positions">
-				<li class="odd first"><%= link_to Globalize.locale.to_s=="ru" ? "Показать всё" : "All", refinery.ships_ships_path %> [<%= @all.size %>]</li>
+				<li class="odd first"><%= link_to is_ru ? "Показать всё" : "All", refinery.ships_ships_path %> [<%= @all.size %>]</li>
 				<%= render partial: "/refinery/category", collection: @categories %>
 			</ul>
 		</div>
@@ -11,15 +13,15 @@
 			<%= render partial: "advanced_search" %>
 			
 			<div class="table_container_sm">
-				<table class="ship_table_common compact row-border hover" cellspacing="0" width="100%">
+				<table class="ship_table_common<%= "_e" if !is_ru%> compact row-border hover" cellspacing="0" width="100%">
 					<thead>
 						<tr>
-							<th>Лот №</th>
-							<th>Обновлён</th>
-							<th>Тип</th>
-							<th>Название</th>
-							<th>Дедвейт</th>
-							<th>Год</th>
+							<th class="dt-head-center"><%= is_ru ? "Лот №" : "ID" %></th>
+						      <th><%= is_ru ? "Обновлён" : "Updated" %></th>
+						      <th><%= is_ru ? "Тип" : "Category" %></th>
+						      <th><%= is_ru ? "Описание" : "Description" %></th>
+						      <th><%= is_ru ? "Место" : "Location" %></th>
+						      <th><%= is_ru ? "Год" : "Year" %></th>
 							<th></th>
 						</tr>
 					</thead>

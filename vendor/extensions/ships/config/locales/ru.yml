@@ -79,7 +79,7 @@ ru:
             hullmaterial: Материал корпуса
             supermaterial: Материал надстройки
             tanksheatingchoice: Подогрев груз.помещений
-            tankscoolingchoice: Охлождение груз.помещений
+            tankscoolingchoice: Охлаждение груз.помещений
             doubleboardchoice: Двойные борта
             doublebottomchoice: Двойное дно
             doublehullchoice: Двойной корпус
@@ -96,7 +96,7 @@ ru:
             location: Местонахождение
             price: Цена
             vat: НДС
-            info: Дополнительная информация
+            info: Описание
   activerecord:
     attributes:
       'refinery/ships/ship':
@@ -162,7 +162,7 @@ ru:
         hullmaterial_id: Материал корпуса
         supermaterial_id: Материал надстройки
         tanksheatingchoice_id: Подогрев груз.помещений
-        tankscoolingchoice_id: Охлождение груз.помещений
+        tankscoolingchoice_id: Охлаждение груз.помещений
         doubleboardchoice_id: Двойные борта
         doublebottomchoice_id: Двойное дно
         doublehullchoice_id: Двойной корпус
@@ -180,4 +180,4 @@ ru:
         price: Цена
         pricename: Pricename
         pricetax: Pricetax
-        info: Дополнительная информация
+        info: Описание

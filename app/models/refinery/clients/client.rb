@@ -18,7 +18,7 @@ module Refinery
 	# :token_authenticatable, :confirmable,
 	# :lockable, :timeoutable and :omniauthable
       #attr_accessor :login
-      devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:email]
+      devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :authentication_keys => [:email]
 
 	# Setup accessible (or protected) attributes for your model
 	attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :company, :job, :phone, :mail_me

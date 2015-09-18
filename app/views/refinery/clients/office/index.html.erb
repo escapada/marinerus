@@ -1,41 +1,43 @@
+<% Globalize.locale.to_s=="ru" ? is_ru = true : is_ru = false %>  <!-- ПЕРЕВЕСТИ !!!!!!!!!!! -->
+
 <div class="wrap">
 	<div id="office">
 		<div class="positions">
-			<div id="office_positions"></div>
+			<div id="office_positions<%= "_e" if !is_ru %>"></div>
 			<ul class="list_positions">
-				<li class="odd first <% if !params[:status] %>current<% end %>"><%= link_to "Все", office_path %>[<%= @all.size %>]</li>
-				<li class="even <% if params[:status]=='1' %>current<% end %>"><%= link_to "Модерируются", office_path(:status=>1) %>[<%= @moderate.size %>]</li>
-				<li class="odd <% if params[:status]=='2' %>current<% end %>"><%= link_to "Опубликованы", office_path(:status=>2) %>[<%= @published.size %>]</li>
-				<li class="even"><%= link_to "Добавить", refinery.new_clients_ship_path %></li>
+				<li class="odd first <% if !params[:status] %>current<% end %>"><%= link_to is_ru ? "Все" : "All", office_path %> [<%= @all.size %>]</li>
+				<li class="even <% if params[:status]=='1' %>current<% end %>"><%= link_to is_ru ? "Модерируются" : "Moderation", office_path(:status=>1) %> [<%= @moderate.size %>]</li>
+				<li class="odd <% if params[:status]=='2' %>current<% end %>"><%= link_to is_ru ? "Опубликованы" : "Published", office_path(:status=>2) %> [<%= @published.size %>]</li>
+				<li class="even"><%= link_to is_ru ? "Добавить" : "Add", refinery.new_clients_ship_path %></li>
 			</ul>
 		</div>
 		<div class="content_container_sm">
 			<div id="client_infoblock">
 				<div id="client_photocontainer"><%= image_tag('user.png') %></div>
 				<div id="client_wrap_info">
-					<div id="client_name">
-					<span class="h3"><%= current_client.name.present? ? current_client.name : 'ФИО' %></span><br />
-					<span>Дата регистрации:</span><br />
+					<div id="client_name_info">
+					<span class="h3"><%= current_client.name.present? ? current_client.name : ( is_ru ? 'ФИО' : "No name" ) %></span><br />
+					<span><%= is_ru ? "Дата регистрации:" : "Registration date:" %></span><br />
 					<span><%= current_client.created_at.strftime("%d.%m.%Y") %></span>
 					</div>
 					<ul id="client_info">
-						<% if current_client.email.present? %><li>Email:&nbsp;<%= current_client.email %></li><% end %>
-						<% if current_client.company.present? %><li>Компания:&nbsp;<%= current_client.company %></li><% end %>
-						<% if current_client.phone.present? %><li>Тел.:&nbsp;<%= current_client.phone %></li><% end %>
-						<li><%= link_to "изменить", edit_client_registration_path%></li>
-						<li><%= link_to "сменить пароль", edit_client_password_path%></li>
+						<% if current_client.email.present? %><li><%= current_client.email %></li><% end %>
+						<% if current_client.company.present? %><li><%= current_client.company %></li><% end %>
+						<% if current_client.phone.present? %><li><%= current_client.phone %></li><% end %>
+						<li><%= link_to is_ru ? "изменить" : "change contacts", edit_client_registration_path%></li>
+						<li><%= link_to is_ru ? "сменить пароль" : "change your password", edit_password_path %></li>
 					</ul>
 				</div>
 			</div>
 			<div class="table_container_sm">
-				<table class="ship_table compact row-border hover nowrap" cellspacing="0" width="100%">
+				<table class="ship_table<%= "_e" if !is_ru %> compact row-border hover nowrap" cellspacing="0" width="100%">
 					<thead>
 						<tr>
-							<th>Лот №</th>
-							<th>Статус</th>
-							<th>Название</th>
-							<th>Создан</th>
-							<th>Обновлён</th>
+							<th><%= is_ru ? "Лот №" : "ID" %></th>
+							<th><%= is_ru ? "Статус" : "Status" %></th>
+							<th><%= is_ru ? "Название" : "Title" %></th>
+							<th><%= is_ru ? "Создан" : "Created" %></th>
+							<th><%= is_ru ? "Обновлён" : "Updated" %></th>
 							<th>&nbsp;</th>
 						</tr>
 					</thead>

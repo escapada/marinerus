@@ -3,11 +3,11 @@
   	<div class="closemanager">Закрыть</div>
   	<%= form_for @fileholder, url: clients_uploadfile_path, :html => { :multipart => true }, :remote => true do |form| %>
   	  <%= form.hidden_field :attachment_id, :value => @attach.id %>
-  	  <%= form.label :file, "Загрузить файлы", :class => "ajaxuploadlabel" %>
-  	  <%= form.file_field :file, :multiple => true, :name => "file[file]" , :style=>"display:none" %>
+  	  <%= form.label :doc, "Загрузить файлы", :class => "ajaxuploadlabel" %>
+  	  <%= form.file_field :doc, :multiple => true, :name => "doc[doc]" , :style=>"display:none" %>
   	<% end %>
   	<ul id="fileprws">
-  		<%= render "refinery/clients/upload/collectfileprw", attach: @attach if @attach.files.any? %>
+  		<%= render "refinery/clients/upload/collectfileprw", attach: @attach if @attach.docs.any? %>
   	</ul>
   </div>
 </div>

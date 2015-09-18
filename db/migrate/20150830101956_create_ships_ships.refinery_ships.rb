@@ -3,6 +3,7 @@ class CreateShipsShips < ActiveRecord::Migration
 
   def up
     create_table :refinery_ships do |t|
+      t.boolean :on_the_main_flag
       t.string :title
       t.string :meta
       t.integer :client_id
@@ -17,7 +18,7 @@ class CreateShipsShips < ActiveRecord::Migration
       t.integer :power_id
       t.integer :propulsion_id
       t.integer :fuel_id
-      t.integer :speed_id
+      t.integer :speedname_id
       t.integer :gmdss_id
       t.integer :hulltype_id
       t.integer :hullmaterial_id
@@ -29,8 +30,6 @@ class CreateShipsShips < ActiveRecord::Migration
       t.integer :doublehullchoice_id
       t.integer :currency_id
       t.integer :vat_id
-
-
       t.string :owner
       t.string :operator
       t.string :register_number
@@ -92,75 +91,6 @@ class CreateShipsShips < ActiveRecord::Migration
 
     Refinery::Ships::Ship.create_translation_table! :title => :string, :meta => :string, :owner => :string, :operator => :string, :register_number => :string, :tbn => :string, :subtype => :string, :appointment => :string, :project => :string, :flag => :string, :construction_place => :string, :registr_symbol => :string, :enginemodel => :string, :autonomy => :string, :diesel => :string, :sternthrusters => :string, :stabilizers => :string, :winch => :string, :hook => :string, :location => :string, :info => :string
 
-    create_table :page_statuss do |t|
-      t.string :rutitle
-      t.string :entitle
-    end
-    create_table :statuss do |t|
-      t.string :rutitle
-      t.string :entitle
-    end
-    create_table :conditions do |t|
-      t.string :rutitle
-      t.string :entitle
-    end
-    create_table :areas do |t|
-      t.string :rutitle
-      t.string :entitle
-    end
-    create_table :registrations do |t|
-      t.string :rutitle
-      t.string :entitle
-    end
-    create_table :registrs do |t|
-      t.string :rutitle
-      t.string :entitle
-    end
-    create_table :engines do |t|
-      t.string :rutitle
-      t.string :entitle
-    end
-    create_table :powers do |t|
-      t.string :rutitle
-      t.string :entitle
-    end
-    create_table :propulsions do |t|
-      t.string :rutitle
-      t.string :entitle
-    end
-    create_table :fuels do |t|
-      t.string :rutitle
-      t.string :entitle
-    end
-    create_table :speeds do |t|
-      t.string :rutitle
-      t.string :entitle
-    end
-    create_table :gmdsss do |t|
-      t.string :rutitle
-      t.string :entitle
-    end
-    create_table :currencies do |t|
-      t.string :rutitle
-      t.string :entitle
-    end
-    create_table :vats do |t|
-      t.string :rutitle
-      t.string :entitle
-    end
-    create_table :hulltypes do |t|
-      t.string :rutitle
-      t.string :entitle
-    end
-    create_table :hullmaterials do |t|
-      t.string :rutitle
-      t.string :entitle
-    end
-    create_table :choices do |t|
-      t.string :rutitle
-      t.string :entitle
-    end
-
   end
 
   def down
@@ -173,23 +103,6 @@ class CreateShipsShips < ActiveRecord::Migration
     end
 
     drop_table :refinery_ships
-    drop_table :page_statuss
-    drop_table :statuss
-    drop_table :conditions
-    drop_table :areas
-    drop_table :registrations
-    drop_table :registrs
-    drop_table :engines
-    drop_table :powers
-    drop_table :propulsions
-    drop_table :fuels
-    drop_table :speeds
-    drop_table :gmdsss
-    drop_table :currencies
-    drop_table :vats
-    drop_table :hulltypes
-    drop_table :hullmaterials
-    drop_table :choices
 
     Refinery::Ships::Ship.drop_translation_table!
 

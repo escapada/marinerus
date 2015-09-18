@@ -1,7 +1,12 @@
 <meta charset='<%= Rails.application.config.encoding %>' />
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
-<title><%= browser_title(yield(:title)) %></title>
-<%= raw %(<meta name="description" content="#{@meta.meta_description}" />) if @meta.meta_description.present? -%>
+<% if @ship.present? %>
+	<title><%= @ship.info %> - Marinerus.</title>
+	<%= raw %(<meta name="description" content="#{@ship.info}. Updated at #{@ship.updated_at}" />) -%>
+<% else %>
+	<title><%= browser_title(yield(:title)) %></title>
+	<%= raw %(<meta name="description" content="#{@meta.meta_description}" />) if @meta.meta_description.present? -%>
+<% end %>
 <%= raw %(<link rel="canonical" content="#{@canonical}" />) if @canonical.present? -%>
 <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
 <%= yield :meta %>

@@ -24,27 +24,44 @@ sk:
   activerecord:
     attributes:
       'refinery/ships/ship':
+        on_the_main_flag: On The Main Flag
         title: Title
         meta: Meta
         client_id: Client
         category_id: Category
-        page_status: Page Status
+        page_status_id: Page Status
+        status_id: Status
+        condition_id: Condition
+        area_id: Area
+        registration_id: Registration
+        registr_id: Registr
+        engine_id: Engine
+        power_id: Power
+        propulsion_id: Propulsion
+        fuel_id: Fuel
+        speedname_id: Speedname
+        gmdss_id: Gmdss
+        hulltype_id: Hulltype
+        hullmaterial_id: Hullmaterial
+        supermaterial_id: Supermaterial
+        tanksheatingchoice_id: Tanksheatingchoice
+        tankscoolingchoice_id: Tankscoolingchoice
+        doubleboardchoice_id: Doubleboardchoice
+        doublebottomchoice_id: Doublebottomchoice
+        doublehullchoice_id: Doublehullchoice
+        currency_id: Currency
+        vat_id: Vat
         owner: Owner
         operator: Operator
         register_number: Register Number
         tbn: Tbn
-        status: Status
-        condition: Condition
-        area: Area
         subtype: Subtype
         appointment: Appointment
         project: Project
         flag: Flag
-        registration: Registration
         construction_date: Construction Date
         construction_place: Construction Place
         renovation_date: Renovation Date
-        registr: Registr
         registr_symbol: Registr Symbol
         period_class: Period Class
         last_dock: Last Dock
@@ -65,31 +82,16 @@ sk:
         tanks: Tanks
         tanksvolume: Tanksvolume
         passengers: Passengers
-        enginetype: Enginetype
         enginemodel: Enginemodel
         enginequantity: Enginequantity
         enginepower: Enginepower
-        enginepowername: Enginepowername
-        propulsion: Propulsion
         propulsionquantity: Propulsionquantity
-        fuelfuelcapacity: Fuelfuelcapacity
+        fuelcapacity: Fuelcapacity
         fuel_way: Fuel Way
         fuel_port: Fuel Port
         autonomy: Autonomy
         speed: Speed
-        speedname: Speedname
-        gmdss: Gmdss
-        crewprice: Crewprice
-        crewpricename: Crewpricename
-        crewpricetax: Crewpricetax
-        hulltype: Hulltype
-        hullmaterial: Hullmaterial
-        supermaterial: Supermaterial
-        tanksheating: Tanksheating
-        tankscooling: Tankscooling
-        double_board: Double Board
-        double_bottom: Double Bottom
-        double_hull: Double Hull
+        crew: Crew
         diesel: Diesel
         sternthrusters: Sternthrusters
         stabilizers: Stabilizers
@@ -102,6 +104,4 @@ sk:
         sailsarea: Sailsarea
         location: Location
         price: Price
-        pricename: Pricename
-        pricetax: Pricetax
         info: Info

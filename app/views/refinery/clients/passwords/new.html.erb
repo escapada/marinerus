@@ -1,9 +1,11 @@
+<% Globalize.locale.to_s=="ru" ? is_ru = true : is_ru = false %>
+
 <div class="wrap-stat-login">
 	<div id="welcome">
 	<div id="error_explanation_wrap"><%= devise_error_messages! %></div>
 		<div id="transparent_login">
 			<div id="form_login">
-				<div id="login_hat" class="passrecover"></div>
+				<div id="login_hat<%= "_e" if !is_ru %>" class="passrecover<%= "_e" if !is_ru %>"></div>
 				<div id="login_body">
 					<!-- <p class="notice"><%#= notice %></p> <p class="alert"><%#= alert %></p> -->
 					<%= form_for resource, :as => resource_name, :url => refinery.client_password_path, :html => { :method => :post } do |f| %>
@@ -14,20 +16,20 @@
 
 				    		<div class="login_field">
 				    			<div class="btn">
-				    				<%= f.submit "Send me reset password instructions", :type=>'image', :src=>'/assets/recover_btn.png' %>
+				    				<%= f.submit "Send me reset password instructions", :type=>'image', :src=>is_ru ? '/assets/recover_btn.png' : '/assets/recover_btn_e.png' %>
 				    			</div>
 				    		</div>
 					<% end %>
 			    		
 			    		<div class="login_field">
 			    			<div class="registration">
-			    				<%= link_to 'Регистрация', refinery.new_client_registration_path %>
+			    				<%= link_to is_ru ? 'Регистрация' : 'Registration', refinery.new_client_registration_path %>
 			    				<span><%= image_tag('user-icon.png')%></span>
 			    			</div>
 			    		</div>
 			    		<div class="login_field">
 			    			<div class="registration">
-			    				<%= link_to 'Войти', refinery.new_client_session_path %>	
+			    				<%= link_to is_ru ? 'Войти' : 'Sign in', refinery.new_client_session_path %>	
 			    			</div>
 			    		</div>
 				</div>

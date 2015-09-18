@@ -1,9 +1,9 @@
 <% content_for :javascripts do %>
-  <%= javascript_include_tag 'jquery-fileupload/basic' %>
+  <%#= javascript_include_tag 'jquery-fileupload/basic' %>
   <!-- next comment if basic manifest dosen't work in production -->
-  <%#= javascript_include_tag 'jquery.ui.widget%>
-  <%#= javascript_include_tag 'jquery.iframe-transport' %>
-  <%#= javascript_include_tag 'jquery.fileupload' %>
+  <%= javascript_include_tag 'jquery.ui.widget' %>
+  <%= javascript_include_tag 'jquery.iframe-transport' %>
+  <%= javascript_include_tag 'jquery.fileupload' %>
   <%= javascript_include_tag 'admin_uploadfiles' %>
 <% end %>
 
@@ -27,6 +27,13 @@
       <%= f.text_field :title, {:style=>"width:823px;"}-%>
     </div>
   </div>
+  <!--  -->
+  <div class='line'>
+      <div class='linefield' style="width:960px;">
+        <%= f.label :info, "#{Globalize.locale.to_s=="ru" ? "Описание (будет показано на сайте)" : "Description (will be published as description)"}" -%>
+        <%= f.text_field :info, {:style=>"width:956px;"} %>
+      </div>
+    </div>
   <!--  -->
   <div class="line">
     <div class='linefield' style="width:320px;">
@@ -322,13 +329,6 @@
   </div>
   <!--  -->
   <div class="line">
-    <div class='linefield' style="width:960px;">
-      <%= f.label :info -%>
-      <%= f.text_field :info, {:style=>"width:956px;"} %>
-    </div>
-  </div>
-  <!--  -->
-  <div class="line">
     <div class='linefield' style="width:260px;">
       <%= f.label :price -%>
       <%= f.text_field :price, {:style=>"width:100px;"} %>
@@ -336,7 +336,7 @@
       <%= f.collection_select(:vat_id, @vats, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => true}, {:style=>"width:79px;"})%>
     </div>
     <div class="linefild" style="width:700px; display:inline:;">
-      <span id="filemanage" class="linkmanager">Добавить/удалить файлы [<span id="filesnumber"><%= @attach.files.blank? ? 0 : @attach.files.size %></span>]</span>
+      <span id="filemanage" class="linkmanager">Добавить/удалить файлы [<span id="filesnumber"><%= @attach.docs.blank? ? 0 : @attach.docs.size %></span>]</span>
       <span id="photomanage" class="linkmanager">Добавить/удалить фото [<span id="photosnumber"><%= @attach.photos.blank? ? 0 : @attach.photos.size %></span>]</span>
     </div>
   </div>

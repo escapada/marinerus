@@ -6,10 +6,13 @@ $greybg:		#f1f1f2;
 /*/////////*/
 *{margin:0; padding:0; font-size: 12px; font-family: arial, sans-serif, helvetica; list-style-type:none; text-decoration:none; color: black;}
 body{width:100%;/*height: 100%;*/ z-index: 1;}
-#slogan{ font-size: 37px; line-height: 38px; font-weight: bold; color: $blue;}
+#slogan{ font-size: 21px; line-height: 30px; font-weight: bold; color: $blue;}
+#slogan_e{ font-size: 33px; line-height: 34px; font-weight: bold; color: $blue;}
+.slogan{ font-size: 28px; line-height: 28px; display: block; text-align: center; font-weight: bold; color: $blue;}
 h1{ font-size: 22px; line-height: 28px; font-weight: normal;}
 h2{ font-size: 22px; line-height: 28px; font-weight: normal;}
 .h2{ font-size: 16px; line-height: 25px; display: block; margin-top: 20px; color: $blue;}
+.h2_{ font-size: 16px; line-height: 25px; display: block; margin-bottom: 5px; color: $blue;}
 .h3{ font-size: 16px; line-height: 20px; font-weight: bold;}
 
 #header{width: 100%;}
@@ -17,11 +20,16 @@ h2{ font-size: 22px; line-height: 28px; font-weight: normal;}
 #top{width: 100%; height: 30px; background: $greybg; border-bottom: $grey 1px solid; line-height: 30px;}
 #login-line{float: left;}
 .vertical_separator{color: $grey; padding: 0 3px;}
-#locale-line{float: right;}
+#locale-line{float: right; /*height: 30px; padding: 8px 0;*/
+	a{}
+}
+.locale-line{ float: left; height: 28px; margin-left: 3px; line-height: 30px;
+	img{padding: 2px 0 0 0;}
+}
 #head{width: 100%; clear: both; height: 118px;}
 #main-logo{width: 214px; float: left;padding-top: 33px;}
 #main-head{width: 696px; padding-top:33px; padding-left:30px; float: left;}
-#main-head-slogan{width: 696px;/* clear: both;*/}
+#main-head-slogan{width: 696px; text-align: right;/* clear: both;*/}
 #main-head-contact{width: 696px;/* clear: both;*/ text-align: right; padding-top: 8px;}
 #main-head-contact span, #main-head-contact a{font-size: 16px; font-weight: bold; color: $deepblue; float: right; line-height: 25px; margin-left: 3px; /*display: block;*/}
 #cell{float: right; height: 25px;}
@@ -68,11 +76,15 @@ h2{ font-size: 22px; line-height: 28px; font-weight: normal;}
 #transparent_login{position:relative; padding: 2px; width: 375px; margin: 0 auto; background: url(<%= asset_path('transparent-pixel.png')%>);}
 #form_login{position:relative; top:0; width: 375px; margin: 0 auto;}
 #login_hat{width: 375px; height: 33px; background: url(<%= asset_path('login_big_btn.png')%>) no-repeat;}
+#login_hat_e{width: 375px; height: 33px; background: url(<%= asset_path('login_big_btn_e.png')%>) no-repeat;}
 #login_hat.registration{background: url(<%= asset_path('registration_big_btn.jpg')%>) no-repeat;}
+#login_hat.registration_e{background: url(<%= asset_path('registration_big_btn_e.jpg')%>) no-repeat;}
 #login_hat.passrecover{background: url(<%= asset_path('recover_big_btn.jpg')%>) no-repeat;}
+#login_hat.passrecover_e{background: url(<%= asset_path('recover_big_btn_e.jpg')%>) no-repeat;}
 #login_body{border:1px $blue solid; padding: 15px 0;}
 .login_field{ width: 300px; margin: 0 auto; margin-bottom: 7px;
 	a{color: $blue;}
+	i{ font-size: 10px; text-align: center;}
 	.text_field{ width:100%; height:20px; margin: 2px 0; padding: 2px;}
 	.btn{width:100%; text-align:center;}
 	.registration{width:100%; text-align:center;}
@@ -82,7 +94,9 @@ h2{ font-size: 22px; line-height: 28px; font-weight: normal;}
 .positions{ width: 214px; float: left;}
 .positions_description{ width: 456px; float: left;}
 #positions{width: 214px;  height: 33px; background: url(<%= asset_path('top_column.png')%>) no-repeat;}
+#positions_e{width: 214px;  height: 33px; background: url(<%= asset_path('top_column_e.png')%>) no-repeat;}
 #positions_description{width: 456px;  height: 33px; background: url(<%= asset_path('top_column_description.png')%>) no-repeat;}
+#positions_description_e{width: 456px;  height: 33px; background: url(<%= asset_path('top_column_description_e.png')%>) no-repeat;}
 #cur_lable{margin: 30px 0 7px 0; color: $blue; font-size: 16px;}
 #currency{border: 1px $grey solid; border-top: 2px $blue solid;
 	#cur_head{ padding-right: 10px; height: 20px; line-height: 20px; background: $greybg; border-bottom: 1px solid $grey; text-align: right;}
@@ -157,15 +171,16 @@ h2{ font-size: 22px; line-height: 28px; font-weight: normal;}
 /*office index*/
 #office{ margin-top: 30px;}
 #office_positions{width: 214px;  height: 33px; background: url(<%= asset_path('top_column_own.png') %>) no-repeat;}
+#office_positions_e{width: 214px;  height: 33px; background: url(<%= asset_path('top_column_own_e.png') %>) no-repeat;}
 	
 .content_container_sm{ width: 696px; float: left; margin-left: 30px;}
 .content_container_xsm{ width: 454px; float: left; margin-left: 30px;}
-#client_infoblock{ width: 694px; height: 138px; background: $greybg; border: 1px solid $blue; border-top: 2px solid $blue; clear: both;}
+#client_infoblock{ width: 694px; height: 130px; background: $greybg; border: 1px solid $blue; border-top: 2px solid $blue; clear: both;}
 #client_photocontainer{ width: 90px; text-align: center; float: left;
 	img{padding-top: 40px;}
 }
 #client_wrap_info{ width: 604px; float: right;}
-#client_name{ text-align: left; float:left; /*padding-top: 40px;*/}
+#client_name_info{ text-align: left; float:left; padding-top: 40px;}
 #client_info{ width: 212px; text-align: left; margin-top: 20px; float: right;
 	li{ line-height: 16px;
 		a{color: $blue;}
@@ -173,7 +188,7 @@ h2{ font-size: 22px; line-height: 28px; font-weight: normal;}
 }
 
 .table_container_sm{ width: 100%; margin-top: 30px;  /*padding: 7px 0 3px 0;*/}
-.ship_table, .ship_table_common, .ship_table_last_adds, .ship_table_last_demands{ border: 1px solid $blue; border-top: none; border-bottom: none;
+.ship_table, .ship_table_common, .ship_table_last_adds, .ship_table_last_demands, .ship_table_e, .ship_table_common_e, .ship_table_last_adds_e, .ship_table_last_demands_e{ border: 1px solid $blue; border-top: none; border-bottom: none;
 	thead{ background: $greybg; 
 		tr{ height: 30px;
 			th{ color: $blue; font-weight: normal;  border-top: 2px $blue solid;/* border-bottom: 1px solid;*/ text-align: left;}
@@ -200,7 +215,8 @@ h2{ font-size: 22px; line-height: 28px; font-weight: normal;}
 }
 .new_ship, .edit_ship{
 	.field{margin: 0 0 3px 0; line-height: 19px; clear: both;}
-	label{ display:block; height:12px; margin: 0 0px 0 0; padding:0; font-size: 10px;}
+	/*label{ display:block; height:12px; margin: 0 0px 0 0; padding:0; font-size: 10px;}*/
+	label{ display:block; height:12px; line-height:12px; margin: 0 0px 0 0; padding:0; font-size: 10px; overflow: hidden;}
 	input, select{line-height: 14px; padding: 0px;}
 	.form-actions{ margin: 20px 0;
 		input{padding:0 10px;}
@@ -213,6 +229,18 @@ h2{ font-size: 22px; line-height: 28px; font-weight: normal;}
 	}
 }
 
+/*///////////////////////////// ABOUT page */
+.wide_white{ width: 100%; background: #fff;}
+.wide_grey{ width: 100%; background: $greybg;}
+#circles_wrap{ height: 400px; margin-top: 30px;
+	.circle_container{ width:33.33%; float: left; text-align: center;
+		.circle_label{width: 100%; margin-top: 15px; font-size: 13px;}
+	}
+}
+.about_image{ margin: 30px 0; display: inline-block;}
+.text_wrap{ margin: 30px 0; display: inline-block;
+	.text_block{ width:300px; float: left; text-align: justify;}
+}
 
 /*//////////////////////////////////////////////COMMON BLOCK FOR UPLOADING */
 .linkmanager{ cursor: pointer; border-bottom: 1px dotted; margin-top: 5px; display: inline-block;}
@@ -227,7 +255,7 @@ h2{ font-size: 22px; line-height: 28px; font-weight: normal;}
 .filemanager{	position: absolute; width: 100%; height: 100%;}
 .closemanager{font-size: 16px; position: absolute; top:20px; right: 20px; z-index: 10; border-bottom: 1px dotted; cursor: pointer;}
 .ajaxuploadlabel{font-size: 16px; border-bottom: 1px dotted; cursor: pointer;}
-#new_file, #new_photo{margin:20px 0 10px 20px;}
+#new_doc, #new_photo{margin:20px 0 10px 20px;}
 
 #photoprws{}
 #fileprws{margin-left: 20px;

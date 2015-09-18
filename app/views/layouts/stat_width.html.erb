@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<%= render "/refinery/html_tag" %>
+  <head>
+    <%= render "/refinery/head" %>
+  </head>
+  <body id="login-page">
+    <header id="header">
+      <%= render "/refinery/header", classname: "wrap-stat-login" -%>
+    </header>
+    <section id="page">
+      <%= yield %>
+    </section>
+    <footer id="footer">
+      <%= render "/refinery/footer" -%>
+    </footer>
+    <%= render "/refinery/javascripts" %>
+  </body>
+</html>

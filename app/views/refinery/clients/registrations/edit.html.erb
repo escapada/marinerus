@@ -1,29 +1,69 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% Globalize.locale.to_s=="ru" ? is_ru = true : is_ru = false %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="wrap-stat-login">
+  <div id="welcome">
+  <div id="error_explanation_wrap"><%= devise_error_messages! %></div>
+    <div id="transparent_login">
+      <div id="form_login">
+        <div id="login_hat" class="registration<%= "_e" if !is_ru %>"></div>
+        <div id="login_body">
+          <!-- <p class="notice"><%#= notice %></p> <p class="alert"><%#= alert %></p> -->
+          <%= form_for(resource, :as => resource_name, :url => refinery.client_registration_path, :html => { :method => :put }) do |f| %>
+            <div class="login_field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, :class=>'text_field', :autofocus => true %>
+            </div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+            <!--  -->
+            <div class="login_field">
+              <%= f.label :name, is_ru ? "ФИО" : "Name:" %><br />
+              <%= f.text_field :name, :class=>'text_field' %>
+            </div>
+            <div class="login_field">
+              <%= f.label :company, is_ru ? "Компания:" : "Company name:" %><br />
+              <%= f.text_field :company, :class=>'text_field' %>
+            </div>
+            <div class="login_field">
+              <%= f.label :job, is_ru ? "Должность:" : "Job:" %><br />
+              <%= f.text_field :job, :class=>'text_field' %>
+            </div>
+            <div class="login_field">
+              <%= f.label :phone, is_ru ? "Телефон:" : "Phone:" %><br />
+              <%= f.text_field :phone, :class=>'text_field' %>
+            </div>
+            <!--  -->
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+            <div class="login_field">
+              <%= f.label :current_password, is_ru ? "Пароль:" : "Password:" %><br />
+              <%= f.password_field :current_password, :class=>'text_field' %><br />
+            </div>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+            <div class="login_field">
+              <%= f.check_box :mail_me %><%= f.label :mail_me, is_ru ? "Подписаться на новости" : "Send me news" %><br />
+              <%= is_ru ? "Пользовательское соглашение" : "Пользовательское соглашение" %>
+              <%#= f.label :usage, "Пользовательское соглашение" %><%#= f.check_box :usage %>
+            </div>
+            <div class="login_field">
+              <div class="btn">
+                <%= f.submit "Update", :type=>'image', :src=>is_ru ? '/assets/upd_registration_btn.png' : '/assets/upd_registration_btn_e.png' %>
+              </div>
+            </div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+            <% end %>
+            
+            <div class="login_field">
+              <div class="btn">
+                <%= button_to "Cancel my account", refinery.client_registration_path(resource_name), :data => { :confirm => is_ru ? 'Уверены, что хотите удалить ваш аккаунт?' : 'Are you sure?' }, :method => :delete %>
+                </div>
+                          </div>
+                          <div class="login_field">
+              <%= link_to is_ru ? "Назад" : "Back", :back %>
+            </div>
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
-
-<%= link_to "Back", :back %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

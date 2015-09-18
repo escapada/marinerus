@@ -4,8 +4,9 @@ Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = 'refinerycms-ships'
   s.version           = '1.0'
+  s.authors = ['Refinery']
   s.description       = 'Ruby on Rails Ships extension for Refinery CMS'
-  s.date              = '2015-06-20'
+  s.date              = '2015-08-30'
   s.summary           = 'Ships extension for Refinery CMS'
   s.require_paths     = %w(lib)
   s.files             = Dir["{app,config,db,lib}/**/*"] + ["readme.md"]

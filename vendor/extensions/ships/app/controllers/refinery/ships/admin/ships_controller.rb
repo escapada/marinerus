@@ -4,7 +4,8 @@ module Refinery
       class ShipsController < ::Refinery::AdminController
 
 	      crudify	:'refinery/ships/ship', 
-	      		:xhr_paging => true
+	      		:xhr_paging => true,
+	      		:title_attribute => "title"
 
 	      before_filter :all_collections, :only=>[:new, :edit]
 	      before_filter	:new_attach_init, :only=>[:new]
@@ -12,7 +13,8 @@ module Refinery
 	      before_filter	:create_attach_init, :only=>[:create]
 
 	      def create
-	            if (@ship = Refinery::Ships::Ship.create(params[:ship]){|s| s.client_id = current_client.id}).valid?
+	            # if (@ship = Refinery::Ships::Ship.create(params[:ship]){|s| s.client_id = current_client.id}).valid?
+	            if (@ship = Refinery::Ships::Ship.create(params[:ship])).valid?
 	              flash.notice = t(
 	                'refinery.crudify.created',
 	                :what => "#{@ship.title}"
@@ -52,25 +54,25 @@ module Refinery
 	      def new_attach_init
 		      	if @attach = Refinery::Ships::Attachment.where({client_id: nil, ship_id: nil}).first
 		      		@attach.photos.each {|e| e.destroy} if @attach.photos.any? 
-		      		@attach.files.each {|e| e.destroy} if @attach.files.any?
+		      		@attach.docs.each {|e| e.destroy} if @attach.docs.any?
 		      		@attach.reload
 		      	else
 		      		@attach = Refinery::Ships::Attachment.create(client_id: nil)
 		      	end
-		      	@fileholder = Refinery::Ships::File.new
+		      	@fileholder = Refinery::Ships::Doc.new
 	      		@photoholder = Refinery::Ships::Photo.new
 	      end
 	      
 	      def edit_attach_init
 	      		@attach = Refinery::Ships::Attachment.where(ship_id: @ship.id).first
 	      		#@attach = Refinery::Ships::Attachment.where({client_id: nil, ship_id: params[:id]}).first
-	      		@fileholder = Refinery::Ships::File.new
+	      		@fileholder = Refinery::Ships::Doc.new
 	      		@photoholder = Refinery::Ships::Photo.new
 	      	end
 
 	      	def create_attach_init
 	      		@attach = Refinery::Ships::Attachment.where({client_id: nil, ship_id: nil}).first
-	      		@fileholder = Refinery::Ships::File.new
+	      		@fileholder = Refinery::Ships::Doc.new
 	      		@photoholder = Refinery::Ships::Photo.new
 	      	end
 

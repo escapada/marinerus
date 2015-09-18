@@ -1,11 +1,12 @@
 Refinery::Core::Engine.routes.prepend do
+
   devise_for :clients,  :class_name => "Refinery::Clients::Client",
-                                :controllers => {:sessions => 'refinery/clients/sessions', :passwords => 'refinery/clients/passwords', :registrations => 'refinery/clients/registrations'}
+                                :controllers => {:sessions => 'refinery/clients/sessions', :passwords => 'refinery/clients/passwords', :registrations => 'refinery/clients/registrations', :confirmations => 'refinery/clients/confirmations'}
 
 
-  # devise_scope :client do
-  #     get "/clients/office", :to => "clients/office#index", :as => :office
-  # end
+  devise_scope :client do
+      get "/clients/change_psw", :to => "clients/registrations#edit_password", :as => :edit_password
+  end
 
   get "/clients/office", :to => "clients/office#index", :as => :office
 
@@ -22,7 +23,7 @@ end
 
 Refinery::Ships::Engine.routes.prepend do
   devise_for :clients,  :class_name => "Refinery::Clients::Client",
-                                :controllers => {:office => 'refinery/clients/office', :sessions => 'refinery/clients/sessions', :passwords => 'refinery/clients/passwords', :registrations => 'refinery/clients/registrations'}
+                                :controllers => {:office => 'refinery/clients/office', :sessions => 'refinery/clients/sessions', :passwords => 'refinery/clients/passwords', :registrations => 'refinery/clients/registrations', :confirmations => 'refinery/clients/confirmations'}
   devise_scope :client do
       get "/clients/office", :to => "clients/office#index", :as => :office
   end

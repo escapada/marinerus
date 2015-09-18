@@ -8,7 +8,7 @@ module Refinery
       belongs_to			:client, :class_name=>'Refinery::Clients::Client'
 
       has_many				:photos, :class_name => 'Refinery::Ships::Photo'
-      has_many				:files, :class_name => 'Refinery::Ships::File'
+      has_many				:docs, :class_name => 'Refinery::Ships::Doc'
 
     end
   end

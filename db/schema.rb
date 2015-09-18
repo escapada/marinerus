@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150825093103) do
+ActiveRecord::Schema.define(:version => 20150917220903) do
 
   create_table "areas", :force => true do |t|
     t.string "rutitle"
@@ -106,8 +106,12 @@ ActiveRecord::Schema.define(:version => 20150825093103) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "refinery_clients", ["confirmation_token"], :name => "index_refinery_clients_on_confirmation_token", :unique => true
   add_index "refinery_clients", ["email"], :name => "index_refinery_clients_on_email", :unique => true
   add_index "refinery_clients", ["reset_password_token"], :name => "index_refinery_clients_on_reset_password_token", :unique => true
 
@@ -238,6 +242,7 @@ ActiveRecord::Schema.define(:version => 20150825093103) do
   add_index "refinery_ship_translations", ["refinery_ship_id"], :name => "index_refinery_ship_translations_on_refinery_ship_id"
 
   create_table "refinery_ships", :force => true do |t|
+    t.boolean  "on_the_main_flag"
     t.string   "title"
     t.string   "meta"
     t.integer  "client_id"
@@ -319,9 +324,8 @@ ActiveRecord::Schema.define(:version => 20150825093103) do
     t.decimal  "price",                 :precision => 10, :scale => 2
     t.string   "info"
     t.integer  "position"
-    t.datetime "created_at",                                                              :null => false
-    t.datetime "updated_at",                                                              :null => false
-    t.boolean  "on_the_main_flag",                                     :default => false
+    t.datetime "created_at",                                                          :null => false
+    t.datetime "updated_at",                                                          :null => false
   end
 
   create_table "refinery_user_plugins", :force => true do |t|
@@ -388,6 +392,7 @@ ActiveRecord::Schema.define(:version => 20150825093103) do
     t.string   "last_passengers"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "info"
   end
 
   create_table "seo_meta", :force => true do |t|
@@ -401,6 +406,26 @@ ActiveRecord::Schema.define(:version => 20150825093103) do
 
   add_index "seo_meta", ["id"], :name => "index_seo_meta_on_id"
   add_index "seo_meta", ["seo_meta_id", "seo_meta_type"], :name => "id_type_index_on_seo_meta"
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "ship_docs", :force => true do |t|
+    t.integer  "attachment_id"
+    t.string   "doc_file_name"
+    t.string   "doc_content_type"
+    t.integer  "doc_file_size"
+    t.datetime "doc_updated_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "ship_files", :force => true do |t|
     t.integer  "attachment_id"

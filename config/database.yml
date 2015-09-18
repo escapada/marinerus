@@ -30,8 +30,16 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: #abcdesig_autor48
+  database: marineru_site39
   pool: 5
-  username: #abcdesig_autor48
-  password: #GunOLLGP
-  host: mysql4.locum.ru
+  username: marineru_site39
+  password: sWhl3LBTJj
+  host: mysql6.locum.ru
+  # adapter: mysql2
+  # encoding: utf8
+  # database: marinerus_tmp
+  # pool: 5
+  # username: root
+  # password: gjcgtkjd
+  # host: localhost
+  

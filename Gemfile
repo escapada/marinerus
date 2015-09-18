@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.21'
-gem 'mysql2'
+gem 'mysql2', '0.3.19'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -27,7 +27,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 
-  gem "jquery-fileupload-rails"
+  gem 'jquery-fileupload-rails'
 end
 
 gem 'jquery-rails'
@@ -57,9 +57,10 @@ gem 'refinerycms-acts-as-indexed', '~> 1.0.0'
 #  gem 'refinerycms-search', '~> 2.1.0'
 #  gem 'refinerycms-page-images', '~> 2.1.0'
 
-gem "paperclip", "~> 4.2"
-gem "therubyracer"
-gem "execjs"
+gem 'paperclip', '~> 4.2'
+gem 'therubyracer'
+gem 'execjs'
+gem 'rake'
 
 #gem "remotipart", "~> 1.0"
 

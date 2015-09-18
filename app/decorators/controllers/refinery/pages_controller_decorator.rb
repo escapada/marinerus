@@ -1,6 +1,6 @@
 Refinery::PagesController.class_eval do
 
-  before_filter :ships_prepare, :only=>[:home]
+  before_filter :ships_prepare#, :only=>[:home]
   before_filter :get_currencies
 
     def get_currencies_helper(today_date, prev_date)
@@ -25,17 +25,17 @@ Refinery::PagesController.class_eval do
   def ships_prepare
     
     @categories = Refinery::Categories::Category.includes(:ships).order(Globalize.locale.to_s=="ru" ? :rutitle : :entitle).all 
-    @ships = Refinery::Ships::Ship.includes(:translations).where("page_status_id = 2").order('updated_at DESC')
-    @all = @ships.all
-    @last_ships = @ships.where("status_id IN (1,2)").limit(10)
-    @last_demands_ships = @ships.where("status_id IN (3,4)").limit(10)
+    @ships = Refinery::Ships::Ship.includes(:translations, :category, :attachment).where("page_status_id = 2").order('updated_at DESC')
+    @all = @ships.where("status_id IN (1,2,3)")
+    @last_ships = @ships.where("status_id IN (1,2,3)")
+    @demands_ships = @ships.where("status_id IN (4,5,6)")
     logger.debug("#{@last_ships.size}")
     # model for short search on home page
     @search = Refinery::Ships::Search.new
     # for recomended block
     @recomended = @ships.where("on_the_main_flag = TRUE").limit(8)
     if @recomended.size<8
-      @all.sample(8-@recomended.size).each do |e|
+      @all.where("on_the_main_flag = FALSE").sample(8-@recomended.size).each do |e|
         @recomended<<e
       end
     end
@@ -57,18 +57,4 @@ Refinery::PagesController.class_eval do
 
   end
 
-  # def home
-  #   @items = Refinery::Items::Item.all
-  #   @items.select! {|e| e.photos.present?}  #rewrite
-  #   @items.shuffle!
-
-  #   @vw = Refinery::Products::Carmodel.includes(:car, :products).where('cars.title' => 'VW')
-  #   @vw.delete_if { |e| !(e.products.any?) }
-  #   @audi = Refinery::Products::Carmodel.includes(:car, :products).where('cars.title' => 'AUDI')
-  #   @audi.delete_if { |e| !(e.products.any?) }
-  #   @skoda = Refinery::Products::Carmodel.includes(:car, :products).where('cars.title' => 'SKODA')
-  #   @skoda.delete_if { |e| !(e.products.any?) }
-  #   @seat = Refinery::Products::Carmodel.includes(:car, :products).where('cars.title' => 'SEAT')
-  #   @seat.delete_if { |e| !(e.products.any?) }
-  # end
 end

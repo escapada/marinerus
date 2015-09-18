@@ -1,0 +1,56 @@
+<% Globalize.locale.to_s=="ru" ? is_ru=true : is_ru=false %>
+
+<%= render '/refinery/draft_page_message' unless @page.try(:live?) -%>
+<%#= render '/refinery/content_page' %>
+<div class="wrap">
+	<div id="container">
+		<div class="positions">
+			<div id="positions<%= "_e" if !is_ru %>"></div>
+			<ul class="list_positions">
+				<li class="odd first"><%= link_to is_ru ? "Показать всё" : "All", refinery.ships_ships_path %> [<%= @all.size %>]</li>
+				<%= render partial: "/refinery/category", collection: @categories %>
+			</ul>
+			<div id="cur_lable"><%= is_ru ? "Курс валют" : "Currency"%></div>
+			<div id="currency">
+				<div id="cur_head"><%= session[:usd].last["Date"] %></div>
+				<ul>
+					<li>USD&nbsp;&nbsp;<%= session[:usd].last["Value"].gsub(",", ".").to_f.round(2) %>&nbsp;<%= (session[:usd][-1]["Value"].gsub(",", ".").to_f-session[:usd][-2]["Value"].gsub(",", ".").to_f)>0 ? image_tag("up-arrow.png") : image_tag("down-arrow.png") %></li>
+					<li>EUR&nbsp;&nbsp;<%= session[:euro].last["Value"].gsub(",", ".").to_f.round(2) %>&nbsp;<%= (session[:euro][-1]["Value"].gsub(",", ".").to_f-session[:euro][-2]["Value"].gsub(",", ".").to_f)>0 ? image_tag("up-arrow.png") : image_tag("down-arrow.png") %></li>
+					<li>GBP&nbsp;&nbsp;<%= session[:gbp].last["Value"].gsub(",", ".").to_f.round(2) %>&nbsp;<%= (session[:gbp][-1]["Value"].gsub(",", ".").to_f-session[:gbp][-2]["Value"].gsub(",", ".").to_f)>0 ? image_tag("up-arrow.png") : image_tag("down-arrow.png") %></li>
+				</ul>
+			</div>
+		</div>
+		<div class="content_container_sm">
+			<span class="h2_"><%= is_ru ? "Предложения" : "Order" %></span>
+			<table class="ship_table_common<%= "_e" if !is_ru %> compact row-border hover" cellspacing="0" width="100%">
+			  <thead>
+			    <tr>
+			      <th class="dt-head-center"><%= is_ru ? "Лот №" : "ID" %></th>
+			      <th><%= is_ru ? "Обновлён" : "Updated" %></th>
+			      <th><%= is_ru ? "Тип" : "Category" %></th>
+			      <th><%= is_ru ? "Описание" : "Description" %></th>
+			      <th><%= is_ru ? "Место" : "Location" %></th>
+			      <th><%= is_ru ? "Год" : "Year" %></th>
+			      <th></th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <%= render partial: "refinery/ships/ships/ship", collection: @last_ships %>
+			  </tbody>
+			</table>
+
+		</div>
+		
+		<div class="clear">&nbsp;</div>
+		
+	</div>
+</div>
+
+<div class="popup_container"></div>	<!-- invisible popup -->
+
+
+
+
+    
+

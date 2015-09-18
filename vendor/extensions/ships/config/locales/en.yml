@@ -97,7 +97,7 @@ en:
           location: Location
           price: Cost
           vat: VAT
-          info: Additional info
+          info: Description
   activerecord:
     attributes:
       'refinery/ships/ship':
@@ -182,4 +182,4 @@ en:
         price: Price
         pricename: Pricename
         pricetax: Pricetax
-        info: Info
+        info: Description

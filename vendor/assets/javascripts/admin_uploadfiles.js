@@ -14,7 +14,7 @@ $(function(){
 		dataType: 'script'
 	});
 
-	$('#new_file').fileupload({
+	$('#new_doc').fileupload({
 		dataType: 'script'
 	});
 
