@@ -14,3 +14,6 @@ Refinery::Categories::Engine.load_seed
 
 # Added by Refinery CMS Ships extension
 Refinery::Ships::Engine.load_seed
+
+# Added by Refinery CMS Inquiries engine
+Refinery::Inquiries::Engine.load_seed

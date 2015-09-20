@@ -1,12 +1,15 @@
+<% Globalize.locale.to_s=="ru" ? is_ru=true : is_ru=false %>
+
 <div class="wrap">
   <div id="container">
     <div class="positions_description">
-      <div id="positions_description"></div>
+      <div id="positions_description<%= "_e" if !is_ru %>"></div>
       <ul class="list_positions description">
         <%= render partial: "description" %>
       </ul>
     </div>
     <div class="content_container_xsm">
+      <%= link_to image_tag(is_ru ? asset_path('inquiry_btn.png') : asset_path('inquiry_btn_e.png')), refinery.inquiries_new_inquiry_path(lot_id: @ship.id) %><br />
       <% if @ship.attachment.photos.any? %>
         <div id="main_photo"><%= image_tag(@ship.attachment.photos[0].photo.url(:main)) %></div>
         <div class="carousel_gallery">
@@ -16,6 +19,10 @@
         </div>
       <% else %>
         <div id="main_photo"><%= image_tag(asset_path("no_foto.png"), width: "454px", height: "340px", style: "border:1px #2c87af solid;") %></div>
+      <% end %>
+
+      <% unless @ship.object.blank? %>
+        <div class="object_info"><%= raw @ship.object %></div>
       <% end %>
 
         <div id="similar_ships">

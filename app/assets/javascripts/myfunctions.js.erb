@@ -83,6 +83,7 @@ $(function(){
 	$(".ship_table").dataTable(
 		{
 			"columns": [{ "width": "40px" }, { "width": "80px" }, { "width": "300px" }, null, null, {"orderable": false}],
+			"ordering": false,
 			"language": {
 				"processing": "Подождите...",
 				"search": "Поиск:",
@@ -111,7 +112,8 @@ $(function(){
 		{
 			"columns": [{ "width": "40px" }, null, { "width": "150px" }, { "width": "200px" }, null, null, {"orderable": false}],
 			// "ordering": false,
-			"order": [[1, "desc"]],
+			"ordering": false,
+			// "order": [[1, "desc"]],
 			"language": {
 				"processing": "Подождите...",
 				"search": "Поиск:",
@@ -143,7 +145,8 @@ $(function(){
 			"info": false,
 			"searching": false,
 			"paging": false,
-			"order": [[1, "desc"]],
+			"ordering": false,
+			// "order": [[1, "desc"]],
 			"language": {
 				"processing": "Подождите...",
 				"search": "Поиск:",
@@ -175,7 +178,8 @@ $(function(){
 			"info": false,
 			"searching": false,
 			"paging": false,
-			"order": [[1, "desc"]],
+			"ordering": false,
+			// "order": [[1, "desc"]],
 			"language": {
 				"processing": "Подождите...",
 				"search": "Поиск:",
@@ -204,34 +208,38 @@ $(function(){
 	// english versions (without translations)
 	$(".ship_table_e").dataTable(
 			{
-				"columns": [{ "width": "40px" }, { "width": "80px" }, { "width": "300px" }, null, null, {"orderable": false}]
+				"columns": [{ "width": "40px" }, { "width": "80px" }, { "width": "300px" }, null, null, {"orderable": false}],
+				"ordering": false
 			} 
 		);
 	$(".ship_table_common_e").dataTable(
 			{
-				"columns": [{ "width": "40px" }, null, { "width": "150px" }, { "width": "200px" }, null, null, {"orderable": false}],
+				"columns": [{ "width": "40px" }, {"orderable": false}, { "width": "150px" }, { "width": "200px" }, null, null, {"orderable": false}],
 				// "ordering": false,
-				"order": [[1, "desc"]]
+				"ordering": false
+				// "order": [[1, "desc"]]
 			}
 		);
 	$(".ship_table_last_adds_e").dataTable(
 			{
-				"columns": [{ "width": "40px" }, null, { "width": "150px" }, { "width": "200px" }, null, null, {"orderable": false}],
+				"columns": [{ "width": "40px" }, {"orderable": false}, { "width": "150px" }, { "width": "200px" }, null, null, {"orderable": false}],
 				// "ordering": false,
 				"info": false,
 				"searching": false,
 				"paging": false,
-				"order": [[1, "desc"]]
+				"ordering": false
+				// "order": [[1, "desc"]]
 			}
 		);
 	$(".ship_table_last_demands_e").dataTable(
 			{
-				"columns": [{ "width": "40px" }, null, { "width": "150px" }, { "width": "200px" }, null, null, {"orderable": false}],
+				"columns": [{ "width": "40px" }, {"orderable": false}, { "width": "150px" }, { "width": "200px" }, null, null, {"orderable": false}],
 				// "ordering": false,
 				"info": false,
 				"searching": false,
 				"paging": false,
-				"order": [[1, "desc"]]
+				"ordering": false
+				// "order": [[1, "desc"]]
 			}
 		);
 	// end of english versions ////////////////////

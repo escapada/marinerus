@@ -1,0 +1,64 @@
+<% Globalize.locale.to_s=="ru" ? is_ru=true : is_ru=false %>
+
+<%= render '/refinery/draft_page_message' unless @page.try(:live?) -%>
+<% content_for :body do %>
+  <%= raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) if Refinery::Pages.default_parts.any? %>
+<% end %>
+
+<!--  -->
+<div class="wrap">
+  <div id="container">
+    <div class="content_container_big">
+      <div class='inquiries'>
+        <%= form_for [refinery, :inquiries, @inquiry] do |f| %>
+          <%= render :partial => "/refinery/admin/error_messages",
+                     :locals => {
+                       :object => @inquiry,
+                       :include_object_name => true
+                     } %>
+          <div class="field">
+            <%= f.required_label :name, :class => 'placeholder-fallback' %><br />
+            <%= f.text_field :name, :class => 'text', :required => 'required',
+              :placeholder => t('name', :scope => 'activerecord.attributes.refinery/inquiries/inquiry') if Refinery::Inquiries.show_placeholders %>
+          </div>
+          <div class="field">
+            <%= f.required_label :email, :class => 'placeholder-fallback' %><br />
+            <%= f.email_field :email, :class => 'text email', :required => 'required',
+              :placeholder => t('email', :scope => 'activerecord.attributes.refinery/inquiries/inquiry') if Refinery::Inquiries.show_placeholders %>
+          </div>
+
+          <% if Refinery::Inquiries.show_phone_number_field %>
+            <div class="field">
+              <%= f.label :phone, :class => 'placeholder-fallback' %><br />
+              <%= f.text_field :phone, :class => 'text phone',
+                :placeholder => t('phone', :scope => 'activerecord.attributes.refinery/inquiries/inquiry') if Refinery::Inquiries.show_placeholders %>
+            </div>
+          <% end %>
+
+          <% if params[:lot_id] %>
+            <div class="field">
+              <%= f.label :lot_id, is_ru ? "Лот №" : "ID", :class => 'placeholder-fallback' %><br />
+              <%= f.text_field :lot_id, :class => 'text' %>
+            </div>
+          <% end %>
+
+          <div class='field message_field'>
+            <%= f.required_label :message, :class => 'placeholder-fallback' %><br />
+            <%= f.text_area :message, :rows => 8, :required => 'required',
+              :placeholder => t('message', :scope => 'activerecord.attributes.refinery/inquiries/inquiry') if Refinery::Inquiries.show_placeholders %>
+          </div>
+          <div class="actions">
+            <%= f.submit t('.send'), type: "image", src: "#{is_ru ? asset_path('send_btn.png') : asset_path('send_btn_e.png')}" %><br />
+            <%= link_to t('.privacy_policy'), is_ru ? "/pages/privacy-policy" : "/en/pages/privacy-policy", :id => "privacy_link" if Refinery::Inquiries.show_contact_privacy_link %><br /><br />
+          </div>
+        <% end %>
+        <%= render "/refinery/content_page" %>
+      </div>
+    </div>
+    
+    <!-- <div class="clear">&nbsp;</div> -->
+  </div>
+</div>
+
+<!-- <div class="popup_container"></div> invisible popup -->
+<!--  -->

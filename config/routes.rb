@@ -37,10 +37,15 @@ Refinery::Ships::Engine.routes.prepend do
     match 'deletefile', to: 'upload#delete_file', :as => :deletefile, via: [:post]
     match 'deletephoto', to: 'upload#delete_photo', :as => :deletephoto, via: [:post]
   end
-
   ##
+end
 
-
+Refinery::Inquiries::Engine.routes.prepend do
+  devise_for :clients,  :class_name => "Refinery::Clients::Client",
+                                :controllers => {:office => 'refinery/clients/office', :sessions => 'refinery/clients/sessions', :passwords => 'refinery/clients/passwords', :registrations => 'refinery/clients/registrations', :confirmations => 'refinery/clients/confirmations'}
+  devise_scope :client do
+      get "/clients/office", :to => "clients/office#index", :as => :office
+  end
 end
 
 Marinerus::Application.routes.draw do

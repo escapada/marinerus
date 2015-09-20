@@ -10,7 +10,7 @@ module Refinery
 
         def index
             if client_signed_in?
-                @ships = Refinery::Ships::Ship.includes(:translations, :page_status).where(:client_id=>current_client.id)
+                @ships = Refinery::Ships::Ship.includes(:translations, :page_status).where(:client_id=>current_client.id).order('updated_at DESC')
                 @all = @ships
                 @moderate = @ships.select{|ship| ship.page_status.id == 1}
                 @published = @ships.select{|ship| ship.page_status.id == 2}
@@ -50,18 +50,3 @@ module Refinery
     end
   end
 end
-
-# module Refinery
-#   module Clients
-#     class OfficeController < Devise::SessionsController
-#         layout 'refinery/clients/layouts/login'
-#         #before_filter :check, :only=>[:create]
-
-#         def index
-#             client = Client.find_by_email(params[:client][:email])
-#         end
-        
-#     end
-#   end
-# end
-

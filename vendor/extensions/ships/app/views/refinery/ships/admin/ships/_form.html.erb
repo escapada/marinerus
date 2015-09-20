@@ -5,6 +5,7 @@
   <%= javascript_include_tag 'jquery.iframe-transport' %>
   <%= javascript_include_tag 'jquery.fileupload' %>
   <%= javascript_include_tag 'admin_uploadfiles' %>
+  <%= javascript_include_tag 'admin_plus' %>
 <% end %>
 
 <%= form_for [refinery, :ships_admin, @ship] do |f| -%>
@@ -17,12 +18,20 @@
     <%= f.label :on_the_main_flag -%>
     <%= f.check_box :on_the_main_flag -%>
   </div>
+  <!--  -->
+  <div class='line'>
+    <div class='linefield' style="width:940px;">
+      <%= f.label :object, {class: "toggle_editor"} -%>
+      <span class="hide_editor"><%= f.text_area :object, {:class => 'wymeditor', :style => 'width:950px;'}-%></span>
+    </div>
+  </div>
+  <!--  -->
   <div class='line'>
     <div class='linefield' style="width:131px;">
       <%= f.label :page_status_id -%>
       <%= f.collection_select(:page_status_id, @page_statuss, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:127px;"}) %>
     </div>
-    <div class='linefield'style="width:829px;">
+    <div class='linefield' style="width:829px;">
       <%= f.label :title -%>
       <%= f.text_field :title, {:style=>"width:823px;"}-%>
     </div>

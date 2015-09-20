@@ -1,6 +1,5 @@
 <% Globalize.locale.to_s=="ru" ? is_ru = true : is_ru = false %>
 
-
 <% if is_ru %>
 <div id="top">
 	<div class="wrap">
@@ -18,8 +17,13 @@
 			<% end %>
 		</div>
 		<div id="locale-line">
+		<% if @ship.present? %>
+			<span class="locale-line"><%= link_to image_tag(asset_path("rus.png")), "/ships/#{@ship.id}" %></span><span class="locale-line"> РУС</span>
+			<span class="locale-line"><%= link_to image_tag(asset_path("eng.png")), "/en/ships/#{@ship.id}" %></span><span class="locale-line"> ENG</span>
+		<% else %>
 			<span class="locale-line"><%= link_to image_tag(asset_path("rus.png")), "/" %></span><span class="locale-line"> РУС</span>
 			<span class="locale-line"><%= link_to image_tag(asset_path("eng.png")), "/en" %></span><span class="locale-line"> ENG</span>
+		<% end %>
 		</div>
 	</div>
 </div>
@@ -57,8 +61,13 @@
 			<% end %>
 		</div>
 		<div id="locale-line">
+		<% if @ship.present? %>
+			<span class="locale-line"><%= link_to image_tag(asset_path("rus.png")), "/ships/#{@ship.id}" %></span><span class="locale-line"> РУС</span>
+			<span class="locale-line"><%= link_to image_tag(asset_path("eng.png")), "/en/ships/#{@ship.id}" %></span><span class="locale-line"> ENG</span>
+		<% else %>
 			<span class="locale-line"><%= link_to image_tag(asset_path("rus.png")), "/" %></span><span class="locale-line"> РУС</span>
 			<span class="locale-line"><%= link_to image_tag(asset_path("eng.png")), "/en" %></span><span class="locale-line"> ENG</span>
+		<% end %>
 		</div>
 	</div>
 </div>

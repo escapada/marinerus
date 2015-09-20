@@ -54,7 +54,7 @@
             
             <div class="login_field">
               <div class="btn">
-                <%= button_to "Cancel my account", refinery.client_registration_path(resource_name), :data => { :confirm => is_ru ? 'Уверены, что хотите удалить ваш аккаунт?' : 'Are you sure?' }, :method => :delete %>
+                <%= button_to "", refinery.client_registration_path(resource_name), :data => { :confirm => is_ru ? 'Уверены, что хотите удалить ваш аккаунт?' : 'Are you sure?' }, :method => :delete, :form_class => "button_to#{"_e" if !is_ru}" %>
                 </div>
                           </div>
                           <div class="login_field">

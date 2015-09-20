@@ -3,6 +3,7 @@ ru:
     plugins:
       ships:
         title: Суда/Объекты
+        article: masculine
     ships:
       admin:
         ships:
@@ -22,7 +23,9 @@ ru:
         show:
           other: Ещё суда
         description:
+            id: Лот №
             title: Название
+            object: Объект (не плавсредство)
             meta: Meta
             category: Тип
             owner: Судовладелец
@@ -98,10 +101,14 @@ ru:
             vat: НДС
             info: Описание
   activerecord:
+    models:
+        refinery/ships/ship: объект
     attributes:
       'refinery/ships/ship':
+        id: Лот №
         on_the_main_flag: Показывать в рекомендованных
         title: Название
+        object: Объект (не плавсредство)
         meta: Meta
         client_id: Клиент
         category_id: Тип

@@ -3,6 +3,7 @@ ru:
     plugins:
       categories:
         title: Типы судов
+        article: masculine
     categories:
       admin:
         categories:
@@ -22,6 +23,8 @@ ru:
         show:
           other: Другие
   activerecord:
+    models:
+        refinery/categories/category: тип
     attributes:
       'refinery/categories/category':
         rutitle: по-русски

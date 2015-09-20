@@ -1,7 +1,12 @@
-<li class="odd first"><span class="descr_name"><%= t('.info') %>:&nbsp;</span><%= @ship.info %></li>
+<li class="odd first"><span class="descr_name"><%= t('.id') %>:&nbsp;</span><%= @ship.id %></li>
 <% if @ship.register_number.present? %>
 	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.registr_number') %></span>:&nbsp;<%= @ship.register_number %>
+		<span class="descr_name"><%= t('.info') %></span>:&nbsp;<%= @ship.info %>
+	</li>
+<% end %>
+<% if @ship.register_number.present? %>
+	<li class="<%= cycle('even', 'odd') %>">
+		<span class="descr_name"><%= t('.register_number') %></span>:&nbsp;<%= @ship.register_number %>
 	</li>
 <% end %>
 <% if @ship.tbn.present? %>
