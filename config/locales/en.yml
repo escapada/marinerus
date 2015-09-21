@@ -71,7 +71,7 @@ en:
     footer:
       copyright: "Copyright © %{year} %{site_name}"
       river: Activity of the <br />MARINERUS company <br />is certified by the <br />Russian River Register
-      lloyds: Ship Sale & Purchase <br />MARINERUS activity <br />is certified by LLOYD'S<br />MARITIME ACADEMY
+      lloyds: Ship Sale and Purchase <br />MARINERUS activity <br />is certified by LLOYD'S<br />MARITIME ACADEMY
       vetus: MARINERUS — <br />Official Service Center <br />VETUS
       sea: MARINERUS is providing <br />services according to the <br />rules of Russian Maritime <br />Register of Shipping
     no_script:

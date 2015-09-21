@@ -353,9 +353,9 @@
 	<li class="<%= cycle('even', 'odd') %>">
 		<span class="descr_name"><%= t('.price') %></span>:&nbsp;<%= @ship.price %>&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.currency.rutitle : @ship.currency.entitle %>
 	</li>
-<% end %>
-<% if @ship.vat.present? %>
-	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.vat') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.vat.rutitle : @ship.vat.entitle %>
-	</li>
+	<% if @ship.vat.present? %>
+		<li class="<%= cycle('even', 'odd') %>">
+			<span class="descr_name"><%= t('.vat') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.vat.rutitle : @ship.vat.entitle %>
+		</li>
+	<% end %>
 <% end %>

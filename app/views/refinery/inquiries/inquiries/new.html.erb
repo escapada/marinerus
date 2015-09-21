@@ -37,7 +37,7 @@
 
           <% if params[:lot_id] %>
             <div class="field">
-              <%= f.label :lot_id, is_ru ? "Лот №" : "ID", :class => 'placeholder-fallback' %><br />
+              <%= f.label :lot_id, is_ru ? "Судно/Объект (Лот №)" : "Ship/Object (ID)", :class => 'placeholder-fallback' %><br />
               <%= f.text_field :lot_id, :class => 'text' %>
             </div>
           <% end %>

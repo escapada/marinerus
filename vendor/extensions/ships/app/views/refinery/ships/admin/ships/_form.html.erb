@@ -247,6 +247,33 @@
   </div>
   <!--  -->
   <div class="line">
+    <div class='linefield' style="width:97px;">
+      <%= f.label :fuel_id -%>
+      <%= f.collection_select(:fuel_id, @fuels, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => "неизвестно"}, {:style=>"width:93px;"})%>
+    </div>
+    <div class='linefield' style="width:146px;">
+      <%= f.label :fuelcapacity -%>
+      <%= f.text_field :fuelcapacity, {:style=>"width:140px;"}%>
+    </div>
+    <div class='linefield' style="width:146px;">
+      <%= f.label :fuel_way -%>
+      <%= f.text_field :fuel_way, {:style=>"width:140px;"}%>
+    </div>
+    <div class='linefield' style="width:146px;">
+      <%= f.label :fuel_port -%>
+      <%= f.text_field :fuel_port, {:style=>"width:140px;"}%>
+    </div>
+    <div class='linefield' style="width:86px;">
+      <%= f.label :autonomy -%>
+      <%= f.text_field :autonomy, {:style=>"width:80px;"}%>
+    </div>
+    <div class='linefield' style="width:110px;">
+      <%= f.label :gmdss_id -%>
+      <%= f.collection_select(:gmdss_id, @gmdsss, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => "неизвестно"}, {:style=>"width:104px;"})%>
+    </div>
+  </div>
+  <!--  -->
+  <div class="line">
     <div class='linefield' style="width:144px;">
       <%= f.label :tanksheatingchoice_id -%>
       <%= f.collection_select(:tanksheatingchoice_id, @choices, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => "неизвестно"}, {:style=>"width:140px;"})%>

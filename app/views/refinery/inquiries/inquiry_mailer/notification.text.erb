@@ -1,3 +1,5 @@
+<% Globalize.locale.to_s=="ru" ? is_ru=true : is_ru=false %>
+
 <%=raw t('.greeting') %>,
 
 <%=raw t('.you_recieved_new_inquiry') %>
@@ -8,7 +10,7 @@
 <%=raw t('.email') %>: <%= @inquiry.email %>
 <%=raw t('.phone') %>: <%= @inquiry.phone %>
 <% unless @inquiry.lot_id.blank? %>
-	<%=raw t('.phone') %>: <%= @inquiry.lot_id %>
+<%= is_ru ? "Лот №" : "ID" %>: <%= @inquiry.lot_id %>
 <% end %>
 <%=raw t('.message') %>:
 <%=raw strip_tags(@inquiry.message) %>
@@ -18,4 +20,4 @@
 <%=raw t('.closing_line') %>,
 <%=raw Refinery::Core.site_name %>
 
-<%=raw t('.ps') -%>
+<%#=raw t('.ps') -%>
