@@ -7,13 +7,13 @@
 			<%if client_signed_in? %>
 				Добро пожаловать на борт, <stong><%= current_client.name.present? ? current_client.name : current_client.email %></stong>
 				<span class="vertical_separator">|</span>
-				<%= link_to 'Личный кабинет', office_path %>
+				<%= link_to 'Личный кабинет', refinery.office_path %>
 				<span class="vertical_separator">|</span>
-				<%= link_to 'Выйти', destroy_client_session_path, :method => 'delete' %><%#%>
+				<%= link_to 'Выйти', refinery.destroy_client_session_path, :method => 'delete' %><%#%>
 			<% else %>
-				<%= link_to 'Зарегистрироваться', new_client_registration_path %>
+				<%= link_to 'Зарегистрироваться', refinery.new_client_registration_path %>
 				<span class="vertical_separator">|</span>
-				<%= link_to 'Войти', new_client_session_path %>
+				<%= link_to 'Войти', refinery.new_client_session_path %>
 			<% end %>
 		</div>
 		<div id="locale-line">
@@ -51,13 +51,13 @@
 			<%if client_signed_in? %>
 				Welcome aboard, <stong><%= current_client.name.present? ? current_client.name : current_client.email %></stong>
 				<span class="vertical_separator">|</span>
-				<%= link_to 'My account', office_path %>
+				<%= link_to 'My account', refinery.office_path %>
 				<span class="vertical_separator">|</span>
-				<%= link_to 'Log out', destroy_client_session_path, :method => 'delete' %><%#%>
+				<%= link_to 'Log out', refinery.destroy_client_session_path, :method => 'delete' %><%#%>
 			<% else %>
-				<%= link_to 'Sign up', new_client_registration_path %>
+				<%= link_to 'Sign up', refinery.new_client_registration_path %>
 				<span class="vertical_separator">|</span>
-				<%= link_to 'Sign in', new_client_session_path %>
+				<%= link_to 'Sign in', refinery.new_client_session_path %>
 			<% end %>
 		</div>
 		<div id="locale-line">

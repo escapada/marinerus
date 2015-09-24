@@ -10,7 +10,9 @@ body{width:100%;/*height: 100%;*/ z-index: 1;}
 #slogan_e{ font-size: 33px; line-height: 34px; font-weight: bold; color: $blue;}
 .slogan{ font-size: 28px; line-height: 28px; display: block; text-align: center; font-weight: bold; color: $blue;}
 h1{ font-size: 22px; line-height: 28px; font-weight: normal;}
-h2{ font-size: 22px; line-height: 28px; font-weight: normal;}
+h2{ font-size: 22px; line-height: 28px; font-weight: normal;
+	a{ font-size: 22px; line-height: 22px; color: $blue; display: block; margin-bottom: 10px; /*font-style: italic;*/}
+}
 h3{ font-size: 16px; font-weight: normal; display: block; margin-bottom: 5px; color: $blue;}
 .h2{ font-size: 16px; line-height: 25px; display: block; margin-top: 20px; color: $blue;}
 .h2_{ font-size: 16px; line-height: 25px; display: block; margin-bottom: 5px; color: $blue;}
@@ -151,7 +153,7 @@ h3{ font-size: 16px; font-weight: normal; display: block; margin-bottom: 5px; co
 	.right{ float:right; width: 210px; background: $greybg; border-left: 1px $blue solid;
 		div{ height: 52px; text-align: center;
 			span{ line-height:51px; /*display: block;*/  /*margin: 15px 0 0 15px;*/
-				a{ color: $blue; font-size: 14px;}
+				a{ color: $blue; font-size: 14px; display: block;}
 			}
 		}
 		.right_top{ height: 51px!important; border-bottom: 1px $blue solid;}
@@ -259,6 +261,23 @@ h3{ font-size: 16px; font-weight: normal; display: block; margin-bottom: 5px; co
 .about_image{ margin: 30px 0; display: inline-block;}
 .text_wrap{ margin: 30px 0; display: inline-block;
 	.text_block{ width:300px; float: left; text-align: justify;}
+}
+
+/*///////////////////////////// NEWS page */
+.date_underline{ width: 100%; border-bottom: $blue 1px solid; margin-bottom: 5px; clear: both;
+	small{ color:$grey; font-style: italic;}
+}
+.news_cut, .news_item{
+	p{ padding: 0 0 5px 0; text-align: justify;}
+	img{ border: 1px solid;}
+	table{
+		tr{
+			td{padding: 5px;}
+		}
+	}
+}
+.read_more{ width: 100%; height: 25px; text-align: right; line-height: 25px; font-style: italic; clear: both;
+	a{ color: $blue; }
 }
 
 /*//////////////////////////////////////////////COMMON BLOCK FOR UPLOADING */

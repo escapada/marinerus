@@ -1,0 +1,25 @@
+<% content_for :body do %>
+  <article class="news_item">
+    <h2><%= @item.title %></h2>
+    <p class="date_underline">
+      <small><%= t('.published') %> <%= l(@item.publish_date, :format => :long) %></small>
+    </p>
+    <% if @item.source.present? %>
+      <p class="date_underline">
+        <small><%= t('.source') %> <%= @item.source %></small>
+      </p>
+    <% end %>
+    <%= @item.body.html_safe %>
+    <p>
+      <%= link_to t('.back_to_index'), refinery.news_items_path, style: "color:#2c87af;" %>
+    </p>
+  </article>
+<% end %>
+
+<div class="wrap">
+  <div id="container">
+    <div class="content_container_big">
+      <%= render "/refinery/content_page" %>
+    </div>
+  </div>
+</div>

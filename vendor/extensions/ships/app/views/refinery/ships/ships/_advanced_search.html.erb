@@ -22,11 +22,11 @@
 				<td colspan="3" class="value">
 					<select id="search_status_id" name="search[status_id]">
 						<option value=""></option>
-						<option value="1"><%= is_ru ? "продажа" : "sale" %></option>
-						<option value="2"><%= is_ru ? "аренда" : "rent" %></option>
-						<option value="3"><%= is_ru ? "продажа или аренда" : "sale or rent" %></option>
-						<option value="7"><%= is_ru ? "снят с продажи/аренды" : "remove" %></option>
-						<option value="8"><%= is_ru ? "продан" : "sold:" %></option>
+						<option value="1" <%= "selected='selected'" if @search.status_id == 1 %>><%= is_ru ? "продажа" : "sale" %></option>
+						<option value="2" <%= "selected='selected'" if @search.status_id == 2 %>><%= is_ru ? "аренда" : "rent" %></option>
+						<option value="3" <%= "selected='selected'" if @search.status_id == 3 %>><%= is_ru ? "продажа или аренда" : "sale or rent" %></option>
+						<option value="7" <%= "selected='selected'" if @search.status_id == 7 %>><%= is_ru ? "снят с продажи/аренды" : "remove" %></option>
+						<option value="8" <%= "selected='selected'" if @search.status_id == 8 %>><%= is_ru ? "продан" : "sold:" %></option>
 					</select>
 					<%#= f.collection_select(:status_id, @statuss, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => true}, {}) %></td>
 				<td colspan="2"><%= is_ru ? "Описание:" : "Description:" %></td>

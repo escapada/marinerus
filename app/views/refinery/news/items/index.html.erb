@@ -1,0 +1,30 @@
+<% content_for :body do %>
+  <%=raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) unless params[:page] %>
+
+  <% if @items.any? %>
+    <% @items.each do |item| %>
+        <p class="date_underline">
+          <small><%= t('.published') %> <%= l(item.publish_date, :format => :long) %></small>
+        </p>
+      <article class="news_item_truncated">
+        <h2><%= link_to item.title, refinery.news_item_path(item) %></h2>
+        <div class="news_cut"><%= truncate  item.body, :length => 400, :preserve_html_tags => true %></div>
+        <div class="read_more"><%= link_to t('.read_more')+" >>>", refinery.news_item_path(item) %></div>
+      </article>
+
+    <% end %>
+
+    <%= will_paginate @items %>
+  <% else %>
+    <p><em><%= t('.no_items_yet') %></em></p>
+  <% end %>
+<% end -%>
+
+
+<div class="wrap">
+  <div id="container">
+    <div class="content_container_big">
+      <%= render "/refinery/content_page" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<p>Клиент <%= @ship.client.email %>
+<% unless @ship.client.name.blank? %>
+	&nbsp;[<%= @ship.client.name %>
+	<% unless @ship.client.company.blank? %>
+		&nbsp;(<%= @ship.client.company  %>)
+	<% end %>]
+<% end %>
+&nbsp;создал объект/запрос в личном кабинете. Необходима <%= raw link_to "модерация", refinery.edit_ships_admin_ship_url(@ship) %>.</p>

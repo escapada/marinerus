@@ -69,3 +69,6 @@ $greybg:		#f1f1f2;
 /*/////////////////////////hide Refinery LOGO*/
 #site_bar_refinery_cms_logo{display: none;}
 #hide_items_wysiwyg{display: none;}
+
+/*/////////////////////////change Refinery Menu Tabs a little bit*/
+#menu.ui-sortable-disabled a{ padding-left: 7px; padding-right: 7px;}

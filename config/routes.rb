@@ -48,6 +48,14 @@ Refinery::Inquiries::Engine.routes.prepend do
   end
 end
 
+Refinery::News::Engine.routes.prepend do
+  devise_for :clients,  :class_name => "Refinery::Clients::Client",
+                                :controllers => {:office => 'refinery/clients/office', :sessions => 'refinery/clients/sessions', :passwords => 'refinery/clients/passwords', :registrations => 'refinery/clients/registrations', :confirmations => 'refinery/clients/confirmations'}
+  devise_scope :client do
+      get "/clients/office", :to => "clients/office#index", :as => :office
+  end
+end
+
 Marinerus::Application.routes.draw do
 
   # This line mounts Refinery's routes at the root of your application.

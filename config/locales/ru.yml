@@ -83,3 +83,8 @@ ru:
   will_paginate:
     previous_label: "&laquo;"
     next_label: "&raquo;"
+  mytranslations:
+    order_notification:
+      subject: "Клиент разместил новый объет/запрос. Необходима модерация." 
+      hello: "Здравствуйте"
+      published_txt_owner: модератор опубликовал ваш запрос. Теперь ваш лот доступен по <a href="%{a}">ссылке</a>

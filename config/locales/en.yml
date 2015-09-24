@@ -84,3 +84,8 @@ en:
   will_paginate:
     previous_label: "&laquo;"
     next_label: "&raquo;"
+  mytranslations:
+    order_notification:
+      subject: "Client place new order/demand from his account"
+      hello: "Hello"
+      published_txt_owner: we published your order/demand <a href="%{a}">sdmd</a>

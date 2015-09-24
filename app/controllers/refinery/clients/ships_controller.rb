@@ -32,7 +32,8 @@ module Refinery
 			:what => "#{@ship.title}'"
 			)
 
-			attach_update
+                    attach_update
+                    ::Refinery::Inquiries::InquiryMailer.order_notification(@ship).deliver
 			redirect_to office_path
 		else
 			create_or_update_unsuccessful 'new'

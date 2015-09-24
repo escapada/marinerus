@@ -22,6 +22,7 @@ module Refinery
 
       def show
         @ship = Ship.includes(:status).find(params[:id])
+        redirect_to refinery.root_path if @ship.page_status_id == 1
 
         # you can use meta fields from your model instead (e.g. browser_title)
         # by swapping @page for @ship in the line below

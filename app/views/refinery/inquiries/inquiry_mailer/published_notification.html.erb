@@ -1,0 +1,12 @@
+<p>Здравствуйте,
+<% unless @ship.client.name.blank? %>
+	&nbsp;<%= @ship.client.name %>
+<% end %><br />
+ваш лот теперь опубликован на нашем сайте. Теперь он доступен по <%= link_to "ссылке", refinery.ships_ship_url(@ship, :locale => "ru") %>.</p>
+<!-- refinery.ships_ship_url(@ship, :switch_locale => "ru") -->
+<p>--------------------------------------------------</p>
+<p>Hello,
+<% unless @ship.client.name.blank? %>
+	&nbsp;<%= @ship.client.name %>
+<% end %><br />
+we published your <%= link_to "order/demand", refinery.ships_ship_url(@ship) %> on our site.</p>

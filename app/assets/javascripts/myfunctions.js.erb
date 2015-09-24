@@ -27,6 +27,12 @@ $(function(){
 	};	
 });
 
+// news preview image size hack ( one size fits all :-) ) 
+$(function(){
+	$('.news_cut img').attr("width", 200);
+	$('.news_cut img').attr("height", "");
+});
+
 $(function(){
 	$("#filemanage").click(function (){showManager('filemanager')});
 	$("#photomanage").click(function (){showManager('photomanager')});

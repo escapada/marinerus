@@ -12,6 +12,8 @@ module Refinery
 	      before_filter	:edit_attach_init, :only=>[:edit, :update]
 	      before_filter	:create_attach_init, :only=>[:create]
 
+	      # after_update	:send_notification, :only=>[:update]
+
 	      def create
 	            # if (@ship = Refinery::Ships::Ship.create(params[:ship]){|s| s.client_id = current_client.id}).valid?
 	            if (@ship = Refinery::Ships::Ship.create(params[:ship])).valid?
@@ -79,6 +81,13 @@ module Refinery
 	      def attach_update
 	      		@attach.update_attributes(ship_id: @ship.id)
 	      end
+
+	      ######Send mail
+	      # def send_notification
+	      # 	logger.debug(@ship.page_status_id_changed?)
+	      # 		::Refinery::Inquiries::InquiryMailer.published_notification(@ship).deliver if (@ship.page_status_id_changed? and @ship.page_status_id == 2)
+	      # end
+
       end
     end
   end
