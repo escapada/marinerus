@@ -68,3 +68,4 @@ gem 'rake'
 
 gem 'refinerycms-categories', :path => 'vendor/extensions'
 gem 'refinerycms-ships', :path => 'vendor/extensions'
+gem 'refinerycms-adds', :path => 'vendor/extensions'

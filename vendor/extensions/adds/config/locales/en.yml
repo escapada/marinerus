@@ -1,0 +1,31 @@
+en:
+  refinery:
+    plugins:
+      adds:
+        title: Adds
+    adds:
+      admin:
+        adds:
+          actions:
+            create_new: Add New Add
+            reorder: Reorder Adds
+            reorder_done: Done Reordering Adds
+          records:
+            title: Adds
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Adds yet. Click "Add New Add" to add your first add.
+          add:
+            view_live_html: View this add live <br/><em>(opens in a new window)</em>
+            edit: Edit this add
+            delete: Remove this add forever
+      adds:
+        show:
+          other: Other Adds
+  activerecord:
+    models:
+        refinery/adds/add: add
+    attributes:
+      'refinery/adds/add':
+        title: Title
+        image: Image
+        body: Body

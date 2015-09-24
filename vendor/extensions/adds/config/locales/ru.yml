@@ -1,0 +1,32 @@
+ru:
+  refinery:
+    plugins:
+      adds:
+        title: Реклама
+        article: neuter
+    adds:
+      admin:
+        adds:
+          actions:
+            create_new: Добавить объявление
+            reorder: Изменить порядок
+            reorder_done: Сохранить порядок
+          records:
+            title: Объявления
+            sorry_no_results: Ничего не найдено.
+            no_items_yet: Пока нет объявлений.
+          add:
+            view_live_html: View this add live <br/><em>(opens in a new window)</em>
+            edit: Редактировать
+            delete: Удалить
+      adds:
+        show:
+          other: Ещё
+  activerecord:
+    models:
+        refinery/ships/ship: объявление
+    attributes:
+      'refinery/adds/add':
+        title: Заголовок
+        image: Фото
+        body: Текст

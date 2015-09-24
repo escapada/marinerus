@@ -1,4 +1,5 @@
 Refinery::Inquiries::InquiriesController.class_eval do
+	before_filter :adds_find
 
   def new
     if params[:lot_id].present?
@@ -6,6 +7,12 @@ Refinery::Inquiries::InquiriesController.class_eval do
     else
       @inquiry = ::Refinery::Inquiries::Inquiry.new
     end
+  end
+
+  protected
+
+  def adds_find
+  	@adds = Refinery::Adds::Add.limit(4)
   end
 
 end

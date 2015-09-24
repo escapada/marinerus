@@ -2,6 +2,7 @@ Refinery::PagesController.class_eval do
 
   before_filter :ships_prepare#, :only=>[:home]
   before_filter :get_currencies
+  before_filter :adds_find
 
     def get_currencies_helper(today_date, prev_date)
         usd_xml = Net::HTTP.get(URI.parse("http://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=#{prev_date}&date_req2=#{today_date}&VAL_NM_RQ=R01235"))
@@ -20,6 +21,7 @@ Refinery::PagesController.class_eval do
         session[:euro] = euro
         session[:gbp] = gbp
     end
+
 
   protected
   def ships_prepare
@@ -55,6 +57,11 @@ Refinery::PagesController.class_eval do
 
      logger.debug("#{session[:usd]}, //////////, #{session[:usd][-2]}, //////////, #{session[:usd]}")
 
+  end
+
+  def adds_find
+    @adds = Refinery::Adds::Add.limit(4)
+    # logger.debug("{{{{{{{{{{{{{{{{{{{{{{{{{{{#{@adds}")
   end
 
 end

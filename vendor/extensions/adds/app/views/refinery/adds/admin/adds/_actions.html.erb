@@ -1,0 +1,20 @@
+<ul>
+  <li>
+    <%= link_to t('.create_new'), refinery.new_adds_admin_add_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? && ::Refinery::Adds::Admin::AddsController.sortable? && ::Refinery::Adds::Add.many? %>
+  <li>
+    <%= link_to t('.reorder', :what => "Adds"),
+                 refinery.adds_admin_adds_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Adds"),
+                 refinery.adds_admin_adds_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

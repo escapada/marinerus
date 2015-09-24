@@ -1,5 +1,5 @@
 <%= render '/refinery/draft_page_message' unless @page.try(:live?) -%>
 <%#= render '/refinery/content_page' %>
-<div id="container">
+<div class="one_column">
 	<%= render partial:  Globalize.locale.to_s=="ru" ? "/refinery/about_ru" : "/refinery/about_en" %>
 </div>

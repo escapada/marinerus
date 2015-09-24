@@ -7,6 +7,7 @@ module Refinery
       before_filter :find_page
 
       before_filter :ships_prepare, :only=>[:index]
+      before_filter :adds_find
 
       def index
         # you can use meta fields from your model instead (e.g. browser_title)
@@ -54,6 +55,10 @@ module Refinery
         @currencies = Currency.all
         @powers = Power.all
 
+      end
+
+      def adds_find
+        @adds = Refinery::Adds::Add.limit(4)
       end
 
     end

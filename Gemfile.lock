@@ -1,6 +1,8 @@
 PATH
   remote: vendor/extensions
   specs:
+    refinerycms-adds (1.0)
+      refinerycms-core (~> 2.1.5)
     refinerycms-categories (1.0)
       refinerycms-core (~> 2.1.5)
     refinerycms-ships (1.0)
@@ -236,6 +238,7 @@ DEPENDENCIES
   rake
   refinerycms (~> 2.1.0)
   refinerycms-acts-as-indexed (~> 1.0.0)
+  refinerycms-adds!
   refinerycms-categories!
   refinerycms-inquiries
   refinerycms-news (~> 2.1.0)

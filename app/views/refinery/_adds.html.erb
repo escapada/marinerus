@@ -1,0 +1,11 @@
+<% @adds.each do |addblock| %>
+	<div class="addblock">
+		<h4><%= addblock.title %></h4>
+		<% unless addblock.image.blank? %>
+		<div class="addimg">
+			<%= image_tag(addblock.image.thumbnail(geometry:"280x").url) %>
+		</div>
+		<% end %>
+		<%= raw addblock.body %>
+	</div>
+<% end %>

@@ -20,3 +20,6 @@ Refinery::Inquiries::Engine.load_seed
 
 # Added by Refinery CMS News engine
 Refinery::News::Engine.load_seed
+
+# Added by Refinery CMS Adds extension
+Refinery::Adds::Engine.load_seed

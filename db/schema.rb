@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150921111236) do
+ActiveRecord::Schema.define(:version => 20150924082010) do
 
   create_table "areas", :force => true do |t|
     t.string "rutitle"
@@ -78,6 +78,27 @@ ActiveRecord::Schema.define(:version => 20150921111236) do
   create_table "propulsions", :force => true do |t|
     t.string "rutitle"
     t.string "entitle"
+  end
+
+  create_table "refinery_add_translations", :force => true do |t|
+    t.integer  "refinery_add_id"
+    t.string   "locale",          :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "title"
+    t.text     "body"
+  end
+
+  add_index "refinery_add_translations", ["locale"], :name => "index_refinery_add_translations_on_locale"
+  add_index "refinery_add_translations", ["refinery_add_id"], :name => "index_refinery_add_translations_on_refinery_add_id"
+
+  create_table "refinery_adds", :force => true do |t|
+    t.string   "title"
+    t.integer  "image_id"
+    t.text     "body"
+    t.integer  "position"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "refinery_categories", :force => true do |t|
