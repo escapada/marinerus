@@ -1,5 +1,5 @@
 <li class="odd first"><span class="descr_name"><%= t('.id') %>:&nbsp;</span><%= @ship.id %></li>
-<% if @ship.register_number.present? %>
+<% if @ship.info.present? %>
 	<li class="<%= cycle('even', 'odd') %>">
 		<span class="descr_name"><%= t('.info') %></span>:&nbsp;<%= @ship.info %>
 	</li>

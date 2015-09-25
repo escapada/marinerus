@@ -2,7 +2,7 @@
 	<td class="dt-body-center"><%= ship.id %></td>
 	<td><%= ship.updated_at.strftime("%d.%m.%Y") %></td>
 	<td><%= Globalize.locale.to_s=="ru" ? ship.category.rutitle : ship.category.entitle %></td>
-	<td><%= link_to "#{truncate ship.title, :length=>72}", refinery.ships_ship_path(ship), {title: ship.info} %></td>
+	<td><%= link_to "#{truncate ship.info, :length=>72}", refinery.ships_ship_path(ship), {title: ship.info} %></td>
 	<td class="dt-body-center"><%= ship.location %></td>
 	<td class="dt-body-center"><%= ship.construction_date.strftime("%Y") if ship.construction_date.present? %></td>
 	<td class="dt-body-center"><%= ship.attachment.photos.any? ? image_tag('photo-icon.png', {class: 'popup_photo', onmouseover: "show_popup(event, '#{ship.attachment.photos[0].photo.url(:main)}')", onmouseout: "hide_popup()"}) : "-" %></td>
