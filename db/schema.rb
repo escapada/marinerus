@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150924082010) do
+ActiveRecord::Schema.define(:version => 20151002074129) do
 
   create_table "areas", :force => true do |t|
     t.string "rutitle"
@@ -404,6 +404,9 @@ ActiveRecord::Schema.define(:version => 20150924082010) do
     t.datetime "created_at",                                                          :null => false
     t.datetime "updated_at",                                                          :null => false
     t.text     "object"
+    t.date     "construction_end_date"
+    t.decimal  "price_end",             :precision => 10, :scale => 0
+    t.integer  "water"
   end
 
   create_table "refinery_user_plugins", :force => true do |t|

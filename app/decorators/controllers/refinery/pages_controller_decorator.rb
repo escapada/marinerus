@@ -61,6 +61,7 @@ Refinery::PagesController.class_eval do
 
   def adds_find
     @adds = Refinery::Adds::Add.limit(4)
+    @adds.order(:positions) if @adds.present?
     # logger.debug("{{{{{{{{{{{{{{{{{{{{{{{{{{{#{@adds}")
   end
 

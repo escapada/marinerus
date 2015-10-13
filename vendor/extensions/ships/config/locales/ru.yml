@@ -100,6 +100,7 @@ ru:
             price: Цена
             vat: НДС
             info: Описание
+            water: Запас воды (т)
   activerecord:
     models:
         refinery/ships/ship: объект
@@ -188,3 +189,4 @@ ru:
         pricename: Pricename
         pricetax: Pricetax
         info: Описание
+        water: Запас воды (т)

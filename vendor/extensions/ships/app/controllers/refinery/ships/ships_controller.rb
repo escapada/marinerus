@@ -59,6 +59,7 @@ module Refinery
 
       def adds_find
         @adds = Refinery::Adds::Add.limit(4)
+        @adds.order(:positions) if @adds.present?
       end
 
     end

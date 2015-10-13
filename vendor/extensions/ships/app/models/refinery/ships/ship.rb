@@ -5,7 +5,7 @@ module Refinery
 
       after_update :send_notification
 
-      attr_accessible :title, :on_the_main_flag, :object, :meta, :client_id, :category_id, :page_status_id, :owner, :operator, :register_number, :tbn, :status_id, :condition_id, :area_id, :subtype, :appointment, :project, :flag, :registration_id, :construction_date, :construction_place, :renovation_date, :registr_id, :registr_symbol, :period_class, :last_dock, :next_dock, :length, :width, :height, :free_board, :max_draught, :min_draught, :air_draught, :gross_tonnage, :net_tonnage, :deadweight, :loading, :displacement, :dockweight, :tanks, :tanksvolume, :passengers, :engine_id, :enginemodel, :enginequantity, :enginepower, :power_id, :propulsion_id, :propulsionquantity, :fuel_id, :fuelcapacity, :fuel_way, :fuel_port, :autonomy, :speed, :speedname_id, :gmdss_id, :crew, :hulltype_id, :hullmaterial_id, :supermaterial_id, :tanksheatingchoice_id, :tankscoolingchoice_id, :doubleboardchoice_id, :doublebottomchoice_id, :doublehullchoice_id, :diesel, :sternthrusters, :stabilizers, :winch, :hook, :cablelength, :cranes, :craneloading, :sails, :sailsarea, :location, :price, :currency_id, :vat_id, :info, :position
+      attr_accessible :title, :on_the_main_flag, :object, :meta, :client_id, :category_id, :page_status_id, :owner, :operator, :register_number, :tbn, :status_id, :condition_id, :area_id, :subtype, :appointment, :project, :flag, :registration_id, :construction_date, :construction_end_date, :construction_place, :renovation_date, :registr_id, :registr_symbol, :period_class, :last_dock, :next_dock, :length, :width, :height, :free_board, :max_draught, :min_draught, :air_draught, :gross_tonnage, :net_tonnage, :deadweight, :loading, :displacement, :dockweight, :tanks, :tanksvolume, :passengers, :engine_id, :enginemodel, :enginequantity, :enginepower, :power_id, :propulsion_id, :propulsionquantity, :fuel_id, :fuelcapacity, :fuel_way, :fuel_port, :autonomy, :speed, :speedname_id, :gmdss_id, :crew, :hulltype_id, :hullmaterial_id, :supermaterial_id, :tanksheatingchoice_id, :tankscoolingchoice_id, :doubleboardchoice_id, :doublebottomchoice_id, :doublehullchoice_id, :diesel, :sternthrusters, :stabilizers, :winch, :hook, :cablelength, :cranes, :craneloading, :sails, :sailsarea, :location, :price, :price_end, :currency_id, :vat_id, :info, :position, :water, :last_view, :from_created_views, :from_updated_views
 
       translates :title, :object, :meta, :owner, :operator, :register_number, :tbn, :subtype, :appointment, :project, :flag, :construction_place, :registr_symbol, :enginemodel, :autonomy, :diesel, :sternthrusters, :stabilizers, :winch, :hook, :location, :info
 
@@ -14,6 +14,7 @@ module Refinery
       end
 
       validates :title, :presence => true, :uniqueness => true
+      validates :info, :presence => true
       # validates :category_id, :presence => true
 
       has_one :attachment, :class_name=>'Refinery::Ships::Attachment'

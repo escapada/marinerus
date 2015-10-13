@@ -43,7 +43,7 @@ en:
           construction_date: Construction date
           construction_place: Construction place
           renovation_date: Renovation date
-          registr: Registr
+          registr: Register
           registr_symbol: Symbol of the Register Class
           period_class: Period of the Class validity
           last_dock: Date of the last dock
@@ -66,7 +66,7 @@ en:
           passengers: Passenger capacity
           enginetype: Engine type
           enginemodel: Engine model
-          enginequantity: Main engines quantoty
+          enginequantity: Main engines quantity
           enginepower: Main engines power
           propulsion: Propulsion type
           propulsionquantity: Propulsion quantity
@@ -76,7 +76,7 @@ en:
           fuel_port: Fuel consumption in port
           autonomy: Autonomy
           speed: Speed
-          gmdss: Gmdss
+          gmdss: GMDSS
           crew: Crew
           hulltype: Hull type
           hullmaterial: Hull material
@@ -100,6 +100,7 @@ en:
           price: Cost
           vat: VAT
           info: Description
+          water: Water stores (t)
   activerecord:
     attributes:
       'refinery/ships/ship':
@@ -187,3 +188,4 @@ en:
         pricename: Pricename
         pricetax: Pricetax
         info: Description
+        water: Water stores (t)

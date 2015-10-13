@@ -35,6 +35,7 @@ $(function(){
 
 $(function(){
 	$("#filemanage").click(function (){showManager('filemanager')});
+	$("#filemanage_plus").click(function (){showManager('filemanager')});
 	$("#photomanage").click(function (){showManager('photomanager')});
 	$("#hidden_helper").click(function (){hideHelper()});
 	$(".closemanager").click(function (){hideHelper()});
@@ -308,6 +309,8 @@ function deletefile (id) {
 		//error: function(){alert("Возникла ошибка!");}
 	});
 }
+
+// dateselect>select>change>logic...
 
 function show_popup (e, url) {
 	image = "<image src='"+url+"' width='200px' />"

@@ -24,7 +24,7 @@ ru:
           other: Ещё
   activerecord:
     models:
-        refinery/ships/ship: объявление
+        refinery/adds/add: объявление
     attributes:
       'refinery/adds/add':
         title: Заголовок

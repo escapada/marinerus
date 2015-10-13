@@ -62,6 +62,9 @@
 <% if @ship.construction_date.present? %>
 	<li class="<%= cycle('even', 'odd') %>">
 		<span class="descr_name"><%= t('.construction_date') %></span>:&nbsp;<%= @ship.construction_date.strftime("%m.%Y") %>
+		<% if @ship.construction_end_date.present? %>
+			&mdash;&nbsp;<%= @ship.construction_end_date.strftime("%m.%Y") %>
+		<% end %>
 	</li>
 <% end %>
 <% if @ship.construction_place.present? %>
@@ -351,7 +354,7 @@
 <% end %>
 <% if @ship.price.present? %>
 	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.price') %></span>:&nbsp;<%= @ship.price %>&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.currency.rutitle : @ship.currency.entitle %>
+		<span class="descr_name"><%= t('.price') %></span>:&nbsp;<%= @ship.price %>&nbsp;<%= raw "&mdash;&nbsp;#{@ship.price_end}" unless @ship.price_end.blank? %>&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.currency.rutitle : @ship.currency.entitle %>
 	</li>
 	<% if @ship.vat.present? %>
 		<li class="<%= cycle('even', 'odd') %>">
