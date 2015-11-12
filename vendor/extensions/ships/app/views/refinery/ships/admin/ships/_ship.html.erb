@@ -1,5 +1,6 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(ship) -%>">
   <span class='title'>
+  <strong><%= ship.id %>. </strong>
     <%= ship.title %>
 
     <% if Refinery::I18n.frontend_locales.many? %>

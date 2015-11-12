@@ -66,7 +66,11 @@
     </div>
     <div class='linefield' style="width:301px;">
       <%= f.label :category_id -%>
-      <%= f.collection_select(:category_id, @categories, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:297px;"})%>
+      <% if Globalize.locale.to_s=="ru"%>
+        <%= f.collection_select(:category_id, Refinery::Categories::Category.order("rutitle ASC"), :id, :rutitle, {}, {:style=>"width:297px;"})%>
+      <% else %>
+        <%= f.collection_select(:category_id, Refinery::Categories::Category.order("entitle ASC"), :id, :entitle, {}, {:style=>"width:297px;"})%>
+      <% end %>
     </div>
     <div class='linefield' style="width:157px;">
       <%= f.label :subtype -%>
@@ -112,11 +116,11 @@
   <div class="line">
     <div class='linefield dateselect' style="width:102px;">
       <%= f.label :construction_date -%>
-      <%= f.date_select :construction_date, {:discard_day=>true, :use_month_numbers => true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year, :include_blank=>true} %>
+      <%= f.date_select :construction_date, {:discard_day=>true, :discard_month=>true, :use_month_numbers => true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year, :include_blank=>true}, {style: "width: 96px;"} %>
     </div>
     <div class='linefield' style="width:102px;">
       <%= f.label :construction_end_date, Globalize.locale.to_s=="ru" ? "До" : "To" -%>
-      <%= f.date_select :construction_end_date, {:discard_day=>true, :use_month_numbers => true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year, :include_blank=>true} %>
+      <%= f.date_select :construction_end_date, {:discard_day=>true, :discard_month=>true, :use_month_numbers => true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year, :include_blank=>true}, {style: "width: 96px;"} %>
     </div>
     <div class='linefield' >
       <span style="display:inline; line-height:43px; font-size:10px;"><%= Globalize.locale.to_s=="ru" ? "  поле 'До' не будет учитываться, если это не запрос" : "  field 'To' won't be used, if it's not a demand" -%></span>
@@ -124,13 +128,13 @@
   </div>
   <!--  -->
   <div class="line">
-    <div class='linefield' style="width:130px;">
+    <div class='linefield' style="width:200px;">
       <%= f.label :construction_place -%>
-      <%= f.text_field :construction_place, {style: "width:124px;"} %>
+      <%= f.text_field :construction_place, {style: "width:194px;"} %>
     </div>
     <div class='linefield' style="width:102px;">
       <%= f.label :renovation_date -%>
-      <%= f.date_select :renovation_date, {:discard_day=>true, :use_month_numbers => true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year, :include_blank=>true} %>
+      <%= f.date_select :renovation_date, {:discard_day=>true, :discard_month=>true, :use_month_numbers => true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year, :include_blank=>true}, {style: "width: 96px;"} %>
     </div>
     <div class='linefield' style="width:130px;">
       <%= f.label :registr_id -%>
@@ -261,9 +265,10 @@
       <%= f.label :fuel_id -%>
       <%= f.collection_select(:fuel_id, @fuels, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => "неизвестно"}, {:style=>"width:93px;"})%>
     </div>
-    <div class='linefield' style="width:146px;">
+    <div class='linefield' style="width:202px;">
       <%= f.label :fuelcapacity -%>
       <%= f.text_field :fuelcapacity, {:style=>"width:140px;"}%>
+      <%= f.collection_select(:fuelname_id, @fuelnames, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:51px;"})%>
     </div>
     <div class='linefield' style="width:146px;">
       <%= f.label :fuel_way -%>

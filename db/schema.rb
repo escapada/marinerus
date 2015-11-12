@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151002074129) do
+ActiveRecord::Schema.define(:version => 20151025130614) do
 
   create_table "areas", :force => true do |t|
     t.string "rutitle"
@@ -41,6 +41,11 @@ ActiveRecord::Schema.define(:version => 20151002074129) do
   end
 
   create_table "engines", :force => true do |t|
+    t.string "rutitle"
+    t.string "entitle"
+  end
+
+  create_table "fuelnames", :force => true do |t|
     t.string "rutitle"
     t.string "entitle"
   end
@@ -407,6 +412,7 @@ ActiveRecord::Schema.define(:version => 20151002074129) do
     t.date     "construction_end_date"
     t.decimal  "price_end",             :precision => 10, :scale => 0
     t.integer  "water"
+    t.integer  "fuelname_id"
   end
 
   create_table "refinery_user_plugins", :force => true do |t|

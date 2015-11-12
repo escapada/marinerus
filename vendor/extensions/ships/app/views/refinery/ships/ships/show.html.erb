@@ -7,6 +7,7 @@
       <ul class="list_positions description">
         <%= render partial: "description" %>
       </ul>
+      <div class="getback"><%= link_to image_tag(is_ru ? asset_path('back_btn.png') : asset_path('back_btn_e.png')), :back %></div>
     </div>
     <div class="content_container_xsm">
       <%= link_to image_tag(is_ru ? asset_path('inquiry_btn.png') : asset_path('inquiry_btn_e.png')), refinery.inquiries_new_inquiry_path(lot_id: @ship.id) %><br />

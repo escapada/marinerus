@@ -1,6 +1,6 @@
 Refinery::Inquiries.configure do |config|
   # Configure whether to show privacy link
-  # config.show_contact_privacy_link = true
+  config.show_contact_privacy_link = false
 
   # Configure whether to show phone number field
   # config.show_phone_number_field = true

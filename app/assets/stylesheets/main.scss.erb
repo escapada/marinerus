@@ -52,7 +52,7 @@ h3{ font-size: 16px; font-weight: normal; display: block; margin-bottom: 5px; co
 .footer-right{float: right; width: 49px; height:180px; border-left: 1px $grey solid; a{margin-left: 10px; line-height: 20px;}}
 #footer-contact span, #footer-contact a{font-size: 16px; font-weight: bold; color: $blue; line-height: 25px; margin-left:5px;  }
 #cell-foot{height: 25px; clear: both; margin-top: 5px; img{float:left;}}
-#mail-foot{height: 25px; clear: both; margin: 5px 0 40px 0; img{float:left;}}
+#mail-foot{height: 25px; clear: both; margin: 5px 0 10px 0; img{float:left;}}
 
 #page{width: 100%;}
 #body{width: 100%; float:left;}
@@ -124,6 +124,8 @@ h3{ font-size: 16px; font-weight: normal; display: block; margin-bottom: 5px; co
 		}
 	}
 }
+
+.getback{}
 
 
 .list_positions{ width: 212px; border-bottom: 1px solid $blue; border-left: 1px solid $blue; border-right: 1px solid $blue;
@@ -245,7 +247,7 @@ h3{ font-size: 16px; font-weight: normal; display: block; margin-bottom: 5px; co
 			a {font-size: 14px; border-bottom: 1px dotted; color: red;}
 		}
 	}
-	.line{margin: 0 0 3px 0; padding: 8px 0; clear: both; width: 100%;
+	.line{margin: 0 0 3px 0; padding: 8px 0; clear: both; width: 100%; 
 		.linefield{float: left;}
 		.client_info_txt{ border: 2px red solid; padding:10px; font-style: italic; text-align: justify; line-height: 16px;
 			strong{ }
@@ -302,7 +304,17 @@ h3{ font-size: 16px; font-weight: normal; display: block; margin-bottom: 5px; co
 					filter:alpha(opacity=50); opacity:.50; -khtml-opacity: 0.50; -moz-opacity: 0.50; -ms-filter:"alpha(opacity=50)";
 }
 #filesnumber, #photosnumber{}
-#addition{display: none; background: $greybg; padding-bottom: 30px;}
+#addition{display: none; background: $greybg; padding-bottom: 30px;
+	.oddblock{ display: block;
+		/*label{ color: $grey;}*/
+	}
+	.evenblock{ display: block; 
+		label{ color: $blue;}
+		span{ color: $blue;}
+	}
+	/*.oneline{height: 35px;}
+	.twoline{height: 80px;}*/
+}
 
 .filemanager{	position: absolute; width: 100%; height: 100%;}
 .closemanager{font-size: 16px; position: absolute; top:20px; right: 20px; z-index: 10; border-bottom: 1px dotted; cursor: pointer;}
@@ -332,3 +344,8 @@ h3{ font-size: 16px; font-weight: normal; display: block; margin-bottom: 5px; co
 /*/////////////////////////hide Refinery LOGO*/
 #site_bar_refinery_cms_logo{display: none;}
 #hide_items_wysiwyg{display: none;}
+
+#counters{ clear: both; height: 40px;
+	#liveinternet{float:left;}
+	#metrica{}
+}

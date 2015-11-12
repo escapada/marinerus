@@ -32,18 +32,22 @@ Marinerus::Application.configure do
   config.assets.precompile += %w( jquery.iframe-transport.js )
   config.assets.precompile += %w( jquery.fileupload.js )
 
-  config.action_mailer.default_url_options = { host: 'site.marinerus.lclients.ru' }
+  config.action_mailer.default_url_options = { host: 'marinerus.ru' }
   # config.action_mailer.delivery_method = :sendmail
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp-20.1gb.ru',
-    port:                 465,
-    domain:               'site.marinerus.lclients.ru',
-    user_name:            'u113709',
+    address:              'smtp.locum.ru',
+    port:                 2525,
+    domain:               'marinerus.ru',
+    user_name:            'noreply@marinerus.ru',
     password:             '858d9666',
     authentication:       'login',
-    enable_starttls_auto: true  }
+    enable_starttls_auto: false, # was true
+    openssl_verify_mode: 'none' # <-- add this line
+  }
+  
+  config.action_mailer.raise_delivery_errors = true
 
   # Disable delivery errors, bad email addresses will be ignored
   # if config.respond_to?(:action_mailer)
@@ -69,4 +73,4 @@ Marinerus::Application.configure do
   
 end
 
-ActionMailer::Base.default :from => 'no-reply@marinerus.ru'
+ActionMailer::Base.default :from => 'noreply@marinerus.ru'

@@ -61,9 +61,9 @@
 <% end %>
 <% if @ship.construction_date.present? %>
 	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.construction_date') %></span>:&nbsp;<%= @ship.construction_date.strftime("%m.%Y") %>
+		<span class="descr_name"><%= t('.construction_date') %></span>:&nbsp;<%= @ship.construction_date.strftime("%Y") %>
 		<% if @ship.construction_end_date.present? %>
-			&mdash;&nbsp;<%= @ship.construction_end_date.strftime("%m.%Y") %>
+			&mdash;&nbsp;<%= @ship.construction_end_date.strftime("%Y") %>
 		<% end %>
 	</li>
 <% end %>
@@ -74,7 +74,7 @@
 <% end %>
 <% if @ship.renovation_date.present? %>
 	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.renovation_date') %></span>:&nbsp;<%= @ship.renovation_date.strftime("%m.%Y") %>
+		<span class="descr_name"><%= t('.renovation_date') %></span>:&nbsp;<%= @ship.renovation_date.strftime("%Y") %>
 	</li>
 <% end %>
 <% if @ship.registr.present? %>
@@ -219,22 +219,17 @@
 <% end %>
 <% if @ship.fuelcapacity.present? %>
 	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.fuelcapacity') %></span>:&nbsp;<%= @ship.fuelcapacity %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "т/м" : "t/m" %><sup style="font-size:9px;">3</sup> 
+		<span class="descr_name"><%= t('.fuelcapacity') %></span>:&nbsp;<%= @ship.fuelcapacity %>&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.fuelname.rutitle : @ship.fuelname.entitle %>
 	</li>
 <% end %>
 <% if @ship.fuel_way.present? %>
 	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.fuel_way') %></span>:&nbsp;<%= @ship.fuel_way %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "т/м" : "t/m" %><sup style="font-size:9px;">3</sup> 
+		<span class="descr_name"><%= t('.fuel_way') %></span>:&nbsp;<%= @ship.fuel_way %>&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.fuelname.rutitle : @ship.fuelname.entitle %>
 	</li>
 <% end %>
 <% if @ship.fuel_port.present? %>
 	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.fuel_port') %></span>:&nbsp;<%= @ship.fuel_port %>&nbsp;<%= Globalize.locale.to_s=="ru" ? "т/м" : "t/m" %><sup style="font-size:9px;">3</sup> 
-	</li>
-<% end %>
-<% if @ship.autonomy.present? %>
-	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.autonomy') %></span>:&nbsp;<%= @ship.autonomy %>
+		<span class="descr_name"><%= t('.fuel_port') %></span>:&nbsp;<%= @ship.fuel_port %>&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.fuelname.rutitle : @ship.fuelname.entitle %>
 	</li>
 <% end %>
 <% if @ship.autonomy.present? %>
@@ -354,7 +349,7 @@
 <% end %>
 <% if @ship.price.present? %>
 	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.price') %></span>:&nbsp;<%= @ship.price %>&nbsp;<%= raw "&mdash;&nbsp;#{@ship.price_end}" unless @ship.price_end.blank? %>&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.currency.rutitle : @ship.currency.entitle %>
+		<span class="descr_name"><%= t('.price') %></span>:&nbsp;<%= number_to_currency(@ship.price, precision: 0, unit: "") %><%= raw "&mdash;&nbsp;#{@ship.price_end}" unless @ship.price_end.blank? %>&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.currency.rutitle : @ship.currency.entitle %>
 	</li>
 	<% if @ship.vat.present? %>
 		<li class="<%= cycle('even', 'odd') %>">

@@ -1,7 +1,39 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'admin_plus' %>
+<% end %>
+
 <ul>
   <li>
     <%= link_to t('.create_new'), refinery.new_ships_admin_ship_path,
                  :class => "add_icon" %>
+  </li>
+  <li class="filter_btn btn" style="margin-bottom:0;">
+    <% case @filter_case.to_i %>
+    <% when 0 %>
+      Все
+    <% when 1 %>
+      На модерации
+    <% when 2 %>
+      Опубликованы
+    <% when 3 %>
+      Архив
+    <% end %>
+  </li>
+  <li class="hidden_filter">
+    <ul>
+      <li class="filter_choice">
+        <%= link_to "Все", refinery.ships_admin_ships_path(filter: 0) %>
+      </li>
+      <li class="filter_choice">
+        <%= link_to "На модерации", refinery.ships_admin_ships_path(filter: 1) %>
+      </li>
+      <li class="filter_choice">
+        <%= link_to "Опубликованы", refinery.ships_admin_ships_path(filter: 2) %>
+      </li>
+      <li class="filter_choice">
+        <%= link_to "Архив", refinery.ships_admin_ships_path(filter: 3) %>
+      </li>
+    </ul>
   </li>
 </ul>
 

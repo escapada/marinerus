@@ -23,9 +23,11 @@ Refinery::Inquiries::InquiryMailer.class_eval do
       end
       def published_notification(ship)
         @ship = ship
-        mail :subject => "Модератор опубликовал ваш лот / we published your order/demand",
-                :to => @ship.client.email,
-                :reply_to => Refinery::Inquiries::Setting.notification_recipients.split(',').first
+        if @ship.client.email.present?
+          mail :subject => "Модератор опубликовал ваш лот / we published your order/demand",
+                  :to => @ship.client.email,
+                  :reply_to => Refinery::Inquiries::Setting.notification_recipients.split(',').first
+        end
       end
       #///////////////////////////////// my Inquiry mailer methods
 
