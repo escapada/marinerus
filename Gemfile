@@ -63,6 +63,7 @@ gem 'paperclip', '~> 4.2'
 gem 'therubyracer'
 gem 'execjs'
 gem 'rake'
+gem 'rest-client'
 
 #gem "remotipart", "~> 1.0"
 
