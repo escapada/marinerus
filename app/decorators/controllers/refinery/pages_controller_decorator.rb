@@ -46,7 +46,8 @@ Refinery::PagesController.class_eval do
 
   def get_currencies
     today_date = (Time.now).strftime("%d/%m/%Y")
-    prev_date = (Time.now - 3.days).strftime("%d/%m/%Y")
+    # prev_date = (Time.now - 3.days).strftime("%d/%m/%Y")
+    prev_date = (Time.now - 15.days).strftime("%d/%m/%Y") # New Year vocation
     if (session[:usd].present? and session[:euro].present? and session[:gbp].present?)
       if (session[:usd][-1]["Date"].to_date<today_date.to_date and session[:query_date].to_date != today_date.to_date)#(today_date.to_date-2.days)
         get_currencies_helper(today_date, prev_date)
