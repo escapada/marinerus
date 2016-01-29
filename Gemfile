@@ -63,6 +63,8 @@ gem 'paperclip', '~> 4.2'
 gem 'therubyracer'
 gem 'execjs'
 gem 'rake'
+# next 2 gems are for Mailgun API 
+gem 'multimap'
 gem 'rest-client'
 
 #gem "remotipart", "~> 1.0"
