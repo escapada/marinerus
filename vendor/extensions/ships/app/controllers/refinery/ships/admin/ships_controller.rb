@@ -111,8 +111,13 @@ module Refinery
 	      			end
 	      		end
 
-			@ships = Ship.where(conditions)
-		end
+					@ships = Ship.where(conditions)
+				end
+
+				def send_ship_to_subscribers(ship)
+					# http_line = 
+					#return http_line
+				end
 
 	      ######Send mail
 	      # def send_notification
