@@ -37,6 +37,27 @@ module Refinery
 	            end
 	      	end
 
+	      	def send_ship_to_subscribers
+			@ship = Ship.where(id:params[:ship_id])
+			# logger.debug(@ship.to_hash)
+
+			data = Multimap.new
+			data[:from] = "marinerus <no-reply@marinerus.ru>"
+			data[:to] = "escapada83@yandex.ru"
+			data[:subject] = "Test"
+			data[:text] = "Testing some shit!"
+			data[:html] = "<html><body><img src='logo.png' /></body></html>"
+			#data[:attachment] = File.new(File.join("files", "test.jpg"))
+			#data[:attachment] = File.new(File.join("files", "test.txt"))
+			
+			#RestClient.post "https://api:key-2b931b07a70d72df02e817bc79e9a8ba"\
+			#"@api.mailgun.net/v3/mailgun.marinerus.ru/messages",
+			RestClient.post "https://api:key-2b931b07a70d72df02e817bc79e9a8ba"\
+			"@api.mailgun.net/v3/sandboxf89ae43af0ff48269a2e3fc064e4f85d.mailgun.org/messages",
+			data.to_hash
+			# logger.debug(data.to_hash)
+		end
+
 	      protected
 	      def all_collections
 	      	@categories = Refinery::Categories::Category.all
@@ -114,24 +135,7 @@ module Refinery
 					@ships = Ship.where(conditions)
 				end
 
-				def send_ship_to_subscribers(ship)
-					logger.debug("?????????????????")
-					@ship = ship#Ship.where(id:ship)
-
-					data = Multimap.new
-					data[:from] = "site" #Excited User <YOU@YOUR_DOMAIN_NAME>
-					data[:to] = "escapada83@ya.ru"
-					data[:subject] = "Test"
-					data[:text] = "Testing some shit!"
-					data[:html] = '<html>HTML version of the body<body><%= image_tag(asset_path(logo.png))%></body></html>'
-					#data[:attachment] = File.new(File.join("files", "test.jpg"))
-					#data[:attachment] = File.new(File.join("files", "test.txt"))
-					RestClient.post "https://api:key-2b931b07a70d72df02e817bc79e9a8ba"\
-					"@api.mailgun.net/v3/mailgun.marinerus.ru/messages", data
-
-					# http_line = 
-					#return http_line
-				end
+				
 
 	      ######Send mail
 	      # def send_notification
