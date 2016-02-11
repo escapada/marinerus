@@ -1,0 +1,22 @@
+<style>
+	*{margin: 0; padding: 0; list-style-type: none; font-size: 12px; font-family: sans-serif;}
+	#container{ width: 100%; height: 100%; margin: 0 auto; text-align: center;}
+	#content{width: 50%;}
+	#logo{}
+	h1{ font-size: 14px;}
+	.clear{ clear: both;}
+	#photo{}
+</style>
+
+<div id="container">
+	<div id="content">
+		<div id="logo"><%= image_tag(asset_path('logo.png'))%></div>
+		<h1>Marinerus company news / Новости компании маринерус.</h1>
+		<div class="clear"></div>
+		<% if @ship.attachment.photos.any? %>
+      <div id="photo"><%= image_tag(@ship.attachment.photos[0].photo.url(:main), width:"100px") %></div>
+		<p>
+			Something in the way!
+		</p>
+	</div>
+</div>

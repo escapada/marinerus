@@ -12,6 +12,7 @@ Refinery::Core::Engine.routes.draw do
         collection do
           post :update_positions
         end
+      match 'sendshipmail', to: 'ships#send_ship_to_subscribers', :as => :sendshipmail, via: [:post]
       end
     end
   end

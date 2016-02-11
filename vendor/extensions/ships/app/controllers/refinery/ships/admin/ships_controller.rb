@@ -115,6 +115,20 @@ module Refinery
 				end
 
 				def send_ship_to_subscribers(ship)
+					logger.debug("?????????????????")
+					@ship = ship#Ship.where(id:ship)
+
+					data = Multimap.new
+					data[:from] = "site" #Excited User <YOU@YOUR_DOMAIN_NAME>
+					data[:to] = "escapada83@ya.ru"
+					data[:subject] = "Test"
+					data[:text] = "Testing some shit!"
+					data[:html] = '<html>HTML version of the body<body><%= image_tag(asset_path(logo.png))%></body></html>'
+					#data[:attachment] = File.new(File.join("files", "test.jpg"))
+					#data[:attachment] = File.new(File.join("files", "test.txt"))
+					RestClient.post "https://api:key-2b931b07a70d72df02e817bc79e9a8ba"\
+					"@api.mailgun.net/v3/mailgun.marinerus.ru/messages", data
+
 					# http_line = 
 					#return http_line
 				end
