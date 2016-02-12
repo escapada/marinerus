@@ -15,6 +15,7 @@
 		<div class="clear"></div>
 		<% if @ship.attachment.photos.any? %>
       <div id="photo"><%= image_tag(@ship.attachment.photos[0].photo.url(:main), width:"100px") %></div>
+    <% end %>
 		<p>
 			Something in the way!
 		</p>

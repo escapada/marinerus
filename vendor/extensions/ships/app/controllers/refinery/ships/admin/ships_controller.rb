@@ -38,7 +38,7 @@ module Refinery
 	      	end
 
 	      	def send_ship_to_subscribers
-			@ship = Ship.where(id:params[:ship_id])
+			@ship = Ship.where(id:params[:ship_id]).first
 			# logger.debug(@ship.to_hash)
 
 			data = Multimap.new
@@ -46,16 +46,17 @@ module Refinery
 			data[:to] = "escapada83@yandex.ru"
 			data[:subject] = "Test"
 			data[:text] = "Testing some shit!"
-			data[:html] = "<html><body><img src='logo.png' /></body></html>"
+			data[:html] = "<html><body><img src='http://marinerus.ru/assets/logo.png' /></body></html>"
 			#data[:attachment] = File.new(File.join("files", "test.jpg"))
 			#data[:attachment] = File.new(File.join("files", "test.txt"))
 			
 			#RestClient.post "https://api:key-2b931b07a70d72df02e817bc79e9a8ba"\
 			#"@api.mailgun.net/v3/mailgun.marinerus.ru/messages",
-			RestClient.post "https://api:key-2b931b07a70d72df02e817bc79e9a8ba"\
-			"@api.mailgun.net/v3/sandboxf89ae43af0ff48269a2e3fc064e4f85d.mailgun.org/messages",
-			data.to_hash
+			# RestClient.post "https://api:key-2b931b07a70d72df02e817bc79e9a8ba"\
+			# "@api.mailgun.net/v3/sandboxf89ae43af0ff48269a2e3fc064e4f85d.mailgun.org/messages",
+			# data.to_hash
 			# logger.debug(data.to_hash)
+			logger.debug(render_to_string :shipmailing)
 		end
 
 	      protected
