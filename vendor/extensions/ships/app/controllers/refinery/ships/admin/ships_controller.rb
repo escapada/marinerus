@@ -2,6 +2,7 @@ module Refinery
   module Ships
     module Admin
       class ShipsController < ::Refinery::AdminController
+      	layout 'subscribing', :only=>[:send_ship_to_subscribers]
 
       		# x = params[:id]
 	      crudify	:'refinery/ships/ship', 
