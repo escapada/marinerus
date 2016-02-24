@@ -20,6 +20,7 @@ module Refinery
 	      before_filter	:edit_attach_init, :only=>[:edit, :update]
 	      before_filter	:create_attach_init, :only=>[:create]
 	      # before_filter	:get_param#, :only=>[:show]
+	      before_filter	:update_mailing_list, :only=>[:send_ship_to_subscribers]
 
 	      # after_update	:send_notification, :only=>[:update]
 
@@ -53,16 +54,16 @@ module Refinery
 			
 			#RestClient.post "https://api:key-2b931b07a70d72df02e817bc79e9a8ba"\
 			#"@api.mailgun.net/v3/mailgun.marinerus.ru/messages",
-			response = RestClient.post "https://api:key-2b931b07a70d72df02e817bc79e9a8ba"\
-			"@api.mailgun.net/v3/sandboxf89ae43af0ff48269a2e3fc064e4f85d.mailgun.org/messages",
-			data.to_hash
-			logger.debug(render_to_string :shipmailing)
-			# logger.debug(data.to_hash)
-			respond_to do |format|
-				format.js {
-					response.code == 200 ? flash.now[:notice] = "Письмо тправлено!" : flash.now[:notice] = "Не удалось отправить. Попробуйте позже."
-				}
-			end
+			# response = RestClient.post "https://api:key-2b931b07a70d72df02e817bc79e9a8ba"\
+			# "@api.mailgun.net/v3/sandboxf89ae43af0ff48269a2e3fc064e4f85d.mailgun.org/messages",
+			# data.to_hash
+			# logger.debug(render_to_string :shipmailing)
+			# # logger.debug(data.to_hash)
+			# respond_to do |format|
+			# 	format.js {
+			# 		response.code == 200 ? flash.now[:notice] = "Письмо тправлено!" : flash.now[:notice] = "Не удалось отправить. Попробуйте позже."
+			# 	}
+			# end
 		end
 
 	      protected
@@ -139,16 +140,23 @@ module Refinery
 	      			end
 	      		end
 
-					@ships = Ship.where(conditions)
-				end
+			@ships = Ship.where(conditions)
+		end
 
-				
+		def update_mailing_list
+			clients = Refinery::Clients::Client.all
+			#Hash[clients.map {|subscriber| ["adress"subscriber.adress]}]
+			json = clients.map {|c| [["adress", c.email], ["subscribed", c.mail_me]]}
 
-	      ######Send mail
-	      # def send_notification
-	      # 	logger.debug(@ship.page_status_id_changed?)
-	      # 		::Refinery::Inquiries::InquiryMailer.published_notification(@ship).deliver if (@ship.page_status_id_changed? and @ship.page_status_id == 2)
-	      # end
+			RestClient.post("https://api:key-2b931b07a70d72df02e817bc79e9a8ba" \
+                  "@api.mailgun.net/v3/lists/subscribers@sandboxf89ae43af0ff48269a2e3fc064e4f85d.mailgun.org/members.json",
+                  :upsert => true,
+                  :members => '[{"adress" => "number1@ya.ru"}]')
+
+
+				# subscribers[:adress] << client.email
+				# client.mail_me ? subscribers[:] 
+		end
 
       end
     end
