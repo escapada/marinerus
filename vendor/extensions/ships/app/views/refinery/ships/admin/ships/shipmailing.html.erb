@@ -1,23 +1,15 @@
-<style>
-	*{margin: 0; padding: 0; list-style-type: none; font-size: 12px; font-family: sans-serif;}
-	#container{ width: 100%; height: 100%; margin: 0 auto; text-align: center;}
-	#content{width: 50%;}
-	#logo{}
-	h1{ font-size: 14px;}
-	.clear{ clear: both;}
-	#photo{}
-</style>
-
-<div id="container">
-	<div id="content">
-		<div id="logo"><%= image_tag(asset_path('logo.png'))%></div>
-		<h1>Marinerus company news / Новости компании маринерус.</h1>
-		<div class="clear"></div>
-		<% if @ship.attachment.photos.any? %>
-      <div id="photo"><%= image_tag(@ship.attachment.photos[0].photo.url(:main), width:"100px") %></div>
-    <% end %>
-		<p>
-			Something in the way!
-		</p>
-	</div>
-</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="2" style="text-align: left; padding: 10px;"><%= image_tag('http://marinerus.ru'+asset_path('logo.png'))%></td>
+	</tr>
+	<tr style="border-bottom: 1px solid #2c87af;">
+		<td colspan="2" style="text-align: left;"><h1 style="font-size: 14px; color:#2c87af;">Marinerus company news / Новости компании маринерус.</h1></td>
+	</tr>
+	<tr>
+		<td  style="text-align: left; padding: 10px; width: 100px;"><%= image_tag('http://marinerus.ru/system/refinery/ships/photos/photos/000/000/366/main/448-1.jpg?1451162301', width:"100px") %></td>
+		<td><%= link_to(@ship.info, refinery.ships_ship_url(@ship)) %></td>
+	</tr>
+	<tr>
+		<td colspan="2" style="text-align: left; padding: 10px 0; border-top: 1px solid #2c87af; font-style: italic; color: #2c87af;">Best regards, Marinerus / С уважением, компания Маринерус</td>
+	</tr>
+</table>
