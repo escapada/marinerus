@@ -144,18 +144,13 @@ module Refinery
 		end
 
 		def update_mailing_list
-			clients = Refinery::Clients::Client.all
-			#Hash[clients.map {|subscriber| ["adress"subscriber.adress]}]
-			json = clients.map {|c| [["adress", c.email], ["subscribed", c.mail_me]]}
+			clients = Refinery::Clients::Client.where(mail_me: true)
+			subscribers = clients.map {|c| {"address" => c.email, "subscribed" => c.mail_me}}
 
 			RestClient.post("https://api:key-2b931b07a70d72df02e817bc79e9a8ba" \
                   "@api.mailgun.net/v3/lists/subscribers@sandboxf89ae43af0ff48269a2e3fc064e4f85d.mailgun.org/members.json",
                   :upsert => true,
-                  :members => '[{"adress" => "number1@ya.ru"}]')
-
-
-				# subscribers[:adress] << client.email
-				# client.mail_me ? subscribers[:] 
+                  :members => subscribers.to_json)
 		end
 
       end
