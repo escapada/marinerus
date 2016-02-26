@@ -8,12 +8,6 @@ module Refinery
 	      crudify	:'refinery/ships/ship', 
 	      		:xhr_paging => true,
 	      		:title_attribute => "title"
-	      		#:include => [:carmodelsubtype, :carmodels]#,
-			#:conditions => {:carmodels => {:id => proc{@model}.call}}#{:carmodels => {:id => 2}}#, :carmodelsubtype_id => params[:filter_type]}#,
-			#:search_conditions => {:carmodels => {:id => proc{@model}.call}}#{:carmodels => {:id => 2}}#, :carmodelsubtype_id => params[:filter_type]}#,
-			#:conditions => {:carmodels => {:id => lambda {return set_filter}.call}}#{:carmodels => {:id => 2}}#, :carmodelsubtype_id => params[:filter_type]}#,
-			# :conditions => {:id => lambda {return 2}.call}
-
 
 	      before_filter :all_collections, :only=>[:new, :edit]
 	      before_filter	:new_attach_init, :only=>[:new]
@@ -41,29 +35,26 @@ module Refinery
 
 	      def send_ship_to_subscribers
 			@ship = Ship.where(id:params[:ship_id]).first
-			# logger.debug(@ship.to_hash)
 
 			data = Multimap.new
 			data[:from] = "marinerus <no-reply@marinerus.ru>"
-			data[:to] = "escapada83@yandex.ru"
+			data[:to] = "subscribers@mailgun.marinerus.ru, unregistered_subscribers@mailgun.marinerus.ru"
 			data[:subject] = "New object published / Опубликован новый лот"
 			# data[:text] = "Testing some shit!"
 			data[:html] = render_to_string :shipmailing # "<html><body><img src='http://marinerus.ru/assets/logo.png' /></body></html>"
 			#data[:attachment] = File.new(File.join("files", "test.jpg"))
 			#data[:attachment] = File.new(File.join("files", "test.txt"))
-			
-			#RestClient.post "https://api:key-2b931b07a70d72df02e817bc79e9a8ba"\
-			#"@api.mailgun.net/v3/mailgun.marinerus.ru/messages",
-			# response = RestClient.post "https://api:key-2b931b07a70d72df02e817bc79e9a8ba"\
-			# "@api.mailgun.net/v3/sandboxf89ae43af0ff48269a2e3fc064e4f85d.mailgun.org/messages",
-			# data.to_hash
-			# logger.debug(render_to_string :shipmailing)
-			# # logger.debug(data.to_hash)
-			# respond_to do |format|
-			# 	format.js {
-			# 		response.code == 200 ? flash.now[:notice] = "Письмо тправлено!" : flash.now[:notice] = "Не удалось отправить. Попробуйте позже."
-			# 	}
-			# end
+
+			response = RestClient.post "https://api:key-2b931b07a70d72df02e817bc79e9a8ba"\
+			"@api.mailgun.net/v3/mailgun.marinerus.ru/messages",
+			data.to_hash
+			#logger.debug(render_to_string :shipmailing)
+			# logger.debug(data.to_hash)
+			respond_to do |format|
+				format.js {
+					response.code == 200 ? flash.now[:notice] = "Письмо отправлено!" : flash.now[:notice] = "Не удалось отправить. Попробуйте позже."
+				}
+			end
 		end
 
 	      protected
@@ -143,15 +134,20 @@ module Refinery
 			@ships = Ship.where(conditions)
 		end
 
-		def update_mailing_list
-			clients = Refinery::Clients::Client.where(mail_me: true)
-			subscribers = clients.map {|c| {"address" => c.email, "subscribed" => c.mail_me}}
+		# next update_mailing_list is now using (correct multiple Mailgun mailing list update)
+		# see all Mailgun methods working with subscribers in ClientController
 
-			RestClient.post("https://api:key-2b931b07a70d72df02e817bc79e9a8ba" \
-                  "@api.mailgun.net/v3/lists/subscribers@sandboxf89ae43af0ff48269a2e3fc064e4f85d.mailgun.org/members.json",
-                  :upsert => true,
-                  :members => subscribers.to_json)
-		end
+				def update_mailing_list
+					clients = Refinery::Clients::Client.all #.where(mail_me: true)
+					subscribers = clients.map {|c| {"address" => c.email, "subscribed" => c.mail_me}}
+
+					subscribers.in_groups_of(200, false) do |s|		#subscribers.in_groups_of(200, false) do |s|
+						RestClient.post("https://api:key-2b931b07a70d72df02e817bc79e9a8ba" \
+						"@api.mailgun.net/v3/lists/subscribers@mailgun.marinerus.ru/members.json",
+						:upsert => true,
+						:members => s.to_json)
+					end
+				end
 
       end
     end

@@ -17,7 +17,13 @@ Refinery::Core::Engine.routes.prepend do
     # some AJAX links
     match 'deletefile', to: 'upload#delete_file', :as => :deletefile, via: [:post]
     match 'deletephoto', to: 'upload#delete_photo', :as => :deletephoto, via: [:post]
+
+    # some Subscribing actions not in use
+    match 'subscribed', to: 'subscribe#subscribed', :as => :subscribed, via: [:post]
+    match 'unsubscribed', to: 'subscribe#unsubscribed', :as => :unsubscribed, via: [:post]
+    # match 'delete_subscriber', to: 'subscribe#delete_subscriber', :as => :delete_subscriber, via: [:delete]
   end
+
 
 end
 
