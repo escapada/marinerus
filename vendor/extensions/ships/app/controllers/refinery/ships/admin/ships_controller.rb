@@ -141,7 +141,7 @@ module Refinery
 					clients = Refinery::Clients::Client.all #.where(mail_me: true)
 					subscribers = clients.map {|c| {"address" => c.email, "subscribed" => c.mail_me}}
 
-					subscribers.in_groups_of(200, false) do |s|		#subscribers.in_groups_of(200, false) do |s|
+					subscribers.in_groups_of(200, false) do |s|
 						RestClient.post("https://api:key-2b931b07a70d72df02e817bc79e9a8ba" \
 						"@api.mailgun.net/v3/lists/subscribers@mailgun.marinerus.ru/members.json",
 						:upsert => true,

@@ -33,6 +33,21 @@ $(function(){
 	$('.news_cut img').attr("height", "");
 });
 
+// number formating: comas to dots 
+$(function(){
+	$(".number_format").on("keyup", function(event){
+		if (event.key == ",") {
+			str = $(this).val();
+			$(this).val(str.replace(/,/, "."));
+		}
+	});
+	$(".number_format").on("focusout", function(){
+		str = $(this).val();
+		$(this).val(str.replace(/,/, "."));
+	});
+});
+
+
 $(function(){
 	$("#filemanage").click(function (){showManager('filemanager')});
 	$("#filemanage_plus").click(function (){showManager('filemanager')});

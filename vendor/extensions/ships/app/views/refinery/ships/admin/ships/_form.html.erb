@@ -161,57 +161,57 @@
   <div class="line">
     <div class='linefield' style="width:120px;">
       <%= f.label :length -%>
-      <%= f.text_field :length, {:style=>"width:114px;"}%>
+      <%= f.text_field :length, {:style=>"width:114px;", :class => "number_format"}%>
     </div>
     <div class='linefield' style="width:120px;">
       <%= f.label :width -%>
-      <%= f.text_field :width, {:style=>"width:114px;"}%>
+      <%= f.text_field :width, {:style=>"width:114px;", :class => "number_format"}%>
     </div>
     <div class='linefield' style="width:120px;">
       <%= f.label :height -%>
-      <%= f.text_field :height, {:style=>"width:114px;"}%>
+      <%= f.text_field :height, {:style=>"width:114px;", :class => "number_format"}%>
     </div>
     <div class='linefield' style="width:120px;">
       <%= f.label :free_board -%>
-      <%= f.text_field :free_board, {:style=>"width:114px;"}%>
+      <%= f.text_field :free_board, {:style=>"width:114px;", :class => "number_format"}%>
     </div>
     <div class='linefield' style="width:120px;">
       <%= f.label :max_draught -%>
-      <%= f.text_field :max_draught, {:style=>"width:114px;"}%>
+      <%= f.text_field :max_draught, {:style=>"width:114px;", :class => "number_format"}%>
     </div>
     <div class='linefield' style="width:120px;">
       <%= f.label :min_draught -%>
-      <%= f.text_field :min_draught, {:style=>"width:114px;"}%>
+      <%= f.text_field :min_draught, {:style=>"width:114px;", :class => "number_format"}%>
     </div>
     <div class='linefield' style="width:120px;">
       <%= f.label :air_draught -%>
-      <%= f.text_field :air_draught, {:style=>"width:114px;"}%>
+      <%= f.text_field :air_draught, {:style=>"width:114px;", :class => "number_format"}%>
     </div>
     <div class='linefield' style="width:120px;">
       <%= f.label :gross_tonnage -%>
-      <%= f.text_field :gross_tonnage, {:style=>"width:114px;"}%>
+      <%= f.text_field :gross_tonnage, {:style=>"width:114px;", :class => "number_format"}%>
     </div>
   <!--  -->
   <div class="line">
     <div class='linefield' style="width:120px;">
       <%= f.label :net_tonnage -%>
-      <%= f.text_field :net_tonnage, {:style=>"width:114px;"}%>
+      <%= f.text_field :net_tonnage, {:style=>"width:114px;", :class => "number_format"}%>
     </div>
     <div class='linefield' style="width:60px;">
       <%= f.label :deadweight -%>
-      <%= f.text_field :deadweight, {:style=>"width:54px;"}%>
+      <%= f.text_field :deadweight, {:style=>"width:54px;", :class => "number_format"}%>
     </div>
     <div class='linefield' style="width:120px;">
       <%= f.label :loading -%>
-      <%= f.text_field :loading, {:style=>"width:114px;"}%>
+      <%= f.text_field :loading, {:style=>"width:114px;", :class => "number_format"}%>
     </div>
     <div class='linefield' style="width:110px;">
       <%= f.label :displacement -%>
-      <%= f.text_field :displacement, {:style=>"width:104px;"}%>
+      <%= f.text_field :displacement, {:style=>"width:104px;", :class => "number_format"}%>
     </div>
     <div class='linefield' style="width:100px;">
       <%= f.label :dockweight -%>
-      <%= f.text_field :dockweight, {:style=>"width:94px;"}%>
+      <%= f.text_field :dockweight, {:style=>"width:94px;", :class => "number_format"}%>
     </div>
     <div class='linefield' style="width:140px;">
       <%= f.label :tanks -%>
@@ -219,7 +219,7 @@
     </div>
     <div class='linefield' style="width:180px;">
       <%= f.label :tanksvolume -%>
-      <%= f.text_field :tanksvolume, {:style=>"width:174px;"}%>
+      <%= f.text_field :tanksvolume, {:style=>"width:174px;", :class => "number_format"}%>
     </div>
     <div class='linefield' style="width:130px;">
       <%= f.label :passengers -%>
@@ -242,7 +242,7 @@
     </div>
     <div class='linefield' style="width:150px;">
       <%= f.label :enginepower -%>
-      <%= f.text_field :enginepower, {:style=>"width:90px;"}%>
+      <%= f.text_field :enginepower, {:style=>"width:90px;", :class => "number_format"}%>
       <%= f.collection_select(:power_id, @powers, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:47px;"})%>
     </div>
     <div class='linefield' style="width:187px;">
@@ -267,20 +267,20 @@
     </div>
     <div class='linefield' style="width:202px;">
       <%= f.label :fuelcapacity -%>
-      <%= f.text_field :fuelcapacity, {:style=>"width:140px;"}%>
+      <%= f.text_field :fuelcapacity, {:style=>"width:140px;", :class => "number_format"}%>
       <%= f.collection_select(:fuelname_id, @fuelnames, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:51px;"})%>
     </div>
     <div class='linefield' style="width:146px;">
       <%= f.label :fuel_way -%>
-      <%= f.text_field :fuel_way, {:style=>"width:140px;"}%>
+      <%= f.text_field :fuel_way, {:style=>"width:140px;", :class => "number_format"}%>
     </div>
     <div class='linefield' style="width:146px;">
       <%= f.label :fuel_port -%>
-      <%= f.text_field :fuel_port, {:style=>"width:140px;"}%>
+      <%= f.text_field :fuel_port, {:style=>"width:140px;", :class => "number_format"}%>
     </div>
     <div class='linefield' style="width:86px;">
       <%= f.label :autonomy -%>
-      <%= f.text_field :autonomy, {:style=>"width:80px;"}%>
+      <%= f.text_field :autonomy, {:style=>"width:80px;", :class => "number_format"}%>
     </div>
     <div class='linefield' style="width:110px;">
       <%= f.label :gmdss_id -%>
@@ -288,7 +288,7 @@
     </div>
     <div class='linefield' style="width:86px;">
       <%= f.label :water -%>
-      <%= f.text_field :water, {:style=>"width:80px;"}%>
+      <%= f.text_field :water, {:style=>"width:80px;", :class => "number_format"}%>
     </div>
   </div>
   <!--  -->
@@ -357,13 +357,13 @@
     </div>
     <div class='linefield' style="width:192px;">
       <%= f.label :hook -%>
-      <%= f.text_field :hook, {:style=>"width:186px;"} %>
+      <%= f.text_field :hook, {:style=>"width:186px;", :class => "number_format"} %>
     </div>
   </div>
   <div class="line">
     <div class='linefield' style="width:192px;">
       <%= f.label :cablelength -%>
-      <%= f.text_field :cablelength, {:style=>"width:186px;"} %>
+      <%= f.text_field :cablelength, {:style=>"width:186px;", :class => "number_format"} %>
     </div>
     <div class='linefield' style="width:192px;">
       <%= f.label :cranes -%>
@@ -371,7 +371,7 @@
     </div>
     <div class='linefield' style="width:192px;">
       <%= f.label :craneloading -%>
-      <%= f.text_field :craneloading, {:style=>"width:186px;"} %>
+      <%= f.text_field :craneloading, {:style=>"width:186px;", :class => "number_format"} %>
     </div>
     <div class='linefield' style="width:192px;">
       <%= f.label :sails -%>
@@ -379,18 +379,18 @@
     </div>
     <div class='linefield' style="width:192px;">
       <%= f.label :sailsarea -%>
-      <%= f.text_field :sailsarea, {:style=>"width:186px;"} %>
+      <%= f.text_field :sailsarea, {:style=>"width:186px;", :class => "number_format"} %>
     </div>
   </div>
   <!--  -->
   <div class="line">
     <div class='linefield' style="width:106px;">
       <%= f.label :price -%>
-      <%= f.text_field :price, {:style=>"width:100px;"} %>
+      <%= f.text_field :price, {:style=>"width:100px;", :class => "number_format"} %>
     </div>
      <div class='linefield' style="width:106px;">
       <%= f.label :price_end, Globalize.locale.to_s=="ru" ? "До" : "To" -%>
-      <%= f.text_field :price_end, {:style=>"width:100px;"} %>
+      <%= f.text_field :price_end, {:style=>"width:100px;", :class => "number_format"} %>
     </div>
     <div class='linefield' >
       <span style="display:inline; line-height:43px; font-size:10px;"><%= Globalize.locale.to_s=="ru" ? "  поле 'До' не будет учитываться, если это не запрос" : "  field 'To' won't be used, if it's not a demand"  -%></span>
