@@ -1,0 +1,25 @@
+<ul>
+  <% if ::Refinery::Siteclients::Admin::SiteclientsController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.siteclients_admin_siteclients_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), refinery.new_siteclients_admin_siteclient_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? && ::Refinery::Siteclients::Admin::SiteclientsController.sortable? && ::Refinery::Siteclients::Siteclient.many? %>
+  <li>
+    <%= link_to t('.reorder', :what => "Siteclients"),
+                 refinery.siteclients_admin_siteclients_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Siteclients"),
+                 refinery.siteclients_admin_siteclients_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

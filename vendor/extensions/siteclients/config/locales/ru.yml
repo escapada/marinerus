@@ -1,0 +1,35 @@
+ru:
+  refinery:
+    plugins:
+      siteclients:
+        title: Клиенты
+        article: masculine
+    siteclients:
+      admin:
+        siteclients:
+          actions:
+            create_new: Добавить клиента
+            reorder: Сменить порядок
+            reorder_done: Сохранить порядок
+          records:
+            title: Клиенты
+            sorry_no_results: Ничего.
+            no_items_yet: Нет пока ни одного клиента не зарегистрировалось.
+          siteclient:
+            view_live_html: Открыть в новом окне.
+            edit: Изменить.
+            delete: Удалить.
+      siteclients:
+        show:
+          other: Другие
+  activerecord:
+    models:
+        refinery/siteclients/siteclient: клиент
+    attributes:
+      'refinery/siteclients/siteclient':
+        email: Email
+        name: Имя
+        company: Компания
+        job: Должность
+        phone: Телефон
+        mail_me: Подписка на новости

@@ -23,3 +23,6 @@ Refinery::News::Engine.load_seed
 
 # Added by Refinery CMS Adds extension
 Refinery::Adds::Engine.load_seed
+
+# Added by Refinery CMS Siteclients extension
+Refinery::Siteclients::Engine.load_seed
