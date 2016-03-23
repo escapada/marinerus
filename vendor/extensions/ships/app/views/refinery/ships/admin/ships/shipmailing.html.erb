@@ -11,7 +11,12 @@
       				<%= image_tag('http://marinerus.ru'+@ship.attachment.photos[0].photo.url(:main), width:"100px") %>
 			<% end %>
 		</td>
-		<td><%= link_to(@ship.info, refinery.ships_ship_url(@ship)) %></td>
+		<td>
+			<%= link_to(@ship.info, refinery.ships_ship_url(@ship)) %>
+			<% if @ship.translations.where(locale: "en").first.info.present? %>
+			 / <%= link_to(@ship.translations.where(locale: "en").first.info, "http://marinerus.ru/en/ships/#{@ship.id}") %>
+			<% end %>
+		</td>
 	</tr>
 	<tr>
 		<td colspan="2" style="text-align: left; padding: 10px 0; border-top: 1px solid #2c87af; font-style: italic; color: #2c87af;">Best regards, Marinerus / С уважением, компания Маринерус</td>
