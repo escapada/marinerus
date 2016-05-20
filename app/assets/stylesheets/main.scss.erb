@@ -20,13 +20,15 @@ h3{ font-size: 16px; font-weight: normal; display: block; margin-bottom: 5px; co
 
 #header{width: 100%;}
 #footer{width: 100%; height: 180px; padding: 30px 0; margin-top:30px; border-top:2px $blue solid; background: $greybg;}
-#top{width: 100%; height: 30px; background: $greybg; border-bottom: $grey 1px solid; line-height: 30px;}
-#login-line{float: left;}
-.vertical_separator{color: $grey; padding: 0 3px;}
+#top{width: 100%; height: 30px; background: url(<%= asset_path('login_bar_bg.png') %>); border-bottom: $grey 1px solid; line-height: 30px;}
+#login-line{float: left;
+	a {color: white;}
+}
+.vertical_separator{color: white; padding: 0 3px;}
 #locale-line{float: right; /*height: 30px; padding: 8px 0;*/
 	a{}
 }
-.locale-line{ float: left; height: 28px; margin-left: 3px; line-height: 30px;
+.locale-line{ float: left; height: 28px; margin-left: 3px; line-height: 30px; color: white;
 	img{padding: 2px 0 0 0;}
 }
 #head{width: 100%; clear: both; height: 118px;}
