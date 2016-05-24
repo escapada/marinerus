@@ -59,10 +59,18 @@ module Refinery
         if params[:search]
           search = params[:search]
 
-          sh = Ship.includes(:translations).where("page_status_id = 2 AND (status_id IN (1,2,3,7,8))")
+          sh = Ship.where("page_status_id = 2 AND (status_id IN (1,2,3,7,8))")
 
-          sh = sh.where(["refinery_ship_translations.info LIKE ? OR id LIKE ?", "%#{search[:info]}%", "%#{search[:info]}%"]) if (search[:info].present? and params[:locale].to_s=="en")
-          sh = sh.where(["info LIKE ? OR id LIKE ?", "%#{search[:info]}%", "%#{search[:info]}%"]) if (search[:info].present? and params[:locale].to_s=="ru")
+          sh = sh.with_translations.where(["refinery_ship_translations.info LIKE ?", "%#{search[:info]}%"]) if search[:info].present?
+
+# logger.debug("//////!!!!!!!!!!!!/////////!!!!!!!!!!#{sh.first.info}")
+
+          # sh = sh.translations.where(["info LIKE ?", "%#{search[:info]}%"]) if search[:info].present?
+
+#########
+          # sh = sh.where(["refinery_ship_translations.info LIKE ? OR id LIKE ?", "%#{search[:info]}%", "%#{search[:info]}%"]) if (search[:info].present? and params[:locale].to_s=="en")
+          # sh = sh.where(["info LIKE ? OR id LIKE ?", "%#{search[:info]}%", "%#{search[:info]}%"]) if (search[:info].present? and params[:locale].to_s=="ru")
+########
           # sh = sh.where(["info LIKE ?", "%#{search[:info]}%"]) if (search[:info].present? and params[:locale].to_s=="ru")
 
           # sh = sh.where(["id LIKE ?", "%#{search[:info]}%"]) if search[:info].to_i?

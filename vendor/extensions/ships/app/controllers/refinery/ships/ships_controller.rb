@@ -35,7 +35,7 @@ module Refinery
 
       def find_all_ships
         @all = Ship.where("page_status_id= 2 AND (status_id IN (1,2,3))").includes(:translations).order('updated_at DESC')
-        @ships = Ship.search(params).order('updated_at DESC')
+        @ships = Ship.search(params).order('refinery_ships.updated_at DESC')
 
         logger.debug("////////////////////////////////////////////////#{@ships.size}!!!!!!!!!!!!!!!!!!!")
 
