@@ -72,7 +72,7 @@
           <strong><%= is_ru ? "Лот №" : "ID" %></strong>
         </td>
         <td>
-          <%= @inquiry.lot_id %>
+          <%= link_to @inquiry.lot_id, refinery.ships_ship_path(@inquiry.lot_id), {:target => "_blank"} %>
         </td>
       </tr>
     <% end %>

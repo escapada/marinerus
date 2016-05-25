@@ -61,26 +61,11 @@ module Refinery
 
           sh = Ship.where("page_status_id = 2 AND (status_id IN (1,2,3,7,8))")
 
-          sh = sh.with_translations.where(["refinery_ship_translations.info LIKE ?", "%#{search[:info]}%"]) if search[:info].present?
-
-# logger.debug("//////!!!!!!!!!!!!/////////!!!!!!!!!!#{sh.first.info}")
-
-          # sh = sh.translations.where(["info LIKE ?", "%#{search[:info]}%"]) if search[:info].present?
-
-#########
-          # sh = sh.where(["refinery_ship_translations.info LIKE ? OR id LIKE ?", "%#{search[:info]}%", "%#{search[:info]}%"]) if (search[:info].present? and params[:locale].to_s=="en")
-          # sh = sh.where(["info LIKE ? OR id LIKE ?", "%#{search[:info]}%", "%#{search[:info]}%"]) if (search[:info].present? and params[:locale].to_s=="ru")
-########
-          # sh = sh.where(["info LIKE ?", "%#{search[:info]}%"]) if (search[:info].present? and params[:locale].to_s=="ru")
-
-          # sh = sh.where(["id LIKE ?", "%#{search[:info]}%"]) if search[:info].to_i?
+          sh = sh.with_translations.where(["refinery_ship_translations.info LIKE ? OR refinery_ships.id LIKE ?", "%#{search[:info]}%", "%#{search[:info]}%"]) if search[:info].present?
 
           # advanced search next
-          sh = sh.where(["refinery_ship_translations.project LIKE ?", "%#{search[:project]}%"]) if (search[:project].present? and params[:locale].to_s=="en")
-          sh = sh.where(["project LIKE ?", "%#{search[:project]}%"]) if (search[:project].present? and params[:locale].to_s=="ru")
-
-          sh = sh.where(["refinery_ship_translations.flag LIKE ?", "%#{search[:flag]}%"]) if (search[:flag].present? and params[:locale].to_s=="en")
-          sh = sh.where(["flag LIKE ?", "%#{search[:flag]}%"]) if (search[:flag].present? and params[:locale].to_s=="ru")
+          sh = sh.with_translations.where(["refinery_ship_translations.project LIKE ?", "%#{search[:project]}%"]) if search[:project].present? #(search[:project].present? and params[:locale].to_s=="en")
+          sh = sh.with_translations.where(["refinery_ship_translations.flag LIKE ?", "%#{search[:flag]}%"]) if search[:flag].present? #(search[:flag].present? and params[:locale].to_s=="en")
 
           sh = sh.where(["category_id = ?", search[:category_id]]) if search[:category_id].present?
           sh = sh.where(["status_id = ?", search[:status_id]]) if search[:status_id].present?
