@@ -14,28 +14,28 @@ Marinerus::Application.configure do
   config.action_controller.perform_caching = false
 
   # ActionMailer setup (MY)
-  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  # config.action_mailer.delivery_method = :sendmail
-  # config.action_mailer.sendmail_settings = { :location => '/usr/sbin/sendmail', :arguments => '-i -t'}
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.sendmail_settings = { :location => '/usr/sbin/sendmail', :arguments => '-i -t'}
   
 
-  config.action_mailer.default_url_options = { host: 'marinerus.ru' }
+  # config.action_mailer.default_url_options = { host: 'marinerus.ru' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   # default_options method works since Rails4 only. for Rails3 works ActionMailer::Base.default :from => 'no-reply@ru.ru'
   # config.action_mailer.default_options = {from: 'no-reply@ru.ru'}
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              'smtp.locum.ru',
-    port:                 2525,
-    domain:               'marinerus.ru',
-    user_name:            'noreply@marinerus.ru',
-    password:             '858d9666',
-    authentication:       'login',
-    enable_starttls_auto: false, # was true
-    openssl_verify_mode: 'none' # <-- add this line
-  }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+    # address:              'smtp.locum.ru',
+    # port:                 2525,
+    # domain:               'marinerus.ru',
+    # user_name:            'noreply@marinerus.ru',
+    # password:             '858d9666',
+    # authentication:       'login',
+    # enable_starttls_auto: false, # was true
+    # openssl_verify_mode: 'none' # <-- add this line
+  # }
 
   # ActionMailer setup (DEFAULT)
   ## Don't care if the mailer can't send

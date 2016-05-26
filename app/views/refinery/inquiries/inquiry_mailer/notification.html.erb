@@ -1,0 +1,56 @@
+<% Globalize.locale.to_s=="ru" ? is_ru=true : is_ru=false %>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="2" style="text-align: left; padding: 10px;"><%= image_tag('http://marinerus.ru'+asset_path('logo.png'))%></td>
+	</tr>
+	<tr style="border-bottom: 1px solid #2c87af;">
+		<td colspan="2" style="text-align: left;"><h1 style="font-size: 14px; color:#2c87af;">Запрос с сайта Marinerus:</h1></td>
+	</tr>
+	<tr>
+		<td  style="text-align: left; padding: 5px 10px; width: 120px;">
+			От:
+		</td>
+		<td>
+			<%= @inquiry.name %>
+		</td>
+	</tr>
+
+	<tr>
+		<td  style="text-align: left; padding: 5px 10px; width: 120px;">
+			email:
+		</td>
+		<td>
+			<%= @inquiry.email %>
+		</td>
+	</tr>
+	<tr>
+		<td  style="text-align: left; padding: 5px 10px; width: 120px;">
+			Телефон:
+		</td>
+		<td>
+			<%= @inquiry.phone %>
+		</td>
+	</tr>
+<% unless @inquiry.lot_id.blank? %>
+	<tr>
+		<td  style="text-align: left; padding: 5px 10px; width: 120px;">
+			Объект:
+		</td>
+		<td>
+			<%= link_to refinery.ships_ship_url(@inquiry.lot_id), refinery.ships_ship_url(@inquiry.lot_id), {:target => "_blank"} %>
+		</td>
+	</tr>
+<% end %>
+	<tr>
+		<td  style="text-align: left; padding: 5px 10px; width: 120px;">
+			Сообщение:
+		</td>
+		<td>
+			<%=raw strip_tags(@inquiry.message) %>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" style="text-align: left; padding: 10px 0; border-top: 1px solid #2c87af; font-style: italic; color: #2c87af;">Конец запроса.</td>
+	</tr>
+</table>
