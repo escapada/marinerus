@@ -106,6 +106,7 @@ $(function(){
 		{
 			"columns": [{ "width": "40px" }, { "width": "80px" }, { "width": "300px" }, null, null, {"orderable": false}],
 			"ordering": false,
+			"paging": false,
 			"language": {
 				"processing": "Подождите...",
 				"search": "Поиск:",
@@ -135,6 +136,7 @@ $(function(){
 			"columns": [{ "width": "40px" }, null, { "width": "150px" }, { "width": "200px" }, null, null, {"orderable": false}],
 			// "ordering": false,
 			"ordering": false,
+			"paging": false,
 			// "order": [[1, "desc"]],
 			"language": {
 				"processing": "Подождите...",
@@ -231,14 +233,16 @@ $(function(){
 	$(".ship_table_e").dataTable(
 			{
 				"columns": [{ "width": "40px" }, { "width": "80px" }, { "width": "300px" }, null, null, {"orderable": false}],
-				"ordering": false
+				"ordering": false,
+				"paging": false
 			} 
 		);
 	$(".ship_table_common_e").dataTable(
 			{
 				"columns": [{ "width": "40px" }, {"orderable": false}, { "width": "150px" }, { "width": "200px" }, null, null, {"orderable": false}],
 				// "ordering": false,
-				"ordering": false
+				"ordering": false,
+				"paging": false
 				// "order": [[1, "desc"]]
 			}
 		);

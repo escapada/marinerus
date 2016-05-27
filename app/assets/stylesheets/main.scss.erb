@@ -21,8 +21,9 @@ h3{ font-size: 16px; font-weight: normal; display: block; margin-bottom: 5px; co
 #header{width: 100%;}
 #footer{width: 100%; height: 180px; padding: 30px 0; margin-top:30px; border-top:2px $blue solid; background: $greybg;}
 #top{width: 100%; height: 30px; background: url(<%= asset_path('login_bar_bg.png') %>); border-bottom: $grey 1px solid; line-height: 30px;}
-#login-line{float: left;
+#login-line{float: left; color: white;
 	a {color: white;}
+	strong {color: white;}
 }
 .vertical_separator{color: white; padding: 0 3px;}
 #locale-line{float: right; /*height: 30px; padding: 8px 0;*/
@@ -220,8 +221,9 @@ h3{ font-size: 16px; font-weight: normal; display: block; margin-bottom: 5px; co
 	a{/*color:$blue;*/ border-bottom: 1px dotted; }	
 }
 
+.dataTables_filter{ margin-bottom: 7px!important;} /*search margin from table (hack for DataTables jquery plugin)*/
 
-.dataTables_length{ margin-bottom: 7px!important;} /*search margin from table (hack for DataTables jquery plugin)*/
+/*.dataTables_length{ margin-bottom: 7px!important;} search margin from table (hack for DataTables jquery plugin)*/
 
 /*popup*/
 .popup_container{ display: none; position: absolute; /*top: 0; left: 0; */background: $greybg; padding: 10px; border: 1px $grey solid;

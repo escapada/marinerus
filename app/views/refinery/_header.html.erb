@@ -5,7 +5,7 @@
 	<div class="wrap">
 		<div id="login-line">
 			<%if client_signed_in? %>
-				Добро пожаловать на борт, <stong><%= current_client.name.present? ? current_client.name : current_client.email %></stong>
+				Добро пожаловать на борт, <strong><%= current_client.name.present? ? current_client.name : current_client.email %></strong>
 				<span class="vertical_separator">|</span>
 				<%= link_to 'Личный кабинет', refinery.office_path %>
 				<span class="vertical_separator">|</span>
@@ -49,7 +49,7 @@
 	<div class="wrap">
 		<div id="login-line">
 			<%if client_signed_in? %>
-				Welcome aboard, <stong><%= current_client.name.present? ? current_client.name : current_client.email %></stong>
+				Welcome aboard, <strong><%= current_client.name.present? ? current_client.name : current_client.email %></strong>
 				<span class="vertical_separator">|</span>
 				<%= link_to 'My account', refinery.office_path %>
 				<span class="vertical_separator">|</span>
