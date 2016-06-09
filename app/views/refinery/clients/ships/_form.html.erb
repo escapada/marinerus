@@ -25,14 +25,14 @@
    <div class='line'>
     <div class='linefield' style="width:940px;">
       <%= is_ru ? (f.label :title) : (f.label :title, "Title") -%>
-      <%= f.text_field :title, {:style=>"width:934px;"}-%>
+      <%= f.text_field :title, {:style=>"width:924px;"}-%>
     </div>
   </div>
   <!--  -->
   <div class="line">
       <div class='linefield' style="width:940px;">
       <%= is_ru ? (f.label :info, "Описание (будет показано на сайте)") : (f.label :info, "Description (will be published as description)") -%>
-        <%= f.text_field :info, {:style=>"width:936px;"} %>
+        <%= f.text_field :info, {:style=>"width:926px;"} %>
       </div>
     </div>
   <!--  -->
@@ -47,11 +47,11 @@
     </div>
     <div class='linefield' style="width:320px;">
       <%= is_ru ? (f.label :owner) : (f.label :owner, "Owner") -%>
-      <%= f.text_field :owner, {:style=>"width:314px;"}%>
+      <%= f.text_field :owner, {:style=>"width:304px;"}%>
     </div>
     <div class='linefield' style="width:320px;">
       <%= is_ru ? (f.label :operator) : (f.label :operator, "Operator") -%>
-      <%= f.text_field :operator, {:style=>"width:314px;"}%>
+      <%= f.text_field :operator, {:style=>"width:304px;"}%>
     </div>
   </div>
   <!--  -->
@@ -66,7 +66,7 @@
     </div>
     <div class='linefield' style="width:120px;">
       <%= is_ru ? (f.label :register_number) : (f.label :register_number, "Register") -%>
-      <%= f.text_field :register_number, {:style=>"width:114px;"}%>
+      <%= f.text_field :register_number, {:style=>"width:104px;"}%>
     </div>
     <div class='linefield' style="width:204px;">
       <%= is_ru ? (f.label :registration_id) : (f.label :registration_id, "Registration") -%>
@@ -74,7 +74,7 @@
     </div>
     <div class='linefield' style="width:289px;">
       <%= is_ru ? (f.label :location) : (f.label :location, "Location") -%>
-      <%= f.text_field :location, {:style=>"width:283px;"} %>
+      <%= f.text_field :location, {:style=>"width:273px;"} %>
     </div>
   </div>
 
@@ -82,23 +82,20 @@
   <div class="line">
     <div class='linefield' style="width:106px;">
       <%= is_ru ? (f.label :price) : (f.label :price, "Price") -%>
-      <%= f.text_field :price, {:style=>"width:100px;", :class => "number_format"} %>
+      <%= f.text_field :price, {:style=>"width:90px;", :class => "number_format"} %>
     </div>
-     <div class='linefield' style="width:106px;">
+     <div class='linefield' style="width:506px;">
       <%= is_ru ? (f.label :price_end, "До") : (f.label :price_end, "To") -%>
-      <%= f.text_field :price_end, {:style=>"width:100px;"} %>
+      <%= f.text_field :price_end, {:style=>"width:90px;"} %>
+      <%= f.collection_select(:currency_id, @currencies, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:55px;"})%>
+      <%= f.collection_select(:vat_id, @vats, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => true}, {:style=>"width:79px;"})%>
     </div>
-    <div class='linefield' style="display:block; height:30px;" >
+    <div class='linefield' style="display:none; height:30px;" >
       <span style="display:inline; line-height:43px; font-size:10px;"><%= Globalize.locale.to_s=="ru" ? "  поле 'До' не будет учитываться, если это не запрос" : "  field 'To' won't be used, if it's not a demand"  -%></span>
     </div>
   </div>
   <!--  -->
-  <div class="line">
-    <div class='linefield' style="width:960px;">
-      <%= f.collection_select(:currency_id, @currencies, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {}, {:style=>"width:55px;"})%>
-      <%= f.collection_select(:vat_id, @vats, :id, Globalize.locale.to_s=="ru" ? :rutitle : :entitle, {:include_blank => true}, {:style=>"width:79px;"})%>
-    </div>
-  </div>
+  <div class="clear">&nbsp;</div>
   <!--  -->
 
   <span id="filemanage" class="linkmanager"><%= is_ru ? "Добавить/удалить файлы" : "Add files"%> [<span id="filesnumber"><%= @attach.docs.blank? ? 0 : @attach.docs.size %></span>]</span>
@@ -139,11 +136,11 @@
       <div class="line">
         <div class='linefield' style="width:102px;">
           <%= is_ru ? (f.label :construction_date) : (f.label :construction_date, "Constuction date") -%>
-          <%= f.date_select :construction_date, {:discard_day=>true, :discard_month=>true, :use_month_numbers => true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year, :include_blank=>true}, {style: "width: 96px;"} %>
+          <%= f.date_select :construction_date, {:discard_day=>true, :discard_month=>true, :use_month_numbers => true, :start_year=>1945, :end_year=>Time.now.year, :include_blank=>true}, {style: "width: 96px;"} %>
         </div>
         <div class='linefield' style="width:102px;">
           <%= f.label :construction_end_date, Globalize.locale.to_s=="ru" ? "До" : "To" -%>
-          <%= f.date_select :construction_end_date, {:discard_day=>true, :discard_month=>true, :use_month_numbers => true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year, :include_blank=>true}, {style: "width: 96px;"} %>
+          <%= f.date_select :construction_end_date, {:discard_day=>true, :discard_month=>true, :use_month_numbers => true, :start_year=>1945, :end_year=>Time.now.year, :include_blank=>true}, {style: "width: 96px;"} %>
         </div>
         <div class='linefield' >
           <span style="display:inline; line-height:43px; font-size:10px;"><%= Globalize.locale.to_s=="ru" ? "  поле 'До' не будет учитываться, если это не запрос" : "  field 'To' won't be used, if it's not a demand" -%></span>
@@ -157,7 +154,7 @@
         </div>
         <div class='linefield' style="width:102px;">
           <%= is_ru ? (f.label :renovation_date) : (f.label :renovation_date, "Renovation date") -%>
-          <%= f.date_select :renovation_date, {:discard_day=>true, :discard_month=>true, :use_month_numbers => true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year, :include_blank=>true}, {style: "width: 96px;"} %>
+          <%= f.date_select :renovation_date, {:discard_day=>true, :discard_month=>true, :use_month_numbers => true, :start_year=>1945, :end_year=>Time.now.year, :include_blank=>true}, {style: "width: 96px;"} %>
         </div>
         <div class='linefield' style="width:130px;">
           <%= is_ru ? (f.label :registr_id) : (f.label :registr_id, "Register") -%>
@@ -169,15 +166,15 @@
         </div>
         <div class='linefield' style="width:122px;">
           <%= is_ru ? (f.label :period_class) : (f.label :period_class, "Class validity period") -%>
-          <%= f.date_select :period_class, {:discard_day=>true, :use_month_numbers => true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year + 15, :include_blank=>true} %>
+          <%= f.date_select :period_class, {:discard_day=>true, :use_month_numbers => true, :start_year=>1945, :end_year=>Time.now.year + 15, :include_blank=>true} %>
         </div>
         <div class='linefield' style="width:122px;">
           <%= is_ru ? (f.label :last_dock) : (f.label :last_dock, "Last dock") -%>
-          <%= f.date_select :last_dock, {:discard_day=>true, :use_month_numbers => true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year + 15, :include_blank=>true} %>
+          <%= f.date_select :last_dock, {:discard_day=>true, :use_month_numbers => true, :start_year=>1945, :end_year=>Time.now.year + 15, :include_blank=>true} %>
         </div>
         <div class='linefield' style="width:102px;">
           <%= is_ru ? (f.label :next_dock) : (f.label :next_dock, "Next dock") -%>
-          <%= f.date_select :next_dock, {:discard_day=>true, :use_month_numbers => true, :start_year=>Time.now.year - 50, :end_year=>Time.now.year + 15, :include_blank=>true} %>
+          <%= f.date_select :next_dock, {:discard_day=>true, :use_month_numbers => true, :start_year=>1945, :end_year=>Time.now.year + 15, :include_blank=>true} %>
         </div>
       </div>
     </div>
