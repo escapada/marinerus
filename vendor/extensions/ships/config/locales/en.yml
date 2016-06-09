@@ -23,8 +23,8 @@ en:
           other: Other Ships
         description:
           id: ID
-          title: Name
-          object: Not a ship info 
+          title: Name of object (will not be shown on the website)
+          object: Main text information 
           meta: Meta
           category: Type
           page_status: Page status
@@ -106,8 +106,8 @@ en:
       'refinery/ships/ship':
         id: ID
         on_the_main_flag: Show in "Recomended" block
-        title: Title
-        object: Not a ship info
+        title: Name of object (will not be shown on the website)
+        object: Main text information
         meta: Meta
         client_id: Client
         category_id: Category
