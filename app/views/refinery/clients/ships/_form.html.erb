@@ -12,11 +12,18 @@
   <%= javascript_include_tag 'jquery/jquery.timers' -%>
   <%= javascript_include_tag 'jquery/jquery.jcarousel' -%>
   <%= javascript_include_tag 'jquery/jquery.browser' -%>
-
   <%= javascript_include_tag 'refinery/wymeditor', "wymeditor/lang/#{current_admin_locale}", "wymeditor/skins/refinery/skin" %>
+  <%= javascript_include_tag 'admin_plus' -%>
 <% end %>
 <% content_for :stylesheets do %>
   <%= stylesheet_link_tag asset_path('wymeditor/skins/refinery/skin') %>
+  <%#= stylesheet_link_tag 'refinery/ui' %>
+  <%= stylesheet_link_tag 'admin_style' %>
+
+  <style>
+    .wym_tools_link, .wym_tools_image, .wym_tools_table {display: none!important;} /* hack. unable useless clients btns */
+  </style>
+
 <% end %>
 
 <% Globalize.locale.to_s=="ru" ? is_ru = true : is_ru = false %> 
@@ -61,8 +68,8 @@
   <!--  -->
   <div class='line'>
     <div class='linefield' style="width:940px;">
-      <%= f.label :object, {class: "toggle_editor"} -%>
-      <span class="hide_editor"><%= f.text_area :object, {:class => 'wymeditor', :style => 'width:930px;'}-%></span>
+      <%= is_ru ? (f.label :object, "Основная текстовая информация", {class: "toggle_editor"}) : (f.label :info, "Main text information", {class: "toggle_editor"}) -%>
+      <span class="no_hide_editor"><%= f.text_area :object, {:class => 'wymeditor', :style => 'width:930px;'}-%></span>
     </div>
   </div>
   <!--  -->

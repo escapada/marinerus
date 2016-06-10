@@ -1,0 +1,22 @@
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="2" style="text-align: left; padding: 10px;"><%= image_tag('http://marinerus.ru'+asset_path('logo.png'))%></td>
+	</tr>
+	<tr style="border-bottom: 1px solid #2c87af;">
+		<td colspan="2" style="text-align: left;"><h1 style="font-size: 14px; color:#2c87af;">Marinerus company news / Новости компании маринерус.</h1></td>
+	</tr>
+	<tr>
+		<td colspan="2" style="text-align: left; padding: 10px; width: 100px;">
+			<%= link_to(@ship.info, refinery.ships_ship_url(@ship)) %>
+			<% if @ship.translations.where(locale: "en").first.info.present? %>
+			 / <%= link_to(@ship.translations.where(locale: "en").first.info, "http://marinerus.ru/en/ships/#{@ship.id}") %>
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" style="text-align: left; padding: 10px 0; border-top: 1px solid #2c87af; font-style: italic; color: #2c87af;">Best regards, Marinerus / С уважением, компания Маринерус</td>
+	</tr>
+	<tr>
+		<td colspan="2" style="text-align: left; padding: 10px 0; font-style: italic; color: #2c87af;"><a href="%mailing_list_unsubscribe_url%">Unsubscribe</a> / <a href="%mailing_list_unsubscribe_url%">Отписаться от рассылки</a></td>
+	</tr>
+</table>

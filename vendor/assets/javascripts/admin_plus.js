@@ -21,6 +21,7 @@ $(function(){
 
 function toggleEditor (){
 	$(".hide_editor").toggle();
+	$(".no_hide_editor").toggle();
 };
 
 function toggleAdminFilter (){

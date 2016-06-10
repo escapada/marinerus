@@ -15,9 +15,8 @@
     <% end %>
   </span>
   <span class='actions'>
-    <%= link_to refinery_icon_tag('application_go.png'), refinery.news_item_path(item),
-                :title => t('.view_live_html'),
-                :target => "_blank" %>
+    <%= link_to refinery_icon_tag("email_go.png"), refinery.ships_admin_ship_sendnews_path(item), :remote => "true", :title => "Разослать", :class => "send_ajax" %>
+
     <%= link_to refinery_icon_tag('application_edit.png'), refinery.edit_news_admin_item_path(item),
                 :title => t('.edit') %>
     <%= link_to refinery_icon_tag('delete.png'), refinery.news_admin_item_path(item),
