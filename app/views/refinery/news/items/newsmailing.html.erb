@@ -7,12 +7,16 @@
 	</tr>
 	<tr>
 		<td colspan="2" style="text-align: left; padding: 10px; width: 100px;">
-			<%= link_to(@ship.info, refinery.ships_ship_url(@ship)) %>
-			<% if @ship.translations.where(locale: "en").first.info.present? %>
-			 / <%= link_to(@ship.translations.where(locale: "en").first.info, "http://marinerus.ru/en/ships/#{@ship.id}") %>
-			<% end %>
+			<%= link_to(@item.title.truncate(90), refinery.news_item_url(@item), {:title=>@item.title}) %>
 		</td>
 	</tr>
+	<% if @item.translations.where(locale: "en").first.title.present? %>
+		<tr>
+			<td colspan="2" style="text-align: left; padding: 10px; width: 100px;">
+				<%= link_to(@item.translations.where(locale: "en").first.title.truncate(90), "http://marinerus.ru/en/news/#{@item.id}", {:title=>@item.translations.where(locale: "en").first.title}) %>
+			</td>
+		</tr>
+	<% end %>
 	<tr>
 		<td colspan="2" style="text-align: left; padding: 10px 0; border-top: 1px solid #2c87af; font-style: italic; color: #2c87af;">Best regards, Marinerus / С уважением, компания Маринерус</td>
 	</tr>

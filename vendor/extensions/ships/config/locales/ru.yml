@@ -81,11 +81,11 @@ ru:
             hulltype: Тип корпуса
             hullmaterial: Материал корпуса
             supermaterial: Материал надстройки
-            tanksheatingchoice: Подогрев груз.помещений
-            tankscoolingchoice: Охлаждение груз.помещений
-            doubleboardchoice: Двойные борта
-            doublebottomchoice: Двойное дно
-            doublehullchoice: Двойной корпус
+            tanksheating: Подогрев груз.помещений
+            tankscooling: Охлаждение груз.помещений
+            double_board: Двойные борта
+            double_bottom: Двойное дно
+            double_hull: Двойной корпус
             diesel: Дизель генераторы
             sternthrusters: Подруливающее устройство
             stabilizers: Стабилизаторы качки

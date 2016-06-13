@@ -22,8 +22,11 @@ Marinerus::Application.configure do
   config.assets.digest = true
 
   config.assets.precompile += %w( admin_style.css )
+  config.assets.precompile += %w( client_form_helper.css )
+
   config.assets.precompile += %w( admin_uploadfiles.js )
   config.assets.precompile += %w( admin_plus.js )
+  config.assets.precompile += %w( client_form_helper.js )
 
   # i gues ....
   #config.assets.precompile += %w( jquery-fileupload/basic.js )

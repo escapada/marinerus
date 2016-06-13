@@ -267,29 +267,29 @@
 		<span class="descr_name"><%= t('.supermaterial') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.supermaterial.rutitle : @ship.supermaterial.entitle %>
 	</li>
 <% end %>
-<% if @ship.tanksheating.present? %>
+<% if @ship.tanksheatingchoice_id.present? %>
 	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.tanksheating') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.tanksheating.rutitle : @ship.tanksheating.entitle %>
+		<span class="descr_name"><%= t('.tanksheating') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @choices.where(:id=>@ship.tanksheatingchoice_id).first.rutitle : @choices.where(:id=>@ship.tanksheatingchoice_id).first.entitle %>
 	</li>
 <% end %>
-<% if @ship.tankscooling.present? %>
+<% if @ship.tankscoolingchoice_id.present? %>
 	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.tankscooling') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.tankscooling.rutitle : @ship.tankscooling.entitle %>
+		<span class="descr_name"><%= t('.tankscooling') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @choices.where(:id=>@ship.tankscoolingchoice_id).first.rutitle : @choices.where(:id=>@ship.tankscoolingchoice_id).first.entitle %>
 	</li>
 <% end %>
-<% if @ship.double_board.present? %>
+<% if @ship.doubleboardchoice_id.present? %>
 	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.double_board') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.double_board.rutitle : @ship.double_board.entitle %>
+		<span class="descr_name"><%= t('.double_board') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @choices.where(:id=>@ship.doubleboardchoice_id).first.rutitle : @choices.where(:id=>@ship.doubleboardchoice_id).first.entitle %>
 	</li>
 <% end %>
-<% if @ship.double_bottom.present? %>
+<% if @ship.doublebottomchoice_id.present? %>
 	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.double_bottom') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.double_bottom.rutitle : @ship.double_bottom.entitle %>
+		<span class="descr_name"><%= t('.double_bottom') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @choices.where(:id=>@ship.doublebottomchoice_id).first.rutitle : @choices.where(:id=>@ship.doublebottomchoice_id).first.entitle %>
 	</li>
 <% end %>
-<% if @ship.double_hull.present? %>
+<% if @ship.doublehullchoice_id.present? %>
 	<li class="<%= cycle('even', 'odd') %>">
-		<span class="descr_name"><%= t('.double_hull') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @ship.double_hull.rutitle : @ship.double_hull.entitle %>
+		<span class="descr_name"><%= t('.double_hull') %></span>:&nbsp;<%= Globalize.locale.to_s=="ru" ? @choices.where(:id=>@ship.doublehullchoice_id).first.rutitle : @choices.where(:id=>@ship.doublehullchoice_id).first.entitle %>
 	</li>
 <% end %>
 <% if @ship.diesel.present? %>

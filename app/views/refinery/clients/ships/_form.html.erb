@@ -4,20 +4,12 @@
     refinery.current_admin_locale = '<%= current_admin_locale %>';
   </script>
   
-  <%#= javascript_include_tag 'jquery' -%>
-  <%#= javascript_include_tag 'jquery_ujs' -%>
-  <%= javascript_include_tag 'jquery-ui' -%>
-  <%#= javascript_include_tag 'modernizr-min' -%>
-  <%= javascript_include_tag 'jquery/jquery.html5-placeholder-shim' -%>
-  <%= javascript_include_tag 'jquery/jquery.timers' -%>
-  <%= javascript_include_tag 'jquery/jquery.jcarousel' -%>
-  <%= javascript_include_tag 'jquery/jquery.browser' -%>
+  <%= javascript_include_tag 'client_form_helper' -%>
   <%= javascript_include_tag 'refinery/wymeditor', "wymeditor/lang/#{current_admin_locale}", "wymeditor/skins/refinery/skin" %>
   <%= javascript_include_tag 'admin_plus' -%>
 <% end %>
 <% content_for :stylesheets do %>
-  <%= stylesheet_link_tag asset_path('wymeditor/skins/refinery/skin') %>
-  <%#= stylesheet_link_tag 'refinery/ui' %>
+  <%= stylesheet_link_tag 'client_form_helper' %>
   <%= stylesheet_link_tag 'admin_style' %>
 
   <style>

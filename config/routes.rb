@@ -23,6 +23,7 @@ Refinery::Core::Engine.routes.prepend do
     match 'unsubscribed', to: 'subscribe#unsubscribed', :as => :unsubscribed, via: [:post]
     # match 'delete_subscriber', to: 'subscribe#delete_subscriber', :as => :delete_subscriber, via: [:delete]
   end
+  match 'sendnewsmail/:id', to: 'news/items#send_news_to_subscribers', :as => :sendnewsmail
 
 
 end
