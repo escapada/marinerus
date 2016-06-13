@@ -73,7 +73,7 @@ $greybg:		#f1f1f2;
 #hide_items_wysiwyg{display: none;}
 
 /*/////////////////////////change Refinery Menu Tabs a little bit*/
-#menu.ui-sortable-disabled a{ padding-left: 7px; padding-right: 7px;}
+#menu.ui-sortable-disabled a, #menu.ui-sortable a{ padding-left: 7px; padding-right: 7px; font-size: 12px;}
 
 /*/////////////////////////admin filter*/
 .btn{cursor: pointer;}

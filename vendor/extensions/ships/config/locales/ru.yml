@@ -16,7 +16,7 @@ ru:
             sorry_no_results: Ничего не найдено.
             no_items_yet: Пока нет объектов.
           ship:
-            view_live_html: Предпросмотр (в новом окне).</em>
+            view_live_html: Предпросмотр (в новом окне).
             edit: Редактировать объект.
             delete: Удалить.
       ships:

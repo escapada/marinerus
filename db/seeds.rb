@@ -26,3 +26,6 @@ Refinery::Adds::Engine.load_seed
 
 # Added by Refinery CMS Siteclients extension
 Refinery::Siteclients::Engine.load_seed
+
+# Added by Refinery CMS Projects extension
+Refinery::Projects::Engine.load_seed

@@ -1,0 +1,34 @@
+ru:
+  refinery:
+    plugins:
+      projects:
+        title: Проекты
+        article: masculine
+    projects:
+      admin:
+        projects:
+          actions:
+            create_new: Добавить
+            reorder: Измнить порядок
+            reorder_done: Сохранить порядок
+          records:
+            title: Проекты
+            sorry_no_results: Ничего
+            no_items_yet: Нет пока ни одного проекта не создано
+          project:
+            view_live_html: Предпросмотр (в новом окне)
+            edit: Измнить
+            delete: Удалить
+      projects:
+        show:
+          other: Другие
+          back_to_index: Вернуться к проектам
+          published: Опубликован
+        index:
+          published: Опубликовано
+          read_more: Читать далее
+  activerecord:
+    attributes:
+      'refinery/projects/project':
+        title: Наименование
+        description: Основная информация

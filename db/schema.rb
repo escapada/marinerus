@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160301114608) do
+ActiveRecord::Schema.define(:version => 20160613151628) do
 
   create_table "areas", :force => true do |t|
     t.string "rutitle"
@@ -255,6 +255,26 @@ ActiveRecord::Schema.define(:version => 20160301114608) do
   add_index "refinery_pages", ["lft"], :name => "index_refinery_pages_on_lft"
   add_index "refinery_pages", ["parent_id"], :name => "index_refinery_pages_on_parent_id"
   add_index "refinery_pages", ["rgt"], :name => "index_refinery_pages_on_rgt"
+
+  create_table "refinery_project_translations", :force => true do |t|
+    t.integer  "refinery_project_id"
+    t.string   "locale",              :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "title"
+    t.text     "description"
+  end
+
+  add_index "refinery_project_translations", ["locale"], :name => "index_refinery_project_translations_on_locale"
+  add_index "refinery_project_translations", ["refinery_project_id"], :name => "index_refinery_project_translations_on_refinery_project_id"
+
+  create_table "refinery_projects", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "position"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "refinery_resources", :force => true do |t|
     t.string   "file_mime_type"

@@ -5,6 +5,8 @@ PATH
       refinerycms-core (~> 2.1.5)
     refinerycms-categories (1.0)
       refinerycms-core (~> 2.1.5)
+    refinerycms-projects (1.0)
+      refinerycms-core (~> 2.1.5)
     refinerycms-ships (1.0)
       refinerycms-core (~> 2.1.5)
     refinerycms-siteclients (1.0)
@@ -258,6 +260,7 @@ DEPENDENCIES
   refinerycms-categories!
   refinerycms-inquiries
   refinerycms-news (~> 2.1.0)
+  refinerycms-projects!
   refinerycms-ships!
   refinerycms-siteclients!
   rest-client
