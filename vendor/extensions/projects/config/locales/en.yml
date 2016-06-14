@@ -27,6 +27,7 @@ en:
         index:
           published: Published
           read_more: Read more
+          no_items_yet: No projects published yet
   activerecord:
     attributes:
       'refinery/projects/project':
