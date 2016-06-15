@@ -27,7 +27,7 @@ ru:
         index:
           published: Опубликовано
           read_more: Читать далее
-          no_items_yet: Пока нет ни одного рпоекта
+          no_items_yet: Пока нет ни одного проекта
   activerecord:
     attributes:
       'refinery/projects/project':
