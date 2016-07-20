@@ -12,7 +12,12 @@
 			<% end %>
 		</td>
 		<td>
-			<%= link_to(@ship.info, refinery.ships_ship_url(@ship)) %>
+			<% if @ship.translations.where(locale: "ru").first.info.present? %>
+				<%= link_to(@ship.translations.where(locale: "ru").first.info, refinery.ships_ship_url(@ship)) %>
+			<% else %>
+				<%= link_to(@ship.info, refinery.ships_ship_url(@ship)) %>
+			<% end %>
+
 			<% if @ship.translations.where(locale: "en").first.info.present? %>
 			 / <%= link_to(@ship.translations.where(locale: "en").first.info, "http://marinerus.ru/en/ships/#{@ship.id}") %>
 			<% end %>
