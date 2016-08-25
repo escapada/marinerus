@@ -23,7 +23,7 @@ module Refinery
     protected
 
       def find_all_projects
-        @projects = Project.order('position ASC')
+        @projects = Project.order('updated_at DESC')  #.order('position ASC')
       end
 
       def find_page
