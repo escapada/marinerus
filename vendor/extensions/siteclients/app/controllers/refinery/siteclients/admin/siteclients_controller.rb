@@ -5,6 +5,7 @@ module Refinery
 	      after_filter :delete_subscriber, :only => [:destroy]
 
         crudify :'refinery/siteclients/siteclient',
+                :order => ('id ASC' if Siteclient.table_exists?),
                 :title_attribute => 'email',
                 :xhr_paging => true
 
@@ -14,6 +15,10 @@ module Refinery
 	        "@api.mailgun.net/v3/lists/subscribers@mailgun.marinerus.ru/members" \
 	        "/#{@siteclient.email}")
 	      end
+
+        # def find_all_ships
+        #   @ships = Siteclient.all
+        # end
 
       end
     end
