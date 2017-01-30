@@ -166,11 +166,11 @@
       <div class="line">
         <div class='linefield' style="width:102px;">
           <%= is_ru ? (f.label :construction_date) : (f.label :construction_date, "Constuction date") -%>
-          <%= f.date_select :construction_date, {:discard_day=>true, :discard_month=>true, :use_month_numbers => true, :start_year=>1945, :end_year=>Time.now.year, :include_blank=>true}, {style: "width: 96px;"} %>
+          <%= f.date_select :construction_date, {:discard_day=>true, :discard_month=>true, :use_month_numbers => true, :start_year=>1945, :end_year=>Time.now.year + 8, :include_blank=>true}, {style: "width: 96px;"} %>
         </div>
         <div class='linefield' style="width:102px;">
           <%= f.label :construction_end_date, Globalize.locale.to_s=="ru" ? "До" : "To" -%>
-          <%= f.date_select :construction_end_date, {:discard_day=>true, :discard_month=>true, :use_month_numbers => true, :start_year=>1945, :end_year=>Time.now.year, :include_blank=>true}, {style: "width: 96px;"} %>
+          <%= f.date_select :construction_end_date, {:discard_day=>true, :discard_month=>true, :use_month_numbers => true, :start_year=>1945, :end_year=>Time.now.year + 8, :include_blank=>true}, {style: "width: 96px;"} %>
         </div>
         <div class='linefield' >
           <span style="display:inline; line-height:43px; font-size:10px;"><%= Globalize.locale.to_s=="ru" ? "  поле 'До' не будет учитываться, если это не запрос" : "  field 'To' won't be used, if it's not a demand" -%></span>
