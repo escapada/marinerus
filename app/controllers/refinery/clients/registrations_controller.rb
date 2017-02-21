@@ -1,7 +1,13 @@
+require 'raptcha'
+
 module Refinery
   module Clients
     class RegistrationsController < Devise::RegistrationsController
       prepend_before_filter :authenticate_scope!, :only => [:edit_password, :edit, :update, :destroy]
+# 
+#      prepend_before_filter :captcha, :only => [ :create ]
+      prepend_before_filter :recaptcha, :only => [ :create ]
+# 
       after_filter :subscribed, :only => [:create, :update]
       after_filter :delete_subscriber, :only => [:destroy]
       helper Refinery::Core::Engine.helpers
@@ -11,7 +17,6 @@ module Refinery
       def edit_password
         render :edit_password
       end
-      # 
 
       def destroy
         resource.destroy
@@ -19,6 +24,10 @@ module Refinery
         set_flash_message :notice, :destroyed if is_navigational_format?
         # respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
         redirect_to after_sign_out_path_for(resource_name)
+      end
+
+      def raptcha_generate
+        Raptcha.render(controller=self, params)
       end
 
       protected
@@ -44,6 +53,17 @@ module Refinery
       # def after_sign_out_path_for(resource_or_scope)
       # 	refinery.root_path
       # end
+
+      # def captcha
+      #   # redirect_to 'http://google.ru', flash: { someshit: "Get out! Motherfucker!" } if !(Raptcha.valid?(params))
+      #   redirect_to root_url, flash: { someshit: "Get out! Motherfucker!" } if !(Raptcha.valid?(params))
+      # end
+
+      def recaptcha
+        build_resource
+
+        render 'new' if !verify_recaptcha(model: resource)
+      end
 
     end
   end

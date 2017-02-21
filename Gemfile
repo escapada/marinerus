@@ -74,3 +74,5 @@ gem 'refinerycms-ships', :path => 'vendor/extensions'
 gem 'refinerycms-adds', :path => 'vendor/extensions'
 gem 'refinerycms-siteclients', :path => 'vendor/extensions'
 gem 'refinerycms-projects', :path => 'vendor/extensions'
+
+gem "recaptcha", require: "recaptcha/rails"

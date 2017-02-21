@@ -103,12 +103,18 @@ h3{ font-size: 16px; font-weight: normal; display: block; margin-bottom: 5px; co
 #login_hat.passrecover{background: url(<%= asset_path('recover_big_btn.jpg')%>) no-repeat;}
 #login_hat.passrecover_e{background: url(<%= asset_path('recover_big_btn_e.jpg')%>) no-repeat;}
 #login_body{border:1px $blue solid; padding: 15px 0;}
-.login_field{ width: 300px; margin: 0 auto; margin-bottom: 7px;
+.login_field{ width: 300px; margin: 0 auto; margin-bottom: 2px;
 	a{color: $blue;}
 	i{ font-size: 10px; text-align: center;}
-	.text_field{ width:100%; height:20px; margin: 2px 0; padding: 2px;}
+	/*.text_field{ width:100%; height:20px; margin: 2px 0; padding: 2px;}*/
+	.text_field{ width:282px; height:20px; padding: 0 2px;}
 	.btn{width:100%; text-align:center;}
 	.registration{width:100%; text-align:center;}
+	.raptcha{
+		br {display: none;}
+	}
+	.raptcha-image{height:45px; float:right;}
+	.raptcha-input{height:20px; width:100px; padding: 0 2px; margin-top: 8px;}
 }
 
 #container{ margin-top: 30px; float:left;}

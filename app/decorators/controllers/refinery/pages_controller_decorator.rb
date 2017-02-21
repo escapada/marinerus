@@ -22,6 +22,39 @@ Refinery::PagesController.class_eval do
         session[:gbp] = gbp
     end
 
+    def get_currencies_helper_(today_date, prev_date)
+      session[:httpSuccess] = false
+
+      usd_xml = Net::HTTP.get_response(URI.parse("http://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=#{prev_date}&date_req2=#{today_date}&VAL_NM_RQ=R01235"))
+      euro_xml = Net::HTTP.get_response(URI.parse("http://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=#{prev_date}&date_req2=#{today_date}&VAL_NM_RQ=R01239"))
+      gbp_xml = Net::HTTP.get_response(URI.parse("http://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=#{prev_date}&date_req2=#{today_date}&VAL_NM_RQ=R01035"))
+      
+      if (usd_xml.is_a?(Net::HTTPSuccess) and euro_xml.is_a?(Net::HTTPSuccess) and gbp_xml.is_a?(Net::HTTPSuccess)) 
+        
+        logger.debug("Value ////////// #{usd_xml.code} OK") 
+        
+        usd_hash = Hash.from_xml(usd_xml.body)
+        euro_hash = Hash.from_xml(euro_xml.body)
+        gbp_hash = Hash.from_xml(gbp_xml.body)
+
+        usd = usd_hash["ValCurs"]["Record"]
+        euro = euro_hash["ValCurs"]["Record"]
+        gbp = gbp_hash["ValCurs"]["Record"]
+
+        session[:httpSuccess] = true
+        session[:query_date] = today_date
+
+        session[:usd] = usd
+        session[:euro] = euro
+        session[:gbp] = gbp
+
+      else
+        logger.debug("Value ////////// #{usd_xml.code} NOT OK") 
+
+        session[:httpSuccess] = false
+      end
+    end
+
 
   protected
   def ships_prepare
@@ -50,13 +83,18 @@ Refinery::PagesController.class_eval do
     prev_date = (Time.now - 15.days).strftime("%d/%m/%Y") # New Year vocation
     if (session[:usd].present? and session[:euro].present? and session[:gbp].present?)
       if (session[:usd][-1]["Date"].to_date<today_date.to_date and session[:query_date].to_date != today_date.to_date)#(today_date.to_date-2.days)
-        get_currencies_helper(today_date, prev_date)
+        get_currencies_helper_(today_date, prev_date)
       end
     else
-      get_currencies_helper(today_date, prev_date)
+      get_currencies_helper_(today_date, prev_date)
     end
 
-     logger.debug("#{session[:usd]}, //////////, #{session[:usd][-2]}, //////////, #{session[:usd]}")
+######################
+      # get_currencies_helper_(today_date, prev_date)
+######################
+     
+     #logger.debug("#{session[:usd]}, //////////, #{session[:usd][-2]}, //////////, #{session[:usd]}")
+     logger.debug("   SESSION:   #{session}")
 
   end
 

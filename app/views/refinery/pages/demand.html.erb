@@ -10,6 +10,7 @@
 				<li class="odd first"><%= link_to is_ru ? "Показать всё" : "All", refinery.ships_ships_path %> [<%= @all.size %>]</li>
 				<%= render partial: "/refinery/category", collection: @categories %>
 			</ul>
+			<% if session[:httpSuccess] %>
 			<div id="cur_lable"><%= is_ru ? "Курс валют" : "Currency"%></div>
 			<div id="currency">
 				<div id="cur_head"><%= session[:usd].last["Date"] %></div>
@@ -19,6 +20,7 @@
 					<li>GBP&nbsp;&nbsp;<%= session[:gbp].last["Value"].gsub(",", ".").to_f.round(2) %>&nbsp;<%= (session[:gbp][-1]["Value"].gsub(",", ".").to_f-session[:gbp][-2]["Value"].gsub(",", ".").to_f)>0 ? image_tag("up-arrow.png") : image_tag("down-arrow.png") %></li>
 				</ul>
 			</div>
+			<% end %> <!-- End of httpSuccess checking (is CBR responsible?..)  -->
 		</div>
 		<div class="content_container_sm">
 			<span class="h2_"><%= is_ru ? "Запросы" : "Demands" %></span>

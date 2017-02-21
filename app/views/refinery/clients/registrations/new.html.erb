@@ -47,16 +47,21 @@
               <%#= f.label :usage, "Пользовательское соглашение" %><%#= f.check_box :usage %>
             </div>
             <div class="login_field">
+              <label style="display: block; height:9px; font-weight:bold;"><%=  is_ru ? "Подтвердите, что вы не робот:" : "Are you human?:" %></label><br />
+              <%#= raw Raptcha.input %>
+              <%= recaptcha_tags %>
+            </div>
+            <div class="login_field">
               <div class="btn">
                 <%= f.submit "Sign up", :type=>'image', :src=>is_ru ? '/assets/signup_btn.png' : '/assets/signup_btn_e.png', :data => { :confirm => is_ru ? 'На вашу почту сейчас отправится письмо с инструкцией по активации вашего доступа. Проверьте свою почту.' : 'Now instructions will send to your email. Check out your mailbox.' } %>
               </div>
             </div>
           <% end %>
-          <div class="login_field">
+<!--           <div class="login_field">
               <div class="btn">
                 <%= link_to is_ru ? "Уже зарегистрированы?:" : "Sign in", refinery.new_client_session_path %>
               </div>
-            </div>
+          </div> -->
         </div>
       </div>
     </div>

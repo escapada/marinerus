@@ -6,6 +6,7 @@ Refinery::Core::Engine.routes.prepend do
 
   devise_scope :client do
       get "/clients/change_psw", :to => "clients/registrations#edit_password", :as => :edit_password
+      match 'raptcha(/:action)', to: 'clients/registrations#raptcha_generate'
   end
 
   get "/clients/office", :to => "clients/office#index", :as => :office
@@ -24,6 +25,8 @@ Refinery::Core::Engine.routes.prepend do
     # match 'delete_subscriber', to: 'subscribe#delete_subscriber', :as => :delete_subscriber, via: [:delete]
   end
   match 'sendnewsmail/:id', to: 'news/items#send_news_to_subscribers', :as => :sendnewsmail
+  # match 'raptcha(/:action)' => 'raptcha'
+  #map.raptcha '/raptcha', :controller => 'blogs', :action => 'captcha'
 
 
 end
