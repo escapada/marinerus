@@ -3,7 +3,18 @@
 <div class="wrap">
   <div id="container">
     <div class="positions_description">
-      <div id="positions_description<%= "_e" if !is_ru %>"></div>
+      <div id="positions_description<%= "_e" if !is_ru %>">
+        <% if @visitors.present? %>
+          <div style="padding-top: 3px; margin-right:7px; text-align: right;line-height: 28px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="padding-right: 5px;">
+              <path d="M12 8c-5 0-11 6-11 6s6 6 11 6 11-6 11-6-6-6-11-6zm0 10c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z" fill="white" />
+              <circle cx="12" cy="14" r="2" fill="white" />
+              <title><%= is_ru ? "Количество просмотров этого лота" : "Visitors" %></title>
+            </svg>
+            <span style="float: right; color: white; font-size: 14px; font-weight: bold;"><%= @visitors.to_i %></span>
+          </div>
+        <%end%>
+      </div>
       <ul class="list_positions description">
         <%= render partial: "description" %>
       </ul>

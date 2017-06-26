@@ -24,12 +24,16 @@ module Refinery
       def show
         @ship = Ship.includes(:status).find(params[:id])
         @choices = Choice.scoped
+        @visitors = visitors(@ship.id, @ship.created_at)
+        # @visitors = visitors(params[:id])
+
         redirect_to refinery.root_path if @ship.page_status_id == 1
 
         # you can use meta fields from your model instead (e.g. browser_title)
         # by swapping @page for @ship in the line below
         # (it means that method will use something "like title_field" from your model):
         # present(@ship)
+
       end
 
     protected
@@ -62,6 +66,30 @@ module Refinery
         @adds = Refinery::Adds::Add.limit(4)
         @adds.order(:positions) if @adds.present?
       end
+
+      #######################
+      #number views(visitors) of each ship by Metrika API
+      #######################
+
+      def visitors(id, date)
+        begin
+        # json = Net::HTTP.get_response(URI.parse("https://api-metrika.yandex.ru/stat/v1/data?date1=today&metrics=ym:s:users&filters=ym:pv:URL=@'ships'&id=33242200&oauth_token=8d3f347e9bfe4be49785fc3922ccc4e1"))
+          json = Net::HTTP.get_response(URI.parse("https://api-metrika.yandex.ru/stat/v1/data?date1=#{date.strftime("%Y-%m-%d")}&metrics=ym:s:users&filters=ym:pv:URL=@%27ships/#{id}%27&id=33242200&oauth_token=AQAAAAADvq36AAQsNhxUuZrk40_bsQtY8fXNqrU"))
+        rescue Exception => e
+          logger.debug("---------------------- #{e}")
+          retry
+        end
+
+        if (json.present? and json.code == "200")
+          data_hash = JSON.parse(json.body)
+          visitors = data_hash["data"][0]["metrics"][0]
+        else
+          visitors = nil
+        end
+
+        return visitors
+      end
+
 
     end
   end
