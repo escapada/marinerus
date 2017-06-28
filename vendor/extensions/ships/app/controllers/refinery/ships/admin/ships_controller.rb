@@ -45,7 +45,7 @@ module Refinery
 			#data[:attachment] = File.new(File.join("files", "test.jpg"))
 			#data[:attachment] = File.new(File.join("files", "test.txt"))
 
-			response = RestClient.post "https://api:key-2b931b07a70d72df02e817bc79e9a8ba"\
+			response = RestClient.post "https://api:key-01438838a0123e4a65db5796cd166a73"\
 			"@api.mailgun.net/v3/mailgun.marinerus.ru/messages",
 			data.to_hash
 			#logger.debug(render_to_string :shipmailing)
@@ -142,7 +142,7 @@ module Refinery
 					subscribers = clients.map {|c| {"address" => c.email, "subscribed" => c.mail_me}}
 
 					subscribers.in_groups_of(200, false) do |s|
-						RestClient.post("https://api:key-2b931b07a70d72df02e817bc79e9a8ba" \
+						RestClient.post("https://api:key-01438838a0123e4a65db5796cd166a73" \
 						"@api.mailgun.net/v3/lists/subscribers@mailgun.marinerus.ru/members.json",
 						:upsert => true,
 						:members => s.to_json)

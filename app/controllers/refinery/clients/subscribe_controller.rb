@@ -5,7 +5,7 @@ module Refinery
 			################### this controller is not used yet
 
 			def subscribed
-				response = RestClient.post("https://api:key-2b931b07a70d72df02e817bc79e9a8ba" \
+				response = RestClient.post("https://api:key-01438838a0123e4a65db5796cd166a73" \
 				"@api.mailgun.net/v3/lists/unregistered_subscribers@mailgun.marinerus.ru/members",
 				:upsert => true,
 				:address => email,
@@ -15,7 +15,7 @@ module Refinery
 			end
 
 			# def unsubscribed
-			# 	response = RestClient.post("https://api:key-2b931b07a70d72df02e817bc79e9a8ba" \
+			# 	response = RestClient.post("https://api:key-01438838a0123e4a65db5796cd166a73" \
 			# 	"@api.mailgun.net/v3/lists/subscribers@mailgun.marinerus.ru/members",
 			# 	:upsert => true,
 			# 	:address => params[:email]
