@@ -93,3 +93,9 @@ capybara-*html
 # vendor/extensions dummy applications.
 vendor/extensions/**/spec/dummy
 
+#all mailgun API-keys
+app/controllers/refinery/clients/registrations_controller.rb
+app/controllers/refinery/clients/subscribe_controller.rb
+vendor/extensions/ships/app/controllers/refinery/ships/admin/ships_controller.rb
+app/decorators/controllers/refinery/items_controller_decorator.rb
+vendor/extensions/siteclients/app/controllers/refinery/siteclients/admin/siteclients_controller.rb
