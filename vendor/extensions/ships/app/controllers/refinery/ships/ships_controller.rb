@@ -82,7 +82,11 @@ module Refinery
 
         if (json.present? and json.code == "200")
           data_hash = JSON.parse(json.body)
-          visitors = data_hash["data"][0]["metrics"][0]
+          if data_hash["data"].present?
+            visitors = data_hash["data"][0]["metrics"][0] 
+          else
+            visitors = nil
+          end
         else
           visitors = nil
         end
