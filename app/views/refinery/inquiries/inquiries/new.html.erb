@@ -47,6 +47,12 @@
             <%= f.text_area :message, :rows => 8, :required => 'required',
               :placeholder => t('message', :scope => 'activerecord.attributes.refinery/inquiries/inquiry') if Refinery::Inquiries.show_placeholders %>
           </div>
+
+          <div style="margin-bottom:5px;">
+            <label style="line-height:20px;"><%=  is_ru ? "Подтвердите, что вы не робот:" : "Are you human?:" %></label><br />
+            <%= recaptcha_tags %>
+          </div>
+
           <div class="actions">
             <%= f.submit t('.send'), type: "image", src: "#{is_ru ? asset_path('send_btn.png') : asset_path('send_btn_e.png')}" %><br />
             <%= link_to t('.privacy_policy'), is_ru ? "/pages/privacy-policy" : "/en/pages/privacy-policy", :id => "privacy_link" if Refinery::Inquiries.show_contact_privacy_link %><br /><br />
@@ -65,3 +71,5 @@
 
 <!-- <div class="popup_container"></div> invisible popup -->
 <!--  -->
+
+<!-- <%= recaptcha_tags %> -->
