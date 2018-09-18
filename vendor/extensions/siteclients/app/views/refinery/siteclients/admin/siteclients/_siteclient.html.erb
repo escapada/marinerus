@@ -3,8 +3,18 @@
     <%= siteclient.email %>
 
   </span>
+  <span style="position:absolute; top:0; right:120px;">
+    <% if siteclient.current_sign_in_at? %>
+      <% if (siteclient.current_sign_in_at < -6.months.from_now) %>
+        <strong style="color:red;"><%= siteclient.current_sign_in_at.strftime("Последний вход в ЛК %Y/%m/%d (%T)") %></strong>
+      <% else %>
+        <%= siteclient.current_sign_in_at.strftime("Последний вход в ЛК %Y/%m/%d (%T)") %>
+      <% end %>
+    <% else %>
+      <strong style="color:red;">Клиент не заходил в ЛК.</strong>
+    <% end %>
+  </span>
   <span class='actions'>
-    
     <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_siteclients_admin_siteclient_path(siteclient),
          :title => t('.edit') %>
     <%= link_to refinery_icon_tag("delete.png"), refinery.siteclients_admin_siteclient_path(siteclient),
