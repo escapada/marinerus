@@ -31,7 +31,7 @@ Marinerus::Application.configure do
     # port:                 2525,
     # domain:               'marinerus.ru',
     # user_name:            'noreply@marinerus.ru',
-    # password:             '858d9666',
+    # password:             'secret',
     # authentication:       'login',
     # enable_starttls_auto: false, # was true
     # openssl_verify_mode: 'none' # <-- add this line
